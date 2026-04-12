@@ -20,7 +20,7 @@
         <div class="flex flex-row lg:gap-6 gap-2">
           <a href="#home">
             <div
-              class="font-newsreader border-2 p-2 rounded-lg flex flex-row text-lg gap-1 border-gray-300"
+              class="font-newsreader border-2 p-2 rounded-lg flex flex-row text-lg gap-1 border-gray-300 transition delay-50 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[#191919] hover:text-white hover:border-white"
             >
               <i data-lucide="house" width="24"></i>Home
             </div>
@@ -28,7 +28,7 @@
 
           <a href="#projects">
             <div
-              class="font-newsreader border-2 p-2 rounded-lg flex flex-row text-lg gap-1 border-gray-300"
+              class="font-newsreader border-2 p-2 rounded-lg flex flex-row text-lg gap-1 border-gray-300 transition delay-50 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[#191919] hover:text-white hover:border-white"
             >
               <i data-lucide="folder-kanban" width="24"></i>Projects
             </div>
@@ -36,7 +36,7 @@
 
           <a href="#contact">
             <div
-              class="font-newsreader border-2 p-2 rounded-lg flex flex-row text-lg gap-1 border-gray-300"
+              class="font-newsreader border-2 p-2 rounded-lg flex flex-row text-lg gap-1 border-gray-300 transition delay-50 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[#191919] hover:text-white hover:border-white"
             >
               <i data-lucide="user-pen" width="24"></i>Contact
             </div>
@@ -262,10 +262,14 @@
             Mobile Application that provides student of Budi Luhur University
             with easy access to essential academic information.
           </div>
-          <div class="flex flex-row gap-2 mt-4">
-            <i data-lucide="link" width="24"></i>
-            <div class="font-manrope font-semibold">Appstore</div>
-          </div>
+          <a
+            href="https://apps.apple.com/fi/app/student-budi-luhur/id6478258562"
+          >
+            <div class="flex flex-row gap-2 mt-4">
+              <i data-lucide="link" width="24"></i>
+              <div class="font-manrope font-semibold">App Store</div>
+            </div>
+          </a>
         </div>
 
         <!-- Employee Budi Luhur -->
@@ -280,10 +284,12 @@
             Mobile app for Budi Luhur University employees and lecturers to
             access employment data and manage student academic information.
           </div>
-          <div class="flex flex-row gap-2 mt-4">
-            <i data-lucide="link" width="24"></i>
-            <div class="font-manrope font-semibold">Appstore</div>
-          </div>
+          <a href="https://apps.apple.com/app/employee-budi-luhur/id6499570674">
+            <div class="flex flex-row gap-2 mt-4">
+              <i data-lucide="link" width="24"></i>
+              <div class="font-manrope font-semibold">App Store</div>
+            </div></a
+          >
         </div>
 
         <!-- E-KTP Verification System -->
@@ -296,10 +302,13 @@
             Mobile Application to automate the verification and validation of
             Indonesian E-KTP (identity cards).
           </div>
-          <div class="flex flex-row gap-2 mt-4">
-            <i data-lucide="link" width="24"></i>
-            <div class="font-manrope font-semibold">GitHub</div>
-          </div>
+
+          <a href="https://github.com/Zalayetha/verif-ktp">
+            <div class="flex flex-row gap-2 mt-4">
+              <i data-lucide="link" width="24"></i>
+              <div class="font-manrope font-semibold">GitHub</div>
+            </div>
+          </a>
         </div>
 
         <!-- Santana -->
@@ -311,10 +320,13 @@
             key attributes of natural disasters using advanced machine learning
             techniques.
           </div>
-          <div class="flex flex-row gap-2 mt-4">
-            <i data-lucide="link" width="24"></i>
-            <div class="font-manrope font-semibold">GitHub</div>
-          </div>
+
+          <a href="https://github.com/Zalayetha/SANTANA">
+            <div class="flex flex-row gap-2 mt-4">
+              <i data-lucide="link" width="24"></i>
+              <div class="font-manrope font-semibold">GitHub</div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -333,7 +345,7 @@
       </div>
       <a
         href="mailto:zaghy@zalsoft.com"
-        class="rounded-full px-8 py-4 bg-[#191919] text-white my-8"
+        class="rounded-full px-8 py-4 bg-[#191919] border border-gray-300 text-white my-8 transition delay-50 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-white hover:text-[#191919] hover:border-[#191919]"
       >
         Get in touch
       </a>
@@ -345,9 +357,15 @@
     <!-- Footer -->
     <footer class="flex flex-row lg:px-32 lg:py-8 px-12 py-8 justify-between">
       <div class="flex flex-row gap-8">
-        <div class="font-newsreader flex flex-row text-lg">Home</div>
-        <div class="font-newsreader flex flex-row text-lg">Projects</div>
-        <div class="font-newsreader flex flex-row text-lg">Contact</div>
+        <a href="#home"
+          ><div class="font-newsreader flex flex-row text-lg">Home</div></a
+        >
+        <a href="#projects">
+          <div class="font-newsreader flex flex-row text-lg">Projects</div>
+        </a>
+        <a href="#contact">
+          <div class="font-newsreader flex flex-row text-lg">Contact</div>
+        </a>
       </div>
       <div class="font-newsreader text-lg text-gray-500">
         © 2026 Zaghy Zalayetha. All rights reserved.
