@@ -51,7 +51,7 @@ export const experience: Experience[] = [
   },
   {
     company: "Universitas Budi Luhur",
-    role: "Mobile Developer",
+    role: "Staff Programmer",
     period: "September 2023 - April 2026",
     location: "Indonesia • Hybrid",
   },
@@ -172,12 +172,13 @@ export const socialLinks = {
 
 export const contact = {
   email: "zaghy@zalsoft.com",
-  tagline: "Have a project in mind? Feel free to reach out and let's discuss how we can collaborate.",
+  tagline:
+    "Have a project in mind? Feel free to reach out and let's discuss how we can collaborate.",
   cta: "Let's Work Together",
 };
 
 export const about = {
-  text: "Software Developer with 3+ years of experience, experiencing in Mobile App Development, Machine Learning, Full-Stack Development. Skilled in building scalable mobile applications, building machine learning models, and building REST API. Experienced in team leadership, project management, and ensuring project success and team harmony. Passionate about building meaningful software and achieving impactful results.",
+  text: "Software Developer with 4+ years of experience, experiencing in Mobile App Development, Machine Learning, Full-Stack Development. Skilled in building scalable mobile applications, building machine learning models, and building REST API. Experienced in team leadership, project management, and ensuring project success and team harmony. Passionate about building meaningful software and achieving impactful results.",
 };
 
 export const hero = {
