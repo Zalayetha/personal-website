@@ -4,6 +4,11 @@ import { ProjectCard } from "../ui/ProjectCard";
 import { FingerprintPattern, ChartScatter } from "lucide-react";
 import { projects } from "../../data/portfolio";
 
+const iconMap = {
+  FingerprintPattern,
+  ChartScatter,
+};
+
 export function Projects() {
   return (
     <Section id="projects">
@@ -20,7 +25,7 @@ export function Projects() {
             title={project.title}
             description={project.description}
             image={project.image}
-            icon={project.icon === "FingerprintPattern" ? FingerprintPattern : project.icon === "ChartScatter" ? ChartScatter : undefined}
+            icon={project.iconName ? iconMap[project.iconName] : undefined}
             href={project.href}
             linkText={project.linkText}
           />

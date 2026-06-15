@@ -1,5 +1,3 @@
-import { type LucideIcon } from "lucide-react";
-
 export interface Experience {
   company: string;
   role: string;
@@ -32,7 +30,7 @@ export interface Project {
   title: string;
   description: string;
   image?: string;
-  icon?: LucideIcon;
+  iconName?: "FingerprintPattern" | "ChartScatter";
   href: string;
   linkText: string;
 }
@@ -151,7 +149,7 @@ export const projects: Project[] = [
     title: "E-KTP Verification System",
     description:
       "Mobile Application to automate the verification and validation of Indonesian E-KTP (identity cards).",
-    icon: "FingerprintPattern",
+    iconName: "FingerprintPattern",
     href: "https://github.com/Zalayetha/verif-ktp",
     linkText: "GitHub",
   },
@@ -159,7 +157,7 @@ export const projects: Project[] = [
     title: "Santana",
     description:
       "Mobile Application to classify disaster-related text and identify key attributes of natural disasters using advanced machine learning techniques.",
-    icon: "ChartScatter",
+    iconName: "ChartScatter",
     href: "https://github.com/Zalayetha/SANTANA",
     linkText: "GitHub",
   },
