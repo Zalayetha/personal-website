@@ -1,6 +1,15 @@
-import { useEffect, useRef } from 'react';
-import { Sprout, House, FolderKanban, UserPen, Link, FingerprintPattern, ChartScatter } from 'lucide-react';
-import Typed from 'typed.js';
+import { useEffect, useRef } from "react";
+import {
+  Sprout,
+  House,
+  FolderKanban,
+  UserPen,
+  Link,
+  FingerprintPattern,
+  ChartScatter,
+  GraduationCap,
+} from "lucide-react";
+import Typed from "typed.js";
 import "./App.css";
 
 function App() {
@@ -42,6 +51,15 @@ function App() {
                 <House className="w-5 h-5 shrink-0" />
                 <span className="hidden lg:inline text-sm font-medium">
                   Home
+                </span>
+              </div>
+            </a>
+
+            <a href="#academic">
+              <div className="items-center font-newsreader border-2 p-2 rounded-lg flex flex-row lg:text-lg text-sm gap-1 border-gray-300 transition delay-50 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-[#191919] hover:text-white hover:border-white">
+                <GraduationCap className="w-5 h-5 shrink-0" />
+                <span className="hidden lg:inline text-sm font-medium">
+                  Academic
                 </span>
               </div>
             </a>
@@ -195,6 +213,120 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section
+          id="academic"
+          className="flex flex-col lg:px-32 lg:py-8 px-12 py-8"
+        >
+          <div className="font-newsreader text-3xl font-bold">Academic</div>
+          <div className="h-1 rounded-full bg-gray-200 my-4"></div>
+
+          <div className="font-newsreader text-xl font-semibold mt-4">
+            Education
+          </div>
+          <div className="mt-4">
+            <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
+              <div className="font-manrope font-semibold text-md">
+                Universitas Budi Luhur
+                <div className="font-manrope font-normal text-sm text-gray-500">
+                  Jakarta, Indonesia • September 2021 - August 2025
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="font-manrope font-semibold text-md">
+                  Bachelor of Computer Science, Informatics Engineering
+                </div>
+                <div className="font-manrope text-sm text-gray-600">
+                  Cumulative GPA: 3.96/4.0
+                </div>
+                <div className="font-manrope text-sm text-gray-600 italic">
+                  The Best Graduate of Informatics Engineering 2025
+                </div>
+              </div>
+            </div>
+
+            <div className="h-0.5 rounded-full bg-gray-200 my-4"></div>
+
+            <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
+              <div className="font-manrope font-semibold text-md">
+                SMA Negeri 7 Tangerang
+                <div className="font-manrope font-normal text-sm text-gray-500">
+                  Tangerang, Indonesia • October 2018 - May 2021
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="font-manrope font-semibold text-md">
+                  Science
+                </div>
+                <div className="font-manrope text-sm text-gray-600">
+                  Final Examination Score: 81.64/100
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="font-newsreader text-xl font-semibold mt-8">
+            Certifications
+          </div>
+          <div className="flex flex-wrap gap-2 pt-4">
+            <div className="bg-[#191919] rounded-full px-3 py-1 shrink-0">
+              <div className="text-white px-4 py-2 font-manrope text-xs">
+                Dev Certification For Android – dev.id
+              </div>
+            </div>
+            <div className="bg-[#191919] rounded-full px-3 py-1 shrink-0">
+              <div className="text-white px-4 py-2 font-manrope text-xs">
+                Bangkit Academy 2024 batch 1 – Google, Tokopedia, Gojek,
+                Traveloka
+              </div>
+            </div>
+            <div className="bg-[#191919] rounded-full px-3 py-1 shrink-0">
+              <div className="text-white px-4 py-2 font-manrope text-xs">
+                English for Business Communication (92%) – The British Institute
+              </div>
+            </div>
+            <div className="bg-[#191919] rounded-full px-3 py-1 shrink-0">
+              <div className="text-white px-4 py-2 font-manrope text-xs">
+                Docker Foundations Professional Certificate – Docker
+              </div>
+            </div>
+            <div className="bg-[#191919] rounded-full px-3 py-1 shrink-0">
+              <div className="text-white px-4 py-2 font-manrope text-xs">
+                Career Essentials in GitHub – GitHub
+              </div>
+            </div>
+            <div className="bg-[#191919] rounded-full px-3 py-1 shrink-0">
+              <div className="text-white px-4 py-2 font-manrope text-xs">
+                CyberOps Associate – Cisco Networking Academy
+              </div>
+            </div>
+          </div>
+
+          <div className="font-newsreader text-xl font-semibold mt-8">
+            Publications
+          </div>
+          <div className="mt-4 border-2 border-gray-300 rounded-2xl p-6">
+            <div className="font-manrope font-semibold text-md">
+              IMPLEMENTASI SISTEM VERIFIKASI E-KTP BERBASIS OCR DAN CNN UNTUK
+              ADMINISTRASI AKADEMIK
+            </div>
+            <div className="font-manrope text-sm text-gray-600 mt-2">
+              Sofjan, M. Z. Z., & Soetanto, H. (2025)
+            </div>
+            <div className="font-manrope text-sm text-gray-500 mt-1">
+              Prosiding Seminar Nasional Mahasiswa Fakultas Teknologi Informasi
+              (SENAFTI), 4(2), 269–278
+            </div>
+            <a
+              href="https://senafti.budiluhur.ac.id/senafti/article/view/1624"
+              target="_blank"
+              className="inline-flex items-center gap-2 mt-3 text-[#191919] hover:underline font-manrope text-sm"
+            >
+              <Link className="w-4 h-4" />
+              View Publication
+            </a>
           </div>
         </section>
 
