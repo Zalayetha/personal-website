@@ -176,10 +176,10 @@ export const contact = {
 };
 
 export const about = {
-  text: "Software Developer with 4+ years of experience, experiencing in Mobile App Development, Machine Learning, Full-Stack Development. Skilled in building scalable mobile applications, building machine learning models, and building REST API. Experienced in team leadership, project management, and ensuring project success and team harmony. Passionate about building meaningful software and achieving impactful results.",
+  text: "Software Developer with 4+ years of experience. I Help Businesses and Founders Build Software That Solves Real Problems.",
 };
 
 export const hero = {
-  name: "I'm Zaghy Zalayetha.",
-  tagline: "I Help Businesses and Founders Build Software That Works.",
+  name: "Zaghy Zalayetha.",
+  tagline: "Software Developer",
 };

@@ -1,8 +1,11 @@
 export function Footer() {
   return (
-    <footer className="flex flex-row lg:px-32 lg:py-8 px-4 py-8 justify-center">
-      <div className="font-newsreader text-lg text-gray-500">
-        © 2026 Zaghy Zalayetha. All rights reserved.
+    <footer className="py-8 px-4 border-t border-gray-200">
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="font-manrope text-sm text-gray-400">
+          © 2026 Zaghy Zalayetha
+        </p>
+        <p className="font-manrope text-sm text-gray-400">Built with ❤️</p>
       </div>
     </footer>
   );

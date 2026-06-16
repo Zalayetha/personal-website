@@ -1,18 +1,33 @@
-import { Sprout, House, GraduationCap, FolderKanban, UserPen } from "lucide-react";
-import { NavItem } from "../ui/NavItem";
+import { Sprout } from "lucide-react";
 
 export function Header() {
+  const navItems = [
+    { href: "#home", label: "Home" },
+    { href: "#academic", label: "Academic" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
+  ];
+
   return (
-    <header className="border-b-2 border-gray-300 sticky top-0 z-50 w-full bg-gray-100">
-      <nav className="flex flex-row justify-between px-8 py-4 items-center">
-        <div className="flex flex-row items-center border-2 border-gray-300 rounded-full p-2">
-          <Sprout className="w-6 h-6 shrink-0" />
-        </div>
-        <div className="flex flex-row lg:gap-6 gap-2">
-          <NavItem href="#home" icon={House} label="Home" />
-          <NavItem href="#academic" icon={GraduationCap} label="Academic" />
-          <NavItem href="#projects" icon={FolderKanban} label="Projects" />
-          <NavItem href="#contact" icon={UserPen} label="Contact" />
+    <header className="sticky top-0 z-50 w-full bg-gray-100/80 backdrop-blur-sm">
+      <nav className="flex flex-row justify-between px-8 py-5 items-center max-w-5xl mx-auto">
+        <a href="#home" className="flex items-center gap-2 group">
+          <Sprout className="w-6 h-6 transition-colors duration-300 group-hover:text-green-600" />
+          <span className="font-newsreader text-lg font-semibold tracking-tight">
+            Zaghy Zalayetha
+          </span>
+        </a>
+        <div className="flex items-center gap-8">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="relative font-manrope text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-gray-950 py-1"
+            >
+              {item.label}
+              <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gray-950 transition-all duration-300 hover:w-full" />
+            </a>
+          ))}
         </div>
       </nav>
     </header>

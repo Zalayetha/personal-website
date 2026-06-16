@@ -1,5 +1,4 @@
 import { Section } from "../layout/Section";
-import { SectionDivider } from "../ui/Divider";
 import { ProjectCard } from "../ui/ProjectCard";
 import { FingerprintPattern, ChartScatter } from "lucide-react";
 import { projects } from "../../data/portfolio";
@@ -12,13 +11,14 @@ const iconMap = {
 export function Projects() {
   return (
     <Section id="projects">
-      <h2 className="font-newsreader text-3xl font-bold">Projects</h2>
-      <p className="font-newsreader text-lg font-semibold mt-4 text-gray-500">
-        Check out my latest work, hope you like it.
-      </p>
-      <SectionDivider className="my-4" />
+      <div className="max-w-2xl">
+        <h2 className="font-newsreader text-3xl font-bold text-gray-950">Projects</h2>
+        <p className="font-manrope text-base text-gray-500 mt-3">
+          A collection of things I've built and shipped.
+        </p>
+      </div>
 
-      <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-x-32 lg:gap-y-18 gap-y-8 justify-center lg:px-32 px-4 mt-8">
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 mt-10">
         {projects.map((project) => (
           <ProjectCard
             key={project.title}

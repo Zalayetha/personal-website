@@ -1,4 +1,4 @@
-import { Link } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import type { Publication } from "../../data/portfolio";
 
 interface PublicationCardProps {
@@ -7,24 +7,21 @@ interface PublicationCardProps {
 
 export function PublicationCard({ publication }: PublicationCardProps) {
   return (
-    <div className="mt-4 border-2 border-gray-300 rounded-2xl p-6 transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-105 hover:bg-[#191919] hover:text-white hover:border-white hover:shadow-xl hover:shadow-gray-400/50 group">
-      <div className="font-manrope font-semibold text-md transition-colors duration-300">
-        {publication.title}
+    <a
+      href={publication.url}
+      target="_blank"
+      className="group block p-6 rounded-xl bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg hover:shadow-gray-200/50"
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h4 className="font-newsreader text-lg font-semibold text-gray-950 group-hover:text-gray-700 transition-colors">
+            {publication.title}
+          </h4>
+          <p className="font-manrope text-sm text-gray-500 mt-1">{publication.authors}</p>
+          <p className="font-manrope text-sm text-gray-400 mt-0.5">{publication.venue}</p>
+        </div>
+        <ArrowUpRight className="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 group-hover:text-gray-600 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5" />
       </div>
-      <div className="font-manrope text-sm text-gray-600 mt-2 transition-colors duration-300 group-hover:text-gray-200">
-        {publication.authors}
-      </div>
-      <div className="font-manrope text-sm text-gray-500 mt-1 transition-colors duration-300 group-hover:text-gray-300">
-        {publication.venue}
-      </div>
-      <a
-        href={publication.url}
-        target="_blank"
-        className="inline-flex items-center gap-2 mt-4 text-gray-500 font-manrope text-sm transition-all duration-300 group-hover:text-gray-200 group-hover:gap-3"
-      >
-        <Link className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-        View Publication
-      </a>
-    </div>
+    </a>
   );
 }
