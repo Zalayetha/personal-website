@@ -14,7 +14,7 @@ export function Header() {
         <a href="#home" className="flex items-center gap-2 group">
           <Sprout className="w-6 h-6 transition-colors duration-300 group-hover:text-green-600" />
           <span className="font-newsreader text-lg font-semibold tracking-tight">
-            Zaghy Zalayetha
+            zaghy.zalayetha
           </span>
         </a>
         <div className="flex items-center gap-8">
