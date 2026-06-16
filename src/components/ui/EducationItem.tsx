@@ -6,22 +6,26 @@ interface EducationItemProps {
 
 export function EducationItem({ education }: EducationItemProps) {
   return (
-    <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
-      <div className="font-manrope font-semibold text-md">
-        {education.institution}
-        <div className="font-manrope font-normal text-sm text-gray-500">
-          {education.location} • {education.period}
-        </div>
+    <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
+      <div className="flex-1">
+        <h4 className="font-newsreader text-lg font-semibold text-gray-950">
+          {education.institution}
+        </h4>
+        <p className="font-manrope text-sm text-gray-500">
+          {education.location} · {education.period}
+        </p>
       </div>
-      <div className="flex flex-col gap-2">
-        <div className="font-manrope font-semibold text-md">{education.degree}</div>
+      <div className="flex-1">
+        <p className="font-manrope font-medium text-gray-700">
+          {education.degree}
+        </p>
         {education.gpa && (
-          <div className="font-manrope text-sm text-gray-600">{education.gpa}</div>
+          <p className="font-manrope text-sm text-gray-400">{education.gpa}</p>
         )}
         {education.achievement && (
-          <div className="font-manrope text-sm text-gray-600 italic">
+          <p className="font-manrope text-sm text-gray-500 italic mt-1">
             {education.achievement}
-          </div>
+          </p>
         )}
       </div>
     </div>
