@@ -14,6 +14,7 @@ export function getStaticPaths() {
 
 const { post } = Astro.props;
 const hasEmbeddedVideo = post.embeddedVideo !== undefined;
+const hasImages = post.images !== undefined;
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -138,6 +139,19 @@ const hasEmbeddedVideo = post.embeddedVideo !== undefined;
                                         allowfullscreen=""
                                         title="Embedded post"
                                     />
+                                </div>
+                            )
+                        }
+                        {
+                            hasImages && (
+                                <div class="mt-4 flex flex-row gap-2 items-center justify-center">
+                                    {post.images?.map((image, index) => (
+                                        <img
+                                            src={image}
+                                            alt={`Image ${index + 1}`}
+                                            class="rounded-lg object-cover w-full"
+                                        />
+                                    ))}
                                 </div>
                             )
                         }

@@ -34,6 +34,7 @@ export interface BlogPost {
   content: string;
   tags: string[];
   embeddedVideo?: string;
+  images?: string[];
 }
 
 export interface Project {
@@ -409,6 +410,11 @@ Harapannya dengan adanya fitur pengkategorian ini, user bisa recall semangat den
 Tapi gak cuman sampe situ,
 
 Ketika user dalam kondisi Futur (Futur dalam Islam adalah kondisi kemerosotan semangat dalam beribadah), user bisa baca ulang jurnal-jurnal yang sudah dibuat sebelumnya, biar dipakai sebagai batu pijakan atau milestone, agar motivasi user naik lagi.`,
+    images: [
+      "/assets/blogs/myniyyah-3/image-1.jpg",
+      "/assets/blogs/myniyyah-3/image-2.jpg",
+      "/assets/blogs/myniyyah-3/image-3.jpg",
+    ],
   },
   {
     slug: "building-myniyyah-editor-block-system",
@@ -431,6 +437,8 @@ Hari ini belajar Editor Block System dan sekalian implementasi di fitur journali
 Contoh implementasi di fitur ini adalah saya ingin ada dua tipe blok, yang pertama itu blok untuk user menulis jurnal dan satu lagi blok khusus untuk menampilkan kutipan ayat yang relevan dengan jurnal tersebut.
 
 Caranya bisa buat tipe kustom untuk blok jurnal dan blok kutipan ayat -> lalu buat objek dengan tipe tersebut -> masukan ke dalam array -> tampilkan isi dari array nya.`,
+    embeddedVideo:
+      "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7419730208578125824?compact=1",
   },
   {
     slug: "planning-ahead-productivity",
@@ -442,6 +450,7 @@ Caranya bisa buat tipe kustom untuk blok jurnal dan blok kutipan ayat -> lalu bu
     content: `Buat perencanaan jadwal terkait hal-hal yang ingin dilakukan untuk keesokan harinya itu menurutku penting. Kenapa penting? Saya merasa karena ketika bangun tidur, semua hal-hal yang ingin dilakukan sudah jelas tertera di kalendar sehingga akan menjadi lebih efisien, jadi gaperlu lagi untuk memikirkan "apa ya yang harus dilakukan hari ini?"
 
 Walaupun terkadang gak semua kegiatan yang sudah direncanakan akan terlaksana dengan sesuai, setidaknya sudah mencoba untuk membuat perencanaan.`,
+    images: ["/assets/blogs/planning-ahead-productivity/image-1.jpg"],
   },
   {
     slug: "react-native-developer-experience",
@@ -465,6 +474,7 @@ Setelah mencoba, ternyata memang:
 Jadi, kesimpulan-nya untuk saat ini sih saya enjoy banget buat develop aplikasi mobile pake react native
 
 Kalo app nya udah masuk production belum tau sih nanti bedanya apa dengan Flutter, Android native, dan IOS Native. Kalo ada yang udah berpengalaman, boleh dong info di kolom komentar.`,
+    images: ["/assets/blogs/react-native-developer-experience/image-1.jpg"],
   },
   {
     slug: "app-reviews-saturday-afternoon",
@@ -476,6 +486,7 @@ Kalo app nya udah masuk production belum tau sih nanti bedanya apa dengan Flutte
     content: `Keisengan sore hari di hari Jum'at. Iseng-iseng buka section "ratings and reviews" aplikasi yang aku develop, awalnya agak khawatir takut review-nya menusuk hati. Alhamdulillah, ternyata tidak seburuk yang ku bayangkan, banyak mahasiswa yang kasih bintang 5 dan ada juga yang ngasih saran terkait pengembangan aplikasinya.
 
 Terima kasih Blutizen yang sudah memberikan bintang 5 dan yang sudah memberikan saran pengembangan. by the way, aplikasi android nya jangan lupa update juga yah.`,
+    images: ["/assets/blogs/app-reviews-saturday-afternoon/image-1.jpg"],
   },
   {
     slug: "vibe-coding-fleet-management",
@@ -497,6 +508,8 @@ Yang menarik, hampir seluruh proses saya percayakan pada AI: mulai dari setup pr
 Tapi, eksperimen ini juga jadi pengingat bahwa meskipun AI sangat membantu, kita tetap perlu sentuhan manual untuk memperbaiki error dan coba memastikan aplikasi berjalan dengan sesuai (buktinya kode yang dihasilkan AI pada eksperimen ini sebenarnya masih ada beberapa yang error) 👉
 
 Menurutku, AI ini akan menjadi partner yang powerful dalam pengembangan aplikasi, tapi tetap bukan pengganti penuh developer.`,
+    embeddedVideo:
+      "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7363869932113047552?compact=1",
   },
   {
     slug: "prompt-engineering-vs-context-engineering",
@@ -516,6 +529,9 @@ Perbedaan dari prompt engineering dan context engineering adalah:
 2️⃣ Context Engineering itu bagaimana kita menyediakan semua informasi yang diperlukan sehingga AI dapat memahami dengan baik dan merespons secara efektif.
 
 Sampai saat ini kadang saya masih terlalu memikirkan apakah kata yang saya pilih tepat untuk diberikan kepada AI, padahal seharusnya saya lebih mementingkan konteks yang lengkap sehingga AI dapat benar-benar memahami apa yang saya inginkan.`,
+    images: [
+      "/assets/blogs/prompt-engineering-vs-context-engineering/image-1.jpg",
+    ],
   },
   {
     slug: "best-routine-thom-defilet",
@@ -546,6 +562,11 @@ Jazaakallaahu khayran Thom, Salams from Indonesia. 🇮🇩`,
 Jadi, verifikasi KTP di sistem ini menggunakan CNN untuk klasifikasi KTP (KTP atau bukan KTP) --> ekstrak teks dari foto ktp nya menggunakan tesseract OCR (tapi baru optimize di nik, nama, dan jenis kelamin) --> cek kesamaan data yang sudah ter-ekstraksi dengan data yang ada di database sistem.
 
 Lumayan struggle saat implementasi OCR pada KTP khususnya untuk field alamat, kalo ada yang udah pernah implementasi hal-hal yang sejenis, boleh dong sharing pengalamannya.`,
+    images: [
+      "/assets/blogs/ektp-ocr-verification-thesis/image-1.jpg",
+      "/assets/blogs/ektp-ocr-verification-thesis/image-2.jpg",
+      "/assets/blogs/ektp-ocr-verification-thesis/image-3.jpg",
+    ],
   },
 ];
 
