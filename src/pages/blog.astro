@@ -1,0 +1,72 @@
+---
+import "../styles/styles.css";
+import { Header, Footer } from "../components/layout";
+import { Section } from "../components/layout/Section";
+import { ArrowUpRight, Calendar } from "lucide-react";
+import { blogPosts } from "../data/portfolio";
+---
+
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/assets/sprout.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Blog - Zaghy Zalayetha</title>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <Section id="blog">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h1
+                            class="font-newsreader text-4xl lg:text-5xl font-bold text-gray-950 mb-4"
+                        >
+                            Blog
+                        </h1>
+                        <p
+                            class="font-manrope text-base text-gray-500 max-w-xl mx-auto"
+                        >
+                            Thoughts on building software and everything in between.
+                        </p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        {
+                            blogPosts.map((post) => (
+                                <a
+                                    href={`/blog/${post.slug}`}
+                                    class="group block p-6 rounded-2xl bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg hover:shadow-gray-200/50"
+                                >
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <Calendar className="w-4 h-4 text-gray-400" />
+                                        <span class="font-manrope text-sm text-gray-400">
+                                            {post.date}
+                                        </span>
+                                    </div>
+                                    <h2 class="font-newsreader text-xl font-semibold text-gray-950 mb-2 group-hover:text-gray-700 transition-colors">
+                                        {post.title}
+                                    </h2>
+                                    <p class="font-manrope text-sm text-gray-500 leading-relaxed mb-4">
+                                        {post.excerpt}
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        {post.tags.map((tag) => (
+                                            <span class="font-manrope text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-500">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <span class="font-manrope text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-gray-700">
+                                        Read more →
+                                    </span>
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+            </Section>
+        </main>
+        <Footer />
+    </body>
+</html>

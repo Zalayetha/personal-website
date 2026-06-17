@@ -26,13 +26,31 @@ export interface Publication {
   url: string;
 }
 
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  content: string;
+  tags: string[];
+}
+
 export interface Project {
   title: string;
+  slug: string;
+  tagline: string;
   description: string;
   image?: string;
   iconName?: "FingerprintPattern" | "ChartScatter";
-  href: string;
-  linkText: string;
+  screenshots?: string[];
+  techStack: string[];
+  features: string[];
+  links: {
+    github?: string;
+    live?: string;
+    appStore?: string;
+    playStore?: string;
+  };
 }
 
 export interface Skill {
@@ -131,35 +149,99 @@ export const softSkills: Skill[] = [
 export const projects: Project[] = [
   {
     title: "Student Budi Luhur",
+    slug: "student-budi-luhur",
+    tagline: "Academic companion app for university students",
     description:
       "Mobile Application that provides student of Budi Luhur University with easy access to essential academic information.",
     image: "assets/student-icon.png",
-    href: "https://apps.apple.com/fi/app/student-budi-luhur/id6478258562",
-    linkText: "App Store",
+    techStack: ["Kotlin", "Jetpack Compose", "Firebase", "REST API"],
+    features: [
+      "View schedules and assignments",
+      "Access grades and transcripts",
+      "Campus announcements",
+      "Course registration",
+    ],
+    links: {
+      appStore: "https://apps.apple.com/fi/app/student-budi-luhur/id6478258562",
+    },
   },
   {
     title: "Employee Budi Luhur",
+    slug: "employee-budi-luhur",
+    tagline: "Employee management for university staff",
     description:
       "Mobile app for Budi Luhur University employees and lecturers to access employment data and manage student academic information.",
     image: "assets/employee-icon.png",
-    href: "https://apps.apple.com/app/employee-budi-luhur/id6499570674",
-    linkText: "App Store",
+    techStack: ["Kotlin", "Jetpack Compose", "Firebase", "REST API"],
+    features: [
+      "Employee attendance tracking",
+      "Student academic management",
+      "Course assignment",
+      "Announcement management",
+    ],
+    links: {
+      appStore: "https://apps.apple.com/app/employee-budi-luhur/id6499570674",
+    },
   },
   {
     title: "E-KTP Verification System",
+    slug: "ektp-verification",
+    tagline: "OCR-based identity card verification",
     description:
-      "Mobile Application to automate the verification and validation of Indonesian E-KTP (identity cards).",
+      "Mobile Application to automate the verification and validation of Indonesian E-KTP (identity cards) using computer vision and machine learning.",
     iconName: "FingerprintPattern",
-    href: "https://github.com/Zalayetha/verif-ktp",
-    linkText: "GitHub",
+    techStack: ["Python", "TensorFlow", "Keras", "OpenCV", "Flask"],
+    features: [
+      "OCR text extraction from E-KTP",
+      "Face verification using CNN",
+      "Data validation and verification",
+      "Academic administration integration",
+    ],
+    links: {
+      github: "https://github.com/Zalayetha/verif-ktp",
+    },
   },
   {
     title: "Santana",
+    slug: "santana",
+    tagline: "Disaster text classification with ML",
     description:
       "Mobile Application to classify disaster-related text and identify key attributes of natural disasters using advanced machine learning techniques.",
     iconName: "ChartScatter",
-    href: "https://github.com/Zalayetha/SANTANA",
-    linkText: "GitHub",
+    techStack: ["Python", "TensorFlow", "NLP", "FastAPI", "React Native"],
+    features: [
+      "Disaster text classification",
+      "Natural language processing",
+      "Disaster attribute identification",
+      "Real-time disaster monitoring",
+    ],
+    links: {
+      github: "https://github.com/Zalayetha/SANTANA",
+    },
+  },
+];
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "building-myniyyah-mvp-reactnative",
+    title: "Building MyNiyyah #1",
+    date: "5 months ago",
+    excerpt:
+      "A journey from toxic productivity to building an MVP for Muslim productivity with prayer tracking and daily journaling.",
+    tags: ["MVP", "React Native", "BuildInPublic", "CodeForUmmah"],
+    content: `Akhir-akhir ini saya sering melakukan kegiatan menulis jurnal di malam hari sebelum tidur, jujur kegiatan ini sangat membantu saya untuk melihat kembali apa yang sudah saya capai pada hari itu dan apa yang perlu saya perbaiki depannya.
+
+Dulu tuh sempet terperangkap dalam 'Toxic Productivity', dimana saya terus-terusan belajar dan kerja tanpa kenal waktu seakan-akan produktif. Jadi setiap istirahat itu kayak merasa bersalah karena gak melakukan hal yang produktif sehingga malah burnout.
+
+Nah, kegiatan menulis journal ini membantu saya untuk selalu bersyukur atas pencapaian-pencapaian kecil yang terkadang saya hiraukan, sehingga saya tidak terperangkap lagi dalam 'Toxic Productivity'.
+
+Tiba-tiba saya ngide bersama mas Muhammad Azka Nur Azhim untuk membuat sebuah aplikasi bertema produktivitas untuk seorang muslim/muslimah dan fitur inti yang akan kami buat pertama adalah fitur muhasabah dan prayer tracker.
+
+Jadi user bisa track solat, lalu melakukan muhasabah dengan cara menulis jurnal harian. Dalam proses menulis journal, user bisa insert beberapa ayat Al-Qur'an atau Hadits yang relevan yang sudah kami sediakan list-nya.
+
+Masih dalam tahap MVP Development, bisa dilihat temen-temen demonstrasi singkat dari kegunaan aplikasinya.
+
+#100HariNulis #MVP #ReactNative #BuildInPublic #CodeForUmmah`,
   },
 ];
 

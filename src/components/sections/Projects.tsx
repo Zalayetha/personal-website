@@ -23,13 +23,13 @@ export function Projects() {
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 mt-10">
         {projects.map((project) => (
           <ProjectCard
-            key={project.title}
+            key={project.slug}
             title={project.title}
-            description={project.description}
+            description={project.tagline}
             image={project.image}
             icon={project.iconName ? iconMap[project.iconName] : undefined}
-            href={project.href}
-            linkText={project.linkText}
+            href={`/projects/${project.slug}`}
+            linkText="View Project"
           />
         ))}
       </div>
