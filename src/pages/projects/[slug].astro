@@ -17,7 +17,9 @@ const { project } = Astro.props;
 const {
     title,
     tagline,
-    description,
+    summary,
+    impact,
+    iveLearned,
     image,
     screenshots,
     techStack,
@@ -25,7 +27,7 @@ const {
     links,
 } = project;
 
-const hasScreenshot = screenshots && screenshots.length > 0;
+const hasScreenshot = screenshots;
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -39,7 +41,7 @@ const hasScreenshot = screenshots && screenshots.length > 0;
         <Header />
         <main class="min-h-screen">
             <Section id="project-detail">
-                <div class="max-w-4xl mx-auto">
+                <div class="mx-auto">
                     <a
                         href="/projects"
                         class="inline-flex items-center gap-2 font-manrope text-sm text-gray-500 hover:text-gray-700 transition-colors mb-8"
@@ -64,7 +66,7 @@ const hasScreenshot = screenshots && screenshots.length > 0;
                     <div class="mb-12">
                         <div class="flex items-start gap-4 mb-6">
                             <div
-                                class="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center overflow-hidden flex-shrink-0"
+                                class="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center overflow-hidden shrink-0"
                             >
                                 {
                                     image ? (
@@ -92,10 +94,41 @@ const hasScreenshot = screenshots && screenshots.length > 0;
                             </div>
                         </div>
 
-                        <p
-                            class="font-manrope text-base text-gray-600 leading-relaxed max-w-2xl"
+                        <!-- Summary -->
+                        <h2
+                            class="font-newsreader text-2xl font-bold text-gray-950 mb-2"
                         >
-                            {description}
+                            Summary
+                        </h2>
+                        <p
+                            class="font-manrope text-base text-gray-600 leading-relaxed"
+                        >
+                            {summary}
+                        </p>
+
+                        <!-- Impact -->
+                        <h2
+                            class="font-newsreader text-2xl font-bold text-gray-950 my-2"
+                        >
+                            Impact
+                        </h2>
+
+                        <p
+                            class="font-manrope text-base text-gray-600 leading-relaxed"
+                        >
+                            {impact}
+                        </p>
+
+                        <h2
+                            class="font-newsreader text-2xl font-bold text-gray-950 my-2"
+                        >
+                            What I Learned
+                        </h2>
+
+                        <p
+                            class="font-manrope text-base text-gray-600 leading-relaxed"
+                        >
+                            {iveLearned}
                         </p>
 
                         <div class="flex flex-wrap gap-3 mt-6">
@@ -225,18 +258,16 @@ const hasScreenshot = screenshots && screenshots.length > 0;
                             Screenshots
                         </h2>
                         <div
-                            class="rounded-2xl bg-gray-200 border-2 border-dashed border-gray-300 w-full h-80 flex items-center justify-center"
+                            class="rounded-2xl bg-gray-200 border-2 border-dashed border-gray-300 w-full flex items-center justify-center"
                         >
                             {
                                 hasScreenshot ? (
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full p-4">
-                                        {screenshots.map((screenshot) => (
-                                            <img
-                                                src={screenshot}
-                                                alt={`${title} screenshot`}
-                                                class="rounded-lg object-cover w-full h-48"
-                                            />
-                                        ))}
+                                    <div class="w-full p-4">
+                                        <img
+                                            src={screenshots}
+                                            alt={`${title} screenshot`}
+                                            class="rounded-lg object-cover w-full "
+                                        />
                                     </div>
                                 ) : (
                                     <span class="font-manrope text-sm text-gray-400">
@@ -258,7 +289,7 @@ const hasScreenshot = screenshots && screenshots.length > 0;
                                 {
                                     features.map((feature) => (
                                         <li class="flex items-start gap-3">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 flex-shrink-0" />
+                                            <span class="w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 shrink-0" />
                                             <span class="font-manrope text-sm text-gray-600">
                                                 {feature}
                                             </span>

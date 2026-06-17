@@ -39,10 +39,10 @@ export interface Project {
   title: string;
   slug: string;
   tagline: string;
-  description: string;
+  summary: string;
   image?: string;
   iconName?: "FingerprintPattern" | "ChartScatter";
-  screenshots?: string[];
+  screenshots?: string;
   techStack: string[];
   features: string[];
   links: {
@@ -51,6 +51,8 @@ export interface Project {
     appStore?: string;
     playStore?: string;
   };
+  impact: string;
+  iveLearned: string;
 }
 
 export interface Skill {
@@ -151,73 +153,204 @@ export const projects: Project[] = [
     title: "Student Budi Luhur",
     slug: "student-budi-luhur",
     tagline: "Academic companion app for university students",
-    description:
-      "Mobile Application that provides student of Budi Luhur University with easy access to essential academic information.",
-    image: "assets/student-icon.png",
-    techStack: ["Kotlin", "Jetpack Compose", "Firebase", "REST API"],
+    summary: `
+      A cross-platform mobile application used by more than 5.000+
+      students at Budi Luhur University to access academic
+      information, improving accessibility and student academic
+      organization.
+
+      This was a group project initiated as work assignment, where I
+      worked as a Mobile Developer responsible for rebuilding the
+      application into a unified Flutter codebase and maintaining
+      production release.
+    `,
+    impact: `
+      I migrated the existing system from separate native
+      applications (Java for Android and Swift/SwiftUI for IOS) into
+      Flutter, improving maintainability and accelerating development
+      cycles. I also developed a QR-based attendance system that
+      reduced manual input errors and streamline attendance
+      tracking.
+
+      In addition, I handled deployment to both Google Play Store
+      and Apple Store, ensuring compliance with release
+      requirements and smooth production rollout. I also optimized
+      the Android version by reducing ANR (Application Not
+      Responding) occurrences, improving app stability.
+    `,
+    iveLearned: `
+      Through this project, I gained strong experience in production-
+      grade mobile development, cross-platform architecture,
+
+      performance optimization, and end-to-end app deployment
+      lifecycle
+    `,
+    image: "/assets/student-icon.png",
+    techStack: ["Flutter", "Dart", "GetX", "Drift", "Java", "Swift", "SwiftUI"],
     features: [
       "View schedules and assignments",
       "Access grades and transcripts",
       "Campus announcements",
       "Course registration",
+      "etc.",
     ],
     links: {
       appStore: "https://apps.apple.com/fi/app/student-budi-luhur/id6478258562",
     },
+    screenshots: "/assets/student-bl-poster.png",
   },
   {
     title: "Employee Budi Luhur",
     slug: "employee-budi-luhur",
     tagline: "Employee management for university staff",
-    description:
-      "Mobile app for Budi Luhur University employees and lecturers to access employment data and manage student academic information.",
-    image: "assets/employee-icon.png",
-    techStack: ["Kotlin", "Jetpack Compose", "Firebase", "REST API"],
+    summary: `
+      A cross-platform mobile application for employees and
+      lecturers at Budi Luhur University that provides centralized
+      access to employment data and academic-related student
+      information, improving administrative efficiency and data
+      accessibility.
+
+      This was a group project initiated as work assignment, where I
+      served as a Mobile Developer and Team Lead, responsible for
+      both technical implementation and coordination of
+      development activities.
+      `,
+    impact: `
+      I designed and implemented core application features that
+      streamlined administrative workflows and reduced reliance on
+      manual processes. I also led the development team by
+      coordinating task distribution, maintaining clear communication
+      with the system analyst, and ensuring smooth sprint execution.
+
+      In addition, I managed production deployment to both Google
+      Play Store and Apple App Store, ensuring stable releases and
+      compliance with platform requirements.
+    `,
+    iveLearned: `
+      Through this project, I strengthened my leadership skills in a
+
+      technical environment, improved my ability to manage cross-
+      functional collaboration, and gained experience in delivering
+
+      production grade mobile applications.
+    `,
+    image: "/assets/employee-icon.png",
+    techStack: ["Flutter", "Dart", "GetX"],
     features: [
       "Employee attendance tracking",
       "Student academic management",
-      "Course assignment",
-      "Announcement management",
+      "Teaching schedule announcements",
+      "etc",
     ],
     links: {
       appStore: "https://apps.apple.com/app/employee-budi-luhur/id6499570674",
     },
+    screenshots: "/assets/employee-bl-poster.png",
   },
   {
     title: "E-KTP Verification System",
     slug: "ektp-verification",
     tagline: "OCR-based identity card verification",
-    description:
-      "Mobile Application to automate the verification and validation of Indonesian E-KTP (identity cards) using computer vision and machine learning.",
+    summary: `
+      A mobile-based system designed to automate the verification
+      and validation of Indonesian E-KTP (identity cards), improving
+      the efficiency and accuracy of manual identity checking
+      processes.
+
+      This was my thesis project, developed as part of research work
+      combining mobile development, machine learning, and backend
+      engineering to build an end-to-end verification pipeline.
+    `,
+    impact: `
+      I developed a custom Convolutional Neural Network (CNN)
+      model for E-KTP classification and verification, achieving 80%
+      accuracy and 87.5% precision in detecting valid identity card
+      images. The model was deployed using a Flask-based REST
+      API to enable server-side inference and seamless integration
+      with mobile clients.
+
+      The system was fully integrated with Supabase and
+      PostgreSQL for secure authentication and structured data
+      storage. I also built the Flutter mobile application that
+      communicates with the backend, forming a complete end-to-
+      end verification workflow.
+    `,
+    iveLearned: `
+      Through this project, I gained deep experience in machine
+      learning model development, API deployment, and full-stack
+      system integration across mobile, backend, and AI
+      components.
+    `,
     iconName: "FingerprintPattern",
-    techStack: ["Python", "TensorFlow", "Keras", "OpenCV", "Flask"],
+    techStack: [
+      "Flutter",
+      "Dart",
+      "Python",
+      "TensorFlow",
+      "Flask",
+      "Supabase",
+      "PostgreSQL",
+    ],
     features: [
       "OCR text extraction from E-KTP",
       "Face verification using CNN",
       "Data validation and verification",
-      "Academic administration integration",
     ],
     links: {
       github: "https://github.com/Zalayetha/verif-ktp",
     },
+    screenshots: "/assets/ektp-verification-system-poster.png",
   },
   {
     title: "Santana",
     slug: "santana",
     tagline: "Disaster text classification with ML",
-    description:
-      "Mobile Application to classify disaster-related text and identify key attributes of natural disasters using advanced machine learning techniques.",
+    summary: `
+      A mobile and machine learning system that classifies disaster-
+      related text and extracts key information such as disaster type,
+
+      location, impact, and time using NLP techniques.
+
+      This was a group college project, developed as part of
+      research work at Badan Nasional Penanggulangan Bencana
+      (BNPB)
+
+      The system was designed to automate disaster information
+      extraction using Natural Language Processing (NLP), improving
+      structured understanding of unstructured text data.
+
+      It provides classification and entity extraction using Named
+      Entity Recognition (NER) and Indonesian NER (INER), supported
+      by a custom-built NLP model.
+    `,
+    impact: `
+      I developed a REST API using Flask to serve the machine
+      learning model and enable communication between the mobile
+      application and backend system. I also contributed to building
+      an interactive Streamlit dashboard to visualize the NLP pipeline
+      and model processing flow.
+
+      The system delivered an end-to-end workflow combining
+      mobile app, NLP model, backend API, and visualization
+      dashboard, demonstrating how AI can be applied to real-world
+      disaster information processing.
+    `,
+    iveLearned: `
+      Through this project, I gained experience in NLP model
+      development, backend API design, system integration, and
+      building explainable AI workflows using visualization tools.
+    `,
     iconName: "ChartScatter",
-    techStack: ["Python", "TensorFlow", "NLP", "FastAPI", "React Native"],
+    techStack: ["Flutter", "Dart", "Python", "Streamlit", "Flask"],
     features: [
       "Disaster text classification",
       "Natural language processing",
       "Disaster attribute identification",
-      "Real-time disaster monitoring",
     ],
     links: {
       github: "https://github.com/Zalayetha/SANTANA",
     },
+    screenshots: "/assets/santana-poster.png",
   },
 ];
 
