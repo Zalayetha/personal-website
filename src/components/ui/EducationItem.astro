@@ -1,0 +1,39 @@
+---
+import type { Education } from "../../data/portfolio";
+
+interface Props {
+    education: Education;
+}
+
+const { education } = Astro.props;
+---
+
+<div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
+    <div class="flex-1">
+        <h4 class="font-newsreader text-lg font-semibold text-gray-950">
+            {education.institution}
+        </h4>
+        <p class="font-manrope text-sm text-gray-500">
+            {education.location} · {education.period}
+        </p>
+    </div>
+    <div class="flex-1">
+        <p class="font-manrope font-medium text-gray-700">
+            {education.degree}
+        </p>
+        {
+            education.gpa && (
+                <p class="font-manrope text-sm text-gray-400">
+                    {education.gpa}
+                </p>
+            )
+        }
+        {
+            education.achievement && (
+                <p class="font-manrope text-sm text-gray-500 italic mt-1">
+                    {education.achievement}
+                </p>
+            )
+        }
+    </div>
+</div>

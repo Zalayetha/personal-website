@@ -1,0 +1,150 @@
+---
+import "../../styles/styles.css";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Section from "../../components/layout/Section.astro";
+import { blogPosts } from "../../data/portfolio";
+
+export function getStaticPaths() {
+    return blogPosts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const hasEmbeddedVideo = post.embeddedVideo !== undefined;
+---
+
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/assets/sprout.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{post.title} - Zaghy Zalayetha</title>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <Section id="blog-post">
+                <div class="max-w-3xl mx-auto">
+                    <a
+                        href="/blog"
+                        class="inline-flex items-center gap-2 font-manrope text-sm text-gray-500 hover:text-gray-700 transition-colors mb-8"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-4 h-4"
+                            ><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"
+                            ></path></svg
+                        >
+                        Back to Blog
+                    </a>
+
+                    <article>
+                        <header class="mb-8">
+                            <div class="flex items-center gap-2 mb-3">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="w-4 h-4 text-gray-400"
+                                    ><rect
+                                        width="18"
+                                        height="18"
+                                        x="3"
+                                        y="4"
+                                        rx="2"
+                                        ry="2"></rect><line
+                                        x1="16"
+                                        x2="16"
+                                        y1="2"
+                                        y2="6"></line><line
+                                        x1="8"
+                                        x2="8"
+                                        y1="2"
+                                        y2="6"></line><line
+                                        x1="3"
+                                        x2="21"
+                                        y1="10"
+                                        y2="10"></line></svg
+                                >
+                                <span
+                                    class="font-manrope text-sm text-gray-400"
+                                >
+                                    {post.date}
+                                </span>
+                            </div>
+                            <h1
+                                class="font-newsreader text-3xl lg:text-4xl font-bold text-gray-950 mb-4"
+                            >
+                                {post.title}
+                            </h1>
+                            <div class="flex flex-wrap gap-2">
+                                {
+                                    post.tags.map((tag) => (
+                                        <span class="inline-flex items-center gap-1 font-manrope text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-600">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="12"
+                                                height="12"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="w-3 h-3"
+                                            >
+                                                <>
+                                                    <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
+                                                    <path d="M7 7h.01" />
+                                                </>
+                                            </svg>
+                                            {tag}
+                                        </span>
+                                    ))
+                                }
+                            </div>
+                        </header>
+
+                        <div
+                            class="font-manrope text-gray-700 leading-relaxed whitespace-pre-line"
+                        >
+                            {post.content}
+                        </div>
+
+                        {
+                            hasEmbeddedVideo && (
+                                <div class="mt-4">
+                                    <iframe
+                                        src={post.embeddedVideo}
+                                        height="399"
+                                        width="100%"
+                                        allowfullscreen=""
+                                        title="Embedded post"
+                                    />
+                                </div>
+                            )
+                        }
+                    </article>
+                </div>
+            </Section>
+        </main>
+        <Footer />
+    </body>
+</html>

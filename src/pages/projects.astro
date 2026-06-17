@@ -1,0 +1,91 @@
+---
+import "../styles/styles.css";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Section from "../components/layout/Section.astro";
+import { projects } from "../data/portfolio";
+---
+
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/assets/sprout.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Projects - Zaghy Zalayetha</title>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <Section id="projects">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h1
+                            class="font-newsreader text-4xl lg:text-5xl font-bold text-gray-950 mb-4"
+                        >
+                            Projects
+                        </h1>
+                        <p
+                            class="font-manrope text-base text-gray-500 max-w-xl mx-auto"
+                        >
+                            A collection of things I've built and shipped.
+                        </p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        {
+                            projects.map((project) => (
+                                <a
+                                    href={`/projects/${project.slug}`}
+                                    class="group block p-6 rounded-2xl bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg hover:shadow-gray-200/50"
+                                >
+                                    <div class="flex items-start justify-between mb-4">
+                                        <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden">
+                                            {project.image ? (
+                                                <img
+                                                    src={project.image}
+                                                    alt={`${project.title} icon`}
+                                                    class="w-8 h-8 object-contain"
+                                                />
+                                            ) : (
+                                                <span class="font-newsreader text-xl font-bold text-gray-600">
+                                                    {project.title.charAt(0)}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="w-5 h-5 text-gray-400 transition-transform duration-300 group-hover:text-gray-700 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                        >
+                                            <>
+                                                <path d="M7 7h10v10" />
+                                                <path d="M7 17 17 7" />
+                                            </>
+                                        </svg>
+                                    </div>
+                                    <h2 class="font-newsreader text-xl font-semibold text-gray-950 mb-2">
+                                        {project.title}
+                                    </h2>
+                                    <p class="font-manrope text-sm text-gray-500 leading-relaxed mb-4">
+                                        {project.tagline}
+                                    </p>
+                                    <span class="font-manrope text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-gray-700">
+                                        View Project →
+                                    </span>
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+            </Section>
+        </main>
+        <Footer />
+    </body>
+</html>
