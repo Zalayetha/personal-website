@@ -13,6 +13,7 @@ export function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const hasEmbeddedVideo = post.embeddedVideo !== undefined;
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -126,6 +127,20 @@ const { post } = Astro.props;
                         >
                             {post.content}
                         </div>
+
+                        {
+                            hasEmbeddedVideo && (
+                                <div class="mt-4">
+                                    <iframe
+                                        src={post.embeddedVideo}
+                                        height="399"
+                                        width="100%"
+                                        allowfullscreen=""
+                                        title="Embedded post"
+                                    />
+                                </div>
+                            )
+                        }
                     </article>
                 </div>
             </Section>
