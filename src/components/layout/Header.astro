@@ -38,7 +38,25 @@ const navItems = [
                 zaghy.zalayetha
             </span>
         </a>
-        <div class="flex items-center gap-8">
+        <button
+            id="menu-toggle"
+            class="lg:hidden flex flex-col gap-1.5 p-2 z-50"
+            aria-label="Toggle menu"
+        >
+            <span
+                class="block w-5 h-0.5 bg-gray-600 transition-all duration-300 origin-center"
+            ></span>
+            <span
+                class="block w-5 h-0.5 bg-gray-600 transition-all duration-300"
+            ></span>
+            <span
+                class="block w-5 h-0.5 bg-gray-600 transition-all duration-300 origin-center"
+            ></span>
+        </button>
+        <div
+            id="mobile-menu"
+            class="flex items-center gap-8 max-lg:fixed max-lg:inset-x-0 max-lg:top-18.25 max-lg:flex-col max-lg:gap-4 max-lg:bg-gray-100/95 max-lg:backdrop-blur-md max-lg:p-6 max-lg:border-b max-lg:border-gray-200 max-lg:transition-all max-lg:duration-300 max-lg:invisible max-lg:opacity-0 max-lg:translate-y-[-10px] max-lg:pointer-events-none"
+        >
             {
                 navItems.map((item) =>
                     item.label === "Download CV" ? (
@@ -66,3 +84,39 @@ const navItems = [
         </div>
     </nav>
 </header>
+
+<div
+    id="menu-overlay"
+    class="fixed inset-0 bg-black/20 z-40 invisible opacity-0 transition-all duration-300 lg:hidden"
+>
+</div>
+
+<script>
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    const overlay = document.getElementById("menu-overlay");
+    const links = menu?.querySelectorAll("a");
+
+    function toggleMenu() {
+        menu?.classList.toggle("max-lg:visible");
+        menu?.classList.toggle("max-lg:invisible");
+        menu?.classList.toggle("max-lg:opacity-100");
+        menu?.classList.toggle("max-lg:opacity-0");
+        menu?.classList.toggle("max-lg:translate-y-0");
+        menu?.classList.toggle("max-lg:translate-y-[-10px]");
+        menu?.classList.toggle("max-lg:pointer-events-auto");
+        menu?.classList.toggle("max-lg:pointer-events-none");
+        overlay?.classList.toggle("invisible");
+        overlay?.classList.toggle("visible");
+        overlay?.classList.toggle("opacity-0");
+        overlay?.classList.toggle("opacity-100");
+    }
+
+    toggle?.addEventListener("click", toggleMenu);
+    overlay?.addEventListener("click", toggleMenu);
+    links?.forEach((link) =>
+        link.addEventListener("click", () => {
+            if (menu?.classList.contains("max-lg:visible")) toggleMenu();
+        }),
+    );
+</script>
