@@ -1,0 +1,44 @@
+---
+import type { Publication } from "../../data/portfolio";
+
+interface Props {
+    publication: Publication;
+}
+
+const { publication } = Astro.props;
+---
+
+<a
+    href={publication.url}
+    target="_blank"
+    class="group block p-6 rounded-xl bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg hover:shadow-gray-200/50"
+>
+    <div class="flex items-start justify-between gap-4">
+        <div>
+            <h4
+                class="font-newsreader text-lg font-semibold text-gray-950 group-hover:text-gray-700 transition-colors"
+            >
+                {publication.title}
+            </h4>
+            <p class="font-manrope text-sm text-gray-500 mt-1">
+                {publication.authors}
+            </p>
+            <p class="font-manrope text-sm text-gray-400 mt-0.5">
+                {publication.venue}
+            </p>
+        </div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 group-hover:text-gray-600 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5"
+            ><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg
+        >
+    </div>
+</a>

@@ -1,0 +1,68 @@
+---
+console.log("Header Run 🏃");
+import { hero } from "../../data/portfolio";
+
+const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/projects", label: "Projects" },
+    { href: "/blog", label: "Blog" },
+    { href: hero.resume, label: "Download CV" },
+];
+---
+
+<header class="sticky top-0 z-50 w-full bg-gray-100/80 backdrop-blur-sm">
+    <nav
+        class="flex flex-row justify-between px-8 py-5 items-center max-w-5xl mx-auto"
+    >
+        <a href="#home" class="flex items-center gap-2 group">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-6 h-6 transition-colors duration-300 group-hover:text-green-600"
+                ><path d="M7 20h10"></path><path d="M10 20c5.5-2.5.8-6.4 3-10"
+                ></path><path
+                    d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"
+                ></path><path
+                    d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"
+                ></path></svg
+            >
+            <span class="font-newsreader text-lg font-semibold tracking-tight">
+                zaghy.zalayetha
+            </span>
+        </a>
+        <div class="flex items-center gap-8">
+            {
+                navItems.map((item) =>
+                    item.label === "Download CV" ? (
+                        <div class="px-4 py-1 rounded-full bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg hover:shadow-gray-200/50 hover:text-gray-400">
+                            <a
+                                href={item.href}
+                                class="text-sm font-manrope font-semibold"
+                                target="_blank"
+                            >
+                                {item.label}
+                                <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gray-950 transition-all duration-300 hover:w-full" />
+                            </a>
+                        </div>
+                    ) : (
+                        <a
+                            href={item.href}
+                            class="relative font-manrope text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-gray-950 py-1"
+                        >
+                            {item.label}
+                            <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gray-950 transition-all duration-300 hover:w-full" />
+                        </a>
+                    ),
+                )
+            }
+        </div>
+    </nav>
+</header>
