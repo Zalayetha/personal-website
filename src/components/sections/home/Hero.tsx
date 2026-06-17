@@ -1,5 +1,5 @@
-import { SocialLinks } from "../ui/SocialLinks";
-import { socialLinks, hero, about } from "../../data/portfolio";
+import { SocialLinks } from "../../ui/SocialLinks";
+import { socialLinks, hero, about } from "../../../data/portfolio";
 
 export function Hero() {
   return (

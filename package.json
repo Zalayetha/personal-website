@@ -4,13 +4,10 @@
   "version": "3.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "dev:astro": "astro dev",
-    "build:astro": "astro build",
-    "preview:astro": "astro preview"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",

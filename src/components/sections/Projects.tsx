@@ -11,8 +11,10 @@ const iconMap = {
 export function Projects() {
   return (
     <Section id="projects">
-      <div className="max-w-2xl">
-        <h2 className="font-newsreader text-3xl font-bold text-gray-950">Projects</h2>
+      <div>
+        <h2 className="font-newsreader text-3xl font-bold text-gray-950">
+          Projects
+        </h2>
         <p className="font-manrope text-base text-gray-500 mt-3">
           A collection of things I've built and shipped.
         </p>

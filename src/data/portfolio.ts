@@ -182,4 +182,9 @@ export const about = {
 export const hero = {
   name: "Zaghy Zalayetha.",
   tagline: "Software Developer",
+  city: "Tangerang City",
+  province: "Banten",
+  country: "Indonesia 🇮🇩",
+  portfolio: "https://bit.ly/portfolio-zaghy",
+  resume: "https://bit.ly/resume-zaghy",
 };

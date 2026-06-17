@@ -1,10 +1,10 @@
-import { Section } from "../layout/Section";
-import { contact } from "../../data/portfolio";
+import { Section } from "../../layout/Section";
+import { contact } from "../../../data/portfolio";
 
 export function Contact() {
   return (
     <Section id="contact">
-      <div className="max-w text-center">
+      <div className="max-w text-center my-8">
         <div className="font-newsreader text-3xl font-bold text-gray-950">
           {contact.cta}
         </div>

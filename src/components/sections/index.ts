@@ -1,6 +1,7 @@
-export { Hero } from "./Hero";
-export { Experience } from "./Experience";
-export { Academic } from "./Academic";
-export { Skills } from "./Skills";
+export { Hero as HomeHero } from "./home/Hero";
+export { Hero as AboutHero } from "./about/Hero";
+export { Academic } from "./about/Academic";
+export { Contact } from "./home/Contact";
+export { Experience } from "./about/Experience";
 export { Projects } from "./Projects";
-export { Contact } from "./Contact";
+export { Skills } from "./Skills";
