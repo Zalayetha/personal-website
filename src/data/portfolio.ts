@@ -593,5 +593,4 @@ export const hero = {
   province: "Banten",
   country: "Indonesia 🇮🇩",
   portfolio: "https://bit.ly/portfolio-zaghy",
-  resume: "https://bit.ly/resume-zaghy",
 };
