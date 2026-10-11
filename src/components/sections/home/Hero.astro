@@ -1,44 +1,82 @@
 ---
 console.log("Hero Home Section Run 🏃");
 import SocialLinks from "../../ui/SocialLinks.astro";
+import { DotPattern } from "../../magicui/dot-pattern";
+import { BlurFade } from "../../magicui/blur-fade";
+import { BorderBeam } from "../../magicui/border-beam";
 import { socialLinks, hero, about } from "../../../data/portfolio";
 ---
 
-<section id="home" class="pt-24 pb-16 px-4 lg:px-8">
-    <div class="max-w-5xl mx-auto">
+<section id="home" class="relative pt-24 pb-16 px-4 lg:px-8 overflow-hidden">
+    <!-- Ambient Magic UI Dot Pattern Background -->
+    <DotPattern
+        client:visible
+        width={20}
+        height={20}
+        cx={1}
+        cy={1}
+        cr={1}
+        className="[mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-40"
+    />
+
+    <div class="relative z-10 max-w-5xl mx-auto">
         <div
             class="flex flex-col justify-evenly lg:flex-row items-center lg:items-start gap-12 lg:gap-20"
         >
             <div
                 class="flex flex-col items-center lg:items-start text-center lg:text-left gap-3"
             >
-                <span
-                    class="font-newsreader text-2xl lg:text-5xl font-bold text-gray-950"
-                >
-                    {hero.name}
-                </span>
-                <span
-                    class="font-manrope text-2xl lg:text-5xl font-bold text-gray-500"
-                >
-                    {hero.tagline}
-                </span>
-                <p
-                    class="font-manrope text-base text-gray-600 leading-relaxed max-w-xl text-center lg:text-left"
-                >
-                    {about.text}
-                </p>
-                <div class="mt-4">
-                    <SocialLinks
-                        linkedin={socialLinks.linkedin}
-                        github={socialLinks.github}
+                <BlurFade client:load delay={0.05}>
+                    <span
+                        class="font-newsreader text-2xl lg:text-5xl font-bold text-gray-950 tracking-tight"
+                    >
+                        {hero.name}
+                    </span>
+                </BlurFade>
+
+                <BlurFade client:load delay={0.15}>
+                    <span
+                        class="font-manrope text-2xl lg:text-5xl font-bold text-gray-500 tracking-tight"
+                    >
+                        {hero.tagline}
+                    </span>
+                </BlurFade>
+
+                <BlurFade client:load delay={0.25}>
+                    <p
+                        class="font-manrope text-base text-gray-600 leading-relaxed max-w-xl text-center lg:text-left mt-1"
+                    >
+                        {about.text}
+                    </p>
+                </BlurFade>
+
+                <BlurFade client:load delay={0.35}>
+                    <div class="mt-4">
+                        <SocialLinks
+                            linkedin={socialLinks.linkedin}
+                            github={socialLinks.github}
+                        />
+                    </div>
+                </BlurFade>
+            </div>
+
+            <BlurFade client:load delay={0.2}>
+                <div class="relative p-1 rounded-2xl bg-white/70 border border-gray-200/80 shadow-md">
+                    <img
+                        src="/assets/profile_picture.png"
+                        alt="Profile Picture"
+                        class="w-40 h-40 lg:w-48 lg:h-48 object-cover rounded-xl"
+                    />
+                    <BorderBeam
+                        client:visible
+                        size={120}
+                        duration={12}
+                        borderWidth={1.5}
+                        colorFrom="#111827"
+                        colorTo="#9ca3af"
                     />
                 </div>
-            </div>
-            <img
-                src="./assets/profile_picture.png"
-                alt="Profile Picture"
-                class="w-40 h-40 lg:w-48 lg:h-48 object-cover rounded-2xl"
-            />
+            </BlurFade>
         </div>
     </div>
 </section>
