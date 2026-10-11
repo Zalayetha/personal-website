@@ -2,69 +2,71 @@
 console.log("Skills Section Run 🏃");
 import Section from "../layout/Section.astro";
 import SkillBadge from "../ui/SkillBadge.astro";
-import { Marquee } from "../magicui/marquee";
-import { BlurFade } from "../magicui/blur-fade";
+import SkillsMarquee from "../magicui/skills-marquee";
 import { hardSkills, softSkills } from "../../data/portfolio";
 ---
 
 <Section id="skills">
-    <BlurFade client:visible delay={0.05}>
-        <div class="max-w-2xl">
-            <h2 class="font-newsreader text-3xl font-bold text-gray-950">Skills</h2>
-            <p class="font-manrope text-base text-gray-500 mt-3">
-                Skills I've developed over the years.
-            </p>
-        </div>
-    </BlurFade>
+    <div class="max-w-2xl">
+        <h2 class="font-newsreader text-3xl font-bold text-gray-950">Skills</h2>
+        <p class="font-manrope text-base text-gray-500 mt-3">
+            Skills I've developed over the years.
+        </p>
+    </div>
 
-    <!-- Magic UI Infinite Marquee of Core Skills -->
-    <BlurFade client:visible delay={0.1}>
-        <div class="relative mt-8 py-3 overflow-hidden rounded-2xl border border-gray-200/80 bg-white/50 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-            <Marquee client:visible pauseOnHover repeat={4} className="[--duration:25s]">
+    <!-- Magic UI Dual Infinite Marquee Showcase -->
+    <div class="relative mt-8 py-5 overflow-hidden rounded-3xl border border-gray-200/80 bg-white/70 shadow-xs">
+        <!-- Row 1: Technical Skills Scrolling Forward -->
+        <SkillsMarquee
+            client:load
+            items={hardSkills}
+            duration={22}
+            pauseOnHover={true}
+            variant="dark"
+            className="py-1"
+        />
+
+        <!-- Row 2: Soft Skills Scrolling in Reverse -->
+        <SkillsMarquee
+            client:load
+            items={softSkills}
+            reverse={true}
+            duration={18}
+            pauseOnHover={true}
+            variant="light"
+            className="py-1 mt-2.5"
+        />
+    </div>
+
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-white border border-gray-200/80 shadow-xs h-full">
+            <h3
+                class="font-manrope text-xs font-bold text-gray-400 uppercase tracking-wider mb-4"
+            >
+                Technical
+            </h3>
+            <div class="flex flex-wrap gap-2">
                 {
                     hardSkills.map((skill) => (
-                        <span class="inline-flex items-center px-3.5 py-1.5 rounded-lg bg-white border border-gray-200 text-xs font-semibold font-manrope text-gray-800 shadow-2xs whitespace-nowrap">
-                            {skill.name}
-                        </span>
+                        <SkillBadge name={skill.name} variant={skill.variant} />
                     ))
                 }
-            </Marquee>
+            </div>
         </div>
-    </BlurFade>
 
-    <div class="mt-10 grid md:grid-cols-2 gap-6">
-        <BlurFade client:visible delay={0.15}>
-            <div class="p-6 rounded-2xl bg-white border border-gray-200/80 shadow-xs h-full">
-                <h3
-                    class="font-manrope text-xs font-bold text-gray-400 uppercase tracking-wider mb-4"
-                >
-                    Technical
-                </h3>
-                <div class="flex flex-wrap gap-2">
-                    {
-                        hardSkills.map((skill) => (
-                            <SkillBadge name={skill.name} variant={skill.variant} />
-                        ))
-                    }
-                </div>
+        <div class="p-6 rounded-2xl bg-white border border-gray-200/80 shadow-xs h-full">
+            <h3
+                class="font-manrope text-xs font-bold text-gray-400 uppercase tracking-wider mb-4"
+            >
+                Soft Skills
+            </h3>
+            <div class="flex flex-wrap gap-2">
+                {
+                    softSkills.map((skill) => (
+                        <SkillBadge name={skill.name} variant={skill.variant} />
+                    ))
+                }
             </div>
-        </BlurFade>
-
-        <BlurFade client:visible delay={0.22}>
-            <div class="p-6 rounded-2xl bg-white border border-gray-200/80 shadow-xs h-full">
-                <h3
-                    class="font-manrope text-xs font-bold text-gray-400 uppercase tracking-wider mb-4"
-                >
-                    Soft Skills
-                </h3>
-                <div class="flex flex-wrap gap-2">
-                    {
-                        softSkills.map((skill) => (
-                            <SkillBadge name={skill.name} variant={skill.variant} />
-                        ))
-                    }
-                </div>
-            </div>
-        </BlurFade>
+        </div>
     </div>
 </Section>
