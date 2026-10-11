@@ -1,0 +1,151 @@
+---
+import "../styles/styles.css";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import Section from "../components/layout/Section.astro";
+import { contact } from "../data/portfolio";
+
+const services = [
+    {
+        title: "Web App MVP",
+        description:
+            "Turn your product idea into a focused first version ready for real users.",
+        items: [
+            "Core product flow",
+            "Responsive web interface",
+            "Clean implementation",
+            "Deployment-ready build",
+        ],
+    },
+    {
+        title: "Landing Page",
+        description:
+            "Launch a clear, fast page that explains your product and converts visitors.",
+        items: [
+            "Product positioning",
+            "Conversion-focused CTA",
+            "Responsive layout",
+            "Performance-minded build",
+        ],
+    },
+];
+
+const process = [
+    {
+        title: "Plan",
+        description:
+            "Clarify your product goal, target users, and smallest useful version.",
+    },
+    {
+        title: "Build",
+        description:
+            "Design and develop the core experience with clear communication.",
+    },
+    {
+        title: "Launch",
+        description:
+            "Prepare the product for release, review details, and ship confidently.",
+    },
+];
+---
+
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/assets/sprout.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Services - Zaghy Zalayetha</title>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <Section id="services">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h1
+                            class="font-newsreader text-4xl lg:text-5xl font-bold text-gray-950 mb-4"
+                        >
+                            Build Your Product
+                        </h1>
+                        <p
+                            class="font-manrope text-base text-gray-500 leading-relaxed max-w-2xl mx-auto"
+                        >
+                            I help founders and businesses turn ideas into
+                            useful web products, from first direction to launch.
+                        </p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        {
+                            services.map((service) => (
+                                <article class="p-6 rounded-2xl bg-white border border-gray-200">
+                                    <h2 class="font-newsreader text-2xl font-semibold text-gray-950 mb-3">
+                                        {service.title}
+                                    </h2>
+                                    <p class="font-manrope text-sm text-gray-500 leading-relaxed mb-6">
+                                        {service.description}
+                                    </p>
+                                    <ul class="space-y-3">
+                                        {service.items.map((item) => (
+                                            <li class="flex items-center gap-3 font-manrope text-sm text-gray-600">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-gray-950" />
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </article>
+                            ))
+                        }
+                    </div>
+
+                    <div class="mt-20">
+                        <div class="text-center mb-10">
+                            <h2
+                                class="font-newsreader text-3xl font-bold text-gray-950 mb-3"
+                            >
+                                How We Work
+                            </h2>
+                            <p
+                                class="font-manrope text-base text-gray-500 max-w-xl mx-auto"
+                            >
+                                Simple process, clear scope, steady progress.
+                            </p>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            {
+                                process.map((step, index) => (
+                                    <article class="p-6 rounded-2xl bg-white border border-gray-200">
+                                        <div class="font-manrope text-sm font-semibold text-gray-400 mb-4">
+                                            0{index + 1}
+                                        </div>
+                                        <h3 class="font-newsreader text-xl font-semibold text-gray-950 mb-2">
+                                            {step.title}
+                                        </h3>
+                                        <p class="font-manrope text-sm text-gray-500 leading-relaxed">
+                                            {step.description}
+                                        </p>
+                                    </article>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-20">
+                        <h2
+                            class="font-newsreader text-3xl font-bold text-gray-950"
+                        >
+                            Have a product idea? Let's build it.
+                        </h2>
+                        <a
+                            href={`mailto:${contact.email}`}
+                            class="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-lg bg-gray-900 text-white font-manrope text-sm font-medium transition-colors duration-300 hover:bg-gray-700"
+                        >
+                            Email Me
+                        </a>
+                    </div>
+                </div>
+            </Section>
+        </main>
+        <Footer />
+    </body>
+</html>
