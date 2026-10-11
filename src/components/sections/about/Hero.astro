@@ -1,52 +1,116 @@
 ---
 console.log("Hero About Section Run 🏃");
+import { GridPattern } from "../../magicui/grid-pattern";
+import { BlurFade } from "../../magicui/blur-fade";
+import { BorderBeam } from "../../magicui/border-beam";
+import { ShimmerButton } from "../../magicui/shimmer-button";
 import { hero } from "../../../data/portfolio";
 ---
 
-<section class="pt-24 pb-16 px-4 lg:px-8">
-    <div class="max-w mx-auto">
+<section class="relative pt-24 pb-16 px-4 lg:px-8 overflow-hidden">
+    <!-- Ambient Magic UI Grid Pattern -->
+    <GridPattern
+        client:visible
+        width={32}
+        height={32}
+        className="[mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-35"
+    />
+
+    <div class="relative z-10 max-w-5xl mx-auto">
         <div
             class="flex flex-col justify-evenly lg:flex-row items-center lg:items-start gap-12 lg:gap-20"
         >
             <div
                 class="flex flex-col items-center lg:items-start text-center lg:text-left gap-3"
             >
-                <span class="font-newsreader font-semibold text-gray-500">
-                    About
-                </span>
-                <span
-                    class="font-newsreader text-xl lg:text-4xl font-bold text-gray-950"
-                >
-                    {hero.name}
-                </span>
-                <span
-                    class="font-manrope text-lg lg:text-xl font-bold text-gray-500"
-                >
-                    {hero.tagline}
-                </span>
-                <p
-                    class="font-manrope text-sm font-medium text-gray-500 max-w-xl text-center lg:text-left"
-                >
-                    {hero.city}, {hero.province}, {hero.country}
-                </p>
-                <div
-                    class="px-4 py-1 rounded-full bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg hover:shadow-gray-200/50 mt-2 hover:text-gray-400"
-                >
-                    <a
-                        href={hero.portfolio}
-                        download
-                        class="text-sm"
-                        target="_blank"
+                <BlurFade client:load delay={0.05}>
+                    <span class="font-newsreader font-semibold text-gray-500 text-lg">
+                        About
+                    </span>
+                </BlurFade>
+
+                <BlurFade client:load delay={0.12}>
+                    <h1
+                        class="font-newsreader text-2xl lg:text-5xl font-bold text-gray-950 tracking-tight"
                     >
-                        View Career Portfolio
-                    </a>
-                </div>
+                        {hero.name}
+                    </h1>
+                </BlurFade>
+
+                <BlurFade client:load delay={0.2}>
+                    <span
+                        class="font-manrope text-lg lg:text-2xl font-bold text-gray-500 tracking-tight"
+                    >
+                        {hero.tagline}
+                    </span>
+                </BlurFade>
+
+                <BlurFade client:load delay={0.28}>
+                    <p
+                        class="font-manrope text-sm font-medium text-gray-500 max-w-xl text-center lg:text-left mt-1"
+                    >
+                        {hero.city}, {hero.province}, {hero.country}
+                    </p>
+                </BlurFade>
+
+                <BlurFade client:load delay={0.35}>
+                    <div class="mt-4">
+                        <a
+                            href={hero.portfolio}
+                            download
+                            target="_blank"
+                            class="inline-block group"
+                        >
+                            <ShimmerButton
+                                client:visible
+                                shimmerColor="#ffffff"
+                                shimmerDuration="3.5s"
+                                borderRadius="9999px"
+                                background="rgba(17, 24, 39, 1)"
+                                className="font-manrope text-xs sm:text-sm font-medium px-5 py-2.5 shadow-sm hover:shadow-md transition-shadow"
+                            >
+                                <span class="flex items-center gap-2">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="15"
+                                        height="15"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="w-4 h-4"
+                                    >
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7 10 12 15 17 10"></polyline>
+                                        <line x1="12" x2="12" y1="15" y2="3"></line>
+                                    </svg>
+                                    View Career Portfolio
+                                </span>
+                            </ShimmerButton>
+                        </a>
+                    </div>
+                </BlurFade>
             </div>
-            <img
-                src="/assets/profile_picture.png"
-                alt="Profile Picture"
-                class="w-40 h-40 lg:w-48 lg:h-48 object-cover rounded-2xl"
-            />
+
+            <BlurFade client:load delay={0.2}>
+                <div class="relative p-1 rounded-2xl bg-white/70 border border-gray-200/80 shadow-md">
+                    <img
+                        src="/assets/profile_picture.png"
+                        alt="Profile Picture"
+                        class="w-40 h-40 lg:w-48 lg:h-48 object-cover rounded-xl"
+                    />
+                    <BorderBeam
+                        client:visible
+                        size={120}
+                        duration={12}
+                        borderWidth={1.5}
+                        colorFrom="#111827"
+                        colorTo="#9ca3af"
+                    />
+                </div>
+            </BlurFade>
         </div>
     </div>
 </section>
