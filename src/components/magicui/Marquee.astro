@@ -1,0 +1,37 @@
+---
+interface Props {
+    reverse?: boolean;
+    pauseOnHover?: boolean;
+    duration?: string;
+    gap?: string;
+    className?: string;
+    repeat?: number;
+}
+
+const {
+    reverse = false,
+    pauseOnHover = true,
+    duration = "25s",
+    gap = "1rem",
+    className = "",
+    repeat = 4,
+} = Astro.props;
+---
+
+<div
+    class={`group flex overflow-hidden select-none w-full [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] ${className}`}
+    style={`--marquee-duration: ${duration}; --gap: ${gap};`}
+>
+    {
+        Array.from({ length: repeat }).map((_, i) => (
+            <div
+                class={`flex shrink-0 items-center justify-around gap-[var(--gap)] px-2 ${
+                    reverse ? "marquee-track-reverse" : "marquee-track"
+                } ${pauseOnHover ? "group-hover:[animation-play-state:paused]" : ""}`}
+                aria-hidden={i > 0 ? "true" : undefined}
+            >
+                <slot />
+            </div>
+        ))
+    }
+</div>

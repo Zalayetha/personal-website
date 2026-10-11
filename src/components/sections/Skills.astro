@@ -2,7 +2,7 @@
 console.log("Skills Section Run 🏃");
 import Section from "../layout/Section.astro";
 import SkillBadge from "../ui/SkillBadge.astro";
-import SkillsMarquee from "../magicui/skills-marquee";
+import Marquee from "../magicui/Marquee.astro";
 import { hardSkills, softSkills } from "../../data/portfolio";
 ---
 
@@ -14,28 +14,31 @@ import { hardSkills, softSkills } from "../../data/portfolio";
         </p>
     </div>
 
-    <!-- Magic UI Dual Infinite Marquee Showcase -->
+    <!-- Pure CSS Astro-Native Marquee Showcase -->
     <div class="relative mt-8 py-5 overflow-hidden rounded-3xl border border-gray-200/80 bg-white/70 shadow-xs">
         <!-- Row 1: Technical Skills Scrolling Forward -->
-        <SkillsMarquee
-            client:load
-            items={hardSkills}
-            duration={22}
-            pauseOnHover={true}
-            variant="dark"
-            className="py-1"
-        />
+        <Marquee duration="22s" pauseOnHover={true} className="py-1">
+            {
+                hardSkills.map((skill) => (
+                    <div class="flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-gray-950 text-white font-manrope text-sm font-semibold shadow-sm transition-transform duration-200 hover:scale-105 whitespace-nowrap">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>{skill.name}</span>
+                    </div>
+                ))
+            }
+        </Marquee>
 
         <!-- Row 2: Soft Skills Scrolling in Reverse -->
-        <SkillsMarquee
-            client:load
-            items={softSkills}
-            reverse={true}
-            duration={18}
-            pauseOnHover={true}
-            variant="light"
-            className="py-1 mt-2.5"
-        />
+        <Marquee reverse={true} duration="18s" pauseOnHover={true} className="py-1 mt-2.5">
+            {
+                softSkills.map((skill) => (
+                    <div class="flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-gray-800 font-manrope text-sm font-semibold shadow-2xs transition-transform duration-200 hover:scale-105 whitespace-nowrap">
+                        <span class="w-2 h-2 rounded-full bg-gray-400" />
+                        <span>{skill.name}</span>
+                    </div>
+                ))
+            }
+        </Marquee>
     </div>
 
     <div class="mt-8 grid md:grid-cols-2 gap-6">
