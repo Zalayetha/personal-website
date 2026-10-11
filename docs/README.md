@@ -11,10 +11,12 @@ docs/
 ├── README.md
 ├── decision/
 │   ├── 0000-template.md
-│   └── 0001-adopt-oxc-tooling-and-husky.md
+│   ├── 0001-adopt-oxc-tooling-and-husky.md
+│   └── 0002-adopt-magic-ui-and-hybrid-island-architecture.md
 └── product/
     ├── 0000-template.md
-    └── 0001-centralized-portfolio-data.md
+    ├── 0001-centralized-portfolio-data.md
+    └── 0002-magic-ui-design-transformation.md
 ```
 
 ---
@@ -41,6 +43,7 @@ Refer to [`0000-template.md`](./decision/0000-template.md) to create new decisio
 | Number | Title                                                                                             | Status     |
 | :----- | :------------------------------------------------------------------------------------------------ | :--------- |
 | `0001` | [Adopt Oxlint, Oxfmt, and Husky Pre-commit Hooks](./decision/0001-adopt-oxc-tooling-and-husky.md) | `accepted` |
+| `0002` | [Adopt Magic UI and Hybrid Island Architecture](./decision/0002-adopt-magic-ui-and-hybrid-island-architecture.md) | `accepted` |
 
 ---
 
@@ -65,3 +68,4 @@ Refer to [`0000-template.md`](./product/0000-template.md) to create new product 
 | Number | Title                                                                            |
 | :----- | :------------------------------------------------------------------------------- |
 | `0001` | [Centralized Portfolio Data Model](./product/0001-centralized-portfolio-data.md) |
+| `0002` | [Magic UI Design Transformation](./product/0002-magic-ui-design-transformation.md) |
