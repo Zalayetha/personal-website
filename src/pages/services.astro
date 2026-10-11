@@ -3,6 +3,11 @@ import "../styles/styles.css";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import Section from "../components/layout/Section.astro";
+import { MagicCard } from "../components/magicui/magic-card";
+import { GridPattern } from "../components/magicui/grid-pattern";
+import { BlurFade } from "../components/magicui/blur-fade";
+import { Ripple } from "../components/magicui/ripple";
+import { ShimmerButton } from "../components/magicui/shimmer-button";
 import { contact } from "../data/portfolio";
 
 const services = [
@@ -56,93 +61,138 @@ const process = [
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Services - Zaghy Zalayetha</title>
     </head>
-    <body>
+    <body class="relative overflow-x-hidden">
         <Header />
-        <main>
+        <main class="relative">
+            <!-- Magic UI Ambient Grid Background -->
+            <GridPattern
+                client:visible
+                width={36}
+                height={36}
+                className="[mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)] opacity-30"
+            />
+
             <Section id="services">
-                <div class="max-w-5xl mx-auto">
-                    <div class="text-center mb-16">
-                        <h1
-                            class="font-newsreader text-4xl lg:text-5xl font-bold text-gray-950 mb-4"
-                        >
-                            Build Your Product
-                        </h1>
-                        <p
-                            class="font-manrope text-base text-gray-500 leading-relaxed max-w-2xl mx-auto"
-                        >
-                            I help founders and businesses turn ideas into
-                            useful web products, from first direction to launch.
-                        </p>
-                    </div>
+                <div class="relative z-10 max-w-5xl mx-auto">
+                    <BlurFade client:visible delay={0.05}>
+                        <div class="text-center mb-16">
+                            <h1
+                                class="font-newsreader text-4xl lg:text-5xl font-bold text-gray-950 mb-4"
+                            >
+                                Build Your Product
+                            </h1>
+                            <p
+                                class="font-manrope text-base text-gray-500 leading-relaxed max-w-2xl mx-auto"
+                            >
+                                I help founders and businesses turn ideas into
+                                useful web products, from first direction to launch.
+                            </p>
+                        </div>
+                    </BlurFade>
 
                     <div class="grid lg:grid-cols-2 gap-6">
                         {
-                            services.map((service) => (
-                                <article class="p-6 rounded-2xl bg-white border border-gray-200">
-                                    <h2 class="font-newsreader text-2xl font-semibold text-gray-950 mb-3">
-                                        {service.title}
-                                    </h2>
-                                    <p class="font-manrope text-sm text-gray-500 leading-relaxed mb-6">
-                                        {service.description}
-                                    </p>
-                                    <ul class="space-y-3">
-                                        {service.items.map((item) => (
-                                            <li class="flex items-center gap-3 font-manrope text-sm text-gray-600">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-gray-950" />
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </article>
+                            services.map((service, idx) => (
+                                <BlurFade client:visible delay={0.1 + idx * 0.1}>
+                                    <MagicCard
+                                        client:visible
+                                        gradientSize={300}
+                                        gradientColor="rgba(55, 65, 81, 0.14)"
+                                        className="p-8 h-full flex flex-col justify-between transition-all duration-300 hover:border-gray-400/80 hover:shadow-xl hover:shadow-gray-200/60"
+                                    >
+                                        <div>
+                                            <h2 class="font-newsreader text-2xl font-semibold text-gray-950 mb-3">
+                                                {service.title}
+                                            </h2>
+                                            <p class="font-manrope text-sm text-gray-500 leading-relaxed mb-6">
+                                                {service.description}
+                                            </p>
+                                        </div>
+                                        <ul class="space-y-3 pt-4 border-t border-gray-100">
+                                            {service.items.map((item) => (
+                                                <li class="flex items-center gap-3 font-manrope text-sm text-gray-700">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-gray-950 shrink-0" />
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </MagicCard>
+                                </BlurFade>
                             ))
                         }
                     </div>
 
-                    <div class="mt-20">
-                        <div class="text-center mb-10">
-                            <h2
-                                class="font-newsreader text-3xl font-bold text-gray-950 mb-3"
-                            >
-                                How We Work
-                            </h2>
-                            <p
-                                class="font-manrope text-base text-gray-500 max-w-xl mx-auto"
-                            >
-                                Simple process, clear scope, steady progress.
-                            </p>
-                        </div>
+                    <div class="mt-24">
+                        <BlurFade client:visible delay={0.1}>
+                            <div class="text-center mb-12">
+                                <h2
+                                    class="font-newsreader text-3xl font-bold text-gray-950 mb-3"
+                                >
+                                    How We Work
+                                </h2>
+                                <p
+                                    class="font-manrope text-base text-gray-500 max-w-xl mx-auto"
+                                >
+                                    Simple process, clear scope, steady progress.
+                                </p>
+                            </div>
+                        </BlurFade>
+
                         <div class="grid md:grid-cols-3 gap-6">
                             {
                                 process.map((step, index) => (
-                                    <article class="p-6 rounded-2xl bg-white border border-gray-200">
-                                        <div class="font-manrope text-sm font-semibold text-gray-400 mb-4">
-                                            0{index + 1}
-                                        </div>
-                                        <h3 class="font-newsreader text-xl font-semibold text-gray-950 mb-2">
-                                            {step.title}
-                                        </h3>
-                                        <p class="font-manrope text-sm text-gray-500 leading-relaxed">
-                                            {step.description}
-                                        </p>
-                                    </article>
+                                    <BlurFade client:visible delay={0.15 + index * 0.08}>
+                                        <MagicCard
+                                            client:visible
+                                            gradientSize={240}
+                                            gradientColor="rgba(55, 65, 81, 0.12)"
+                                            className="p-6 h-full transition-all duration-300 hover:border-gray-400/80 hover:shadow-md"
+                                        >
+                                            <div class="font-manrope text-xs font-bold text-gray-400 mb-4 tracking-wider">
+                                                0{index + 1}
+                                            </div>
+                                            <h3 class="font-newsreader text-xl font-semibold text-gray-950 mb-2">
+                                                {step.title}
+                                            </h3>
+                                            <p class="font-manrope text-sm text-gray-500 leading-relaxed">
+                                                {step.description}
+                                            </p>
+                                        </MagicCard>
+                                    </BlurFade>
                                 ))
                             }
                         </div>
                     </div>
 
-                    <div class="text-center mt-20">
-                        <h2
-                            class="font-newsreader text-3xl font-bold text-gray-950"
-                        >
-                            {contact.tagline}
-                        </h2>
-                        <a
-                            href={`mailto:${contact.email}`}
-                            class="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-lg bg-gray-900 text-white font-manrope text-sm font-medium transition-colors duration-300 hover:bg-gray-700"
-                        >
-                            {contact.cta}
-                        </a>
-                    </div>
+                    <BlurFade client:visible delay={0.15}>
+                        <div class="relative overflow-hidden rounded-3xl border border-gray-200/80 bg-white/70 py-16 px-6 sm:px-12 text-center shadow-sm mt-24">
+                            <Ripple client:visible mainCircleSize={180} numCircles={6} mainCircleOpacity={0.18} />
+                            <div class="relative z-10 max-w-xl mx-auto">
+                                <h2
+                                    class="font-newsreader text-3xl sm:text-4xl font-bold text-gray-950 tracking-tight"
+                                >
+                                    {contact.tagline}
+                                </h2>
+                                <div class="mt-8 flex justify-center">
+                                    <a
+                                        href={`mailto:${contact.email}`}
+                                        class="inline-block group"
+                                    >
+                                        <ShimmerButton
+                                            client:visible
+                                            shimmerColor="#ffffff"
+                                            shimmerDuration="3s"
+                                            borderRadius="0.75rem"
+                                            background="rgba(17, 24, 39, 1)"
+                                            className="font-manrope text-sm font-semibold px-8 py-3.5 shadow-md group-hover:shadow-lg transition-shadow"
+                                        >
+                                            {contact.cta}
+                                        </ShimmerButton>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </BlurFade>
                 </div>
             </Section>
         </main>
