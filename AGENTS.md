@@ -10,17 +10,19 @@ This is an Astro personal portfolio site. Page routes live in `src/pages/`, with
 - `npm run dev`: start the local Astro development server.
 - `npm run build`: create a production build and catch Astro/TypeScript integration issues.
 - `npm run preview`: preview the production build locally.
-- `npm run lint`: run ESLint across the repository.
+- `npm run lint`: run oxlint across the repository.
+- `npm run format`: format files using oxfmt (`npm run format:check` to check).
+- `npm run typecheck`: run Astro and TypeScript type diagnostics via `astro check`.
 
-Run `npm run lint` and `npm run build` before opening a pull request.
+Run `npm run lint`, `npm run typecheck`, and `npm run build` before opening a pull request (also enforced automatically via Husky pre-commit hooks).
 
 ## Coding Style & Naming Conventions
 
-Use TypeScript and Astro conventions already present in the project. Components are PascalCase, for example `ProjectCard.astro`; route files use lowercase names and Astro dynamic segment syntax. Keep interfaces and shared content models in `src/data/portfolio.ts`. Existing files use 4-space indentation in `.astro` and `.css`, double quotes in TypeScript/JavaScript, and semicolons in TypeScript. Prefer Tailwind utility classes for component styling and reserve `src/styles/styles.css` for global imports, theme tokens, and base rules.
+Use TypeScript and Astro conventions already present in the project. Components are PascalCase, for example `ProjectCard.astro`; route files use lowercase names and Astro dynamic segment syntax. Keep interfaces and shared content models in `src/data/portfolio.ts`. Indentation uses 4 spaces in `.astro` files, and 2 spaces in `.css`, `.json`, and other files formatted by `oxfmt`. Double quotes and semicolons are used in TypeScript/JavaScript. Prefer Tailwind utility classes for component styling and reserve `src/styles/styles.css` for global imports, theme tokens, and base rules.
 
 ## Testing Guidelines
 
-There is no dedicated test framework configured yet. Treat `npm run lint` and `npm run build` as required checks for every change. For content-only edits, verify the affected page in `npm run dev`. If future changes add interactive client-side logic, add focused tests near the changed module and introduce an `npm test` script rather than relying only on manual browser checks.
+There is no dedicated test framework configured yet. Treat `npm run lint`, `npm run typecheck`, and `npm run build` as required checks for every change. For content-only edits, verify the affected page in `npm run dev`. If future changes add interactive client-side logic, add focused tests near the changed module and introduce an `npm test` script rather than relying only on manual browser checks.
 
 ## Commit & Pull Request Guidelines
 
