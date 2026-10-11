@@ -1,0 +1,16 @@
+---
+console.log("Section Run 🏃");
+interface Props {
+    id: string;
+    class?: string;
+}
+
+const { id, class: className = "" } = Astro.props;
+---
+
+<section
+    id={id}
+    class={`flex flex-col lg:px-64 lg:py-4 px-12 py-8 ${className}`}
+>
+    <slot />
+</section>

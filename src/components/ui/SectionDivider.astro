@@ -1,0 +1,17 @@
+---
+interface Props {
+    size?: "sm" | "md" | "lg";
+    class?: string;
+}
+
+const { size = "md", class: className = "" } = Astro.props;
+
+const heightClasses = {
+    sm: "h-0.5",
+    md: "h-1",
+    lg: "h-2",
+};
+---
+
+<div class={`${heightClasses[size]} ${className} rounded-full bg-gray-200`}>
+</div>

@@ -1,0 +1,28 @@
+---
+import "../styles/styles.css";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import AboutHero from "../components/sections/about/Hero.astro";
+import Experience from "../components/sections/about/Experience.astro";
+import Skills from "../components/sections/Skills.astro";
+import Academic from "../components/sections/about/Academic.astro";
+---
+
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/assets/sprout.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About - Zaghy Zalayetha</title>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <AboutHero />
+            <Experience />
+            <Skills />
+            <Academic />
+        </main>
+        <Footer />
+    </body>
+</html>
