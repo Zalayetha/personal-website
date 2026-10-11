@@ -129,8 +129,7 @@ export const certifications: Certification[] = [
 ];
 
 export const publication: Publication = {
-  title:
-    "IMPLEMENTASI SISTEM VERIFIKASI E-KTP BERBASIS OCR DAN CNN UNTUK ADMINISTRASI AKADEMIK",
+  title: "IMPLEMENTASI SISTEM VERIFIKASI E-KTP BERBASIS OCR DAN CNN UNTUK ADMINISTRASI AKADEMIK",
   authors: "Sofjan, M. Z. Z., & Soetanto, H. (2025)",
   venue:
     "Prosiding Seminar Nasional Mahasiswa Fakultas Teknologi Informasi (SENAFTI), 4(2), 269–278",
@@ -284,15 +283,7 @@ export const projects: Project[] = [
       components.
     `,
     iconName: "FingerprintPattern",
-    techStack: [
-      "Flutter",
-      "Dart",
-      "Python",
-      "TensorFlow",
-      "Flask",
-      "Supabase",
-      "PostgreSQL",
-    ],
+    techStack: ["Flutter", "Dart", "Python", "TensorFlow", "Flask", "Supabase", "PostgreSQL"],
     features: [
       "OCR text extraction from E-KTP",
       "Face verification using CNN",
@@ -363,13 +354,7 @@ export const blogPosts: BlogPost[] = [
     date: "January 2026",
     excerpt:
       "A journey from toxic productivity to building an MVP for Muslim productivity with prayer tracking and daily journaling.",
-    tags: [
-      "MVP",
-      "React Native",
-      "BuildInPublic",
-      "CodeForUmmah",
-      "100HariNulis",
-    ],
+    tags: ["MVP", "React Native", "BuildInPublic", "CodeForUmmah", "100HariNulis"],
     content: `Akhir-akhir ini saya sering melakukan kegiatan menulis jurnal di malam hari sebelum tidur, jujur kegiatan ini sangat membantu saya untuk melihat kembali apa yang sudah saya capai pada hari itu dan apa yang perlu saya perbaiki depannya.
 
 Dulu tuh sempet terperangkap dalam 'Toxic Productivity', dimana saya terus-terusan belajar dan kerja tanpa kenal waktu seakan-akan produktif. Jadi setiap istirahat itu kayak merasa bersalah karena gak melakukan hal yang produktif sehingga malah burnout.
@@ -390,13 +375,7 @@ Masih dalam tahap MVP Development, bisa dilihat temen-temen demonstrasi singkat 
     date: "February 2026",
     excerpt:
       "Adding journal categorization to MyNiyyah app. Categories help users recall their spiritual journey and serve as milestones during times of decreased motivation.",
-    tags: [
-      "MVP",
-      "React Native",
-      "BuildInPublic",
-      "CodeForUmmah",
-      "100HariNulis",
-    ],
+    tags: ["MVP", "React Native", "BuildInPublic", "CodeForUmmah", "100HariNulis"],
     content: `Salah satu yang sangat membantu saat proses menulis jurnal harian adalah melakukan pengelompokan jurnal tersebut dalam suatu kategori.
 
 Alasan jurnal ini dikategorikan adalah ketika sudah menulis jurnal lebih dari seminggu dan ingin melihat kembali jurnal-jurnal sebelumnya untuk mengetahui sampai mana perkembangannya, itu akan lebih mudah karena jurnal nya sudah dikategorikan sedemikian rupa.
@@ -529,9 +508,7 @@ Perbedaan dari prompt engineering dan context engineering adalah:
 2️⃣ Context Engineering itu bagaimana kita menyediakan semua informasi yang diperlukan sehingga AI dapat memahami dengan baik dan merespons secara efektif.
 
 Sampai saat ini kadang saya masih terlalu memikirkan apakah kata yang saya pilih tepat untuk diberikan kepada AI, padahal seharusnya saya lebih mementingkan konteks yang lengkap sehingga AI dapat benar-benar memahami apa yang saya inginkan.`,
-    images: [
-      "/assets/blogs/prompt-engineering-vs-context-engineering/image-1.jpg",
-    ],
+    images: ["/assets/blogs/prompt-engineering-vs-context-engineering/image-1.jpg"],
   },
   {
     slug: "best-routine-thom-defilet",
@@ -547,8 +524,7 @@ He explains how he manages his daily tasks as a CEO while fulfilling his respons
 Alhamdulillah, I am able to consistently follow my routine like Thom, but with a little bit of modification because we are in different situations. 😁
 
 Jazaakallaahu khayran Thom, Salams from Indonesia. 🇮🇩`,
-    embeddedVideo:
-      "https://www.youtube.com/embed/uiC3mhmh8AQ?si=ZiakkkOgU3v-b9EH",
+    embeddedVideo: "https://www.youtube.com/embed/uiC3mhmh8AQ?si=ZiakkkOgU3v-b9EH",
   },
   {
     slug: "ektp-ocr-verification-thesis",
@@ -577,13 +553,12 @@ export const socialLinks = {
 
 export const contact = {
   email: "zaghy@zalsoft.com",
-  tagline:
-    "Have a project in mind? Feel free to reach out and let's discuss how we can collaborate.",
-  cta: "Let's Work Together",
+  tagline: "Have a product idea? Let's build it.",
+  cta: "Build Your Product",
 };
 
 export const about = {
-  text: "Software Developer with 4+ years of experience. I Help Businesses and Founders Build Software That Solves Real Problems.",
+  text: "I help businesses and founders build web and mobile products that solve real problems.",
 };
 
 export const hero = {
