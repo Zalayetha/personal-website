@@ -14,11 +14,11 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.3.1",
+    "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^6.4.7",
     "astro-icon": "^1.1.5",
-    "postcss": "^8.5.15",
+    "postcss": "^8.5.25",
     "tailwindcss": "^4.3.1",
     "typed.js": "^3.0.0"
   },
@@ -30,5 +30,6 @@
     "oxlint": "^1.87.0",
     "typescript": "~6.0.2",
     "vite": "^8.0.12"
-  }
+  },
+  "packageManager": "pnpm@12.10.1"
 }
