@@ -4,35 +4,35 @@ import { blogPosts } from "../../../data/portfolio";
 const recentPosts = blogPosts.slice(0, 4);
 ---
 
-<section id="notes" class="w-full py-12 sm:py-16 border-b border-[#d1d3ca]" aria-labelledby="writing-title">
+<section id="notes" class="w-full py-12 sm:py-16 border-b border-[#e2e8f0]" aria-labelledby="writing-title">
     <div class="flex items-baseline justify-between gap-4 mb-6">
-        <h2 id="writing-title" class="text-[23px] font-normal tracking-[-0.035em] text-[#151614] m-0">
-            Notes &amp; thoughts<span class="text-[#888985]">.</span>
+        <h2 id="writing-title" class="text-[23px] font-semibold tracking-[-0.035em] text-[#0f172a] m-0">
+            Notes &amp; thoughts<span class="text-[#008752]">.</span>
         </h2>
         <a
             href="/writing"
-            class="text-link text-xs text-[#676a62] hover:text-[#151614] flex-shrink-0"
+            class="text-link text-xs text-[#64748b] hover:text-[#008752] flex-shrink-0"
         >
             <span>All writing</span>
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true" class="text-[#008752]">↗</span>
         </a>
     </div>
 
-    <ul class="m-0 p-0 list-none border-t border-[#d1d3ca]">
+    <ul class="m-0 p-0 list-none border-t border-[#e2e8f0]">
         {
             recentPosts.map((post) => (
-                <li class="m-0 p-0 border-b border-[#d1d3ca] last:border-b-0">
+                <li class="m-0 p-0 border-b border-[#e2e8f0] last:border-b-0">
                     <a
                         href={`/blog/${post.slug}`}
                         class="group grid grid-cols-[minmax(0,1fr)_auto] sm:grid-cols-[minmax(0,1fr)_auto_16px] items-baseline gap-4 sm:gap-7 py-5 no-underline transition-colors"
                     >
-                        <span class="text-[14px] font-normal text-[#151614] group-hover:underline underline-offset-4 decoration-1 truncate">
+                        <span class="text-[14px] font-normal text-[#0f172a] group-hover:text-[#008752] group-hover:underline underline-offset-4 decoration-1 truncate">
                             {post.title}
                         </span>
-                        <time class="text-[#676a62] font-mono text-[10px] sm:text-[11px] flex-shrink-0">
+                        <time class="text-[#64748b] font-mono text-[10px] sm:text-[11px] flex-shrink-0">
                             {post.date}
                         </time>
-                        <span class="link-arrow text-sm hidden sm:inline-block" aria-hidden="true">
+                        <span class="link-arrow text-sm text-[#64748b] group-hover:text-[#008752] hidden sm:inline-block" aria-hidden="true">
                             ↗
                         </span>
                     </a>

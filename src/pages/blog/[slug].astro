@@ -25,13 +25,13 @@ const hasImages = post.images !== undefined;
         <title>{post.title} | Zaghy Zalayetha</title>
         <meta name="description" content={post.excerpt} />
     </head>
-    <body class="min-h-screen flex flex-col bg-[#f4f4ee] text-[#42443f] font-sans antialiased selection:bg-[#d5d6cf] selection:text-[#151614]">
+    <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">
         <Header />
         <main class="page-shell flex-1 flex flex-col w-full pt-8 sm:pt-12">
             <div class="mb-8">
                 <a
                     href="/writing"
-                    class="text-link text-xs text-[#676a62] hover:text-[#151614]"
+                    class="text-link text-xs text-[#64748b] hover:text-[#008752]"
                 >
                     <span aria-hidden="true">&larr;</span>
                     <span>Back to Writing</span>
@@ -39,17 +39,17 @@ const hasImages = post.images !== undefined;
             </div>
 
             <article class="max-w-2xl mx-auto w-full">
-                <header class="border-b border-[#d1d3ca] pb-8 mb-8">
-                    <time class="eyebrow block mb-3">
+                <header class="border-b border-[#e2e8f0] pb-8 mb-8">
+                    <time class="eyebrow block mb-3 text-[#64748b]">
                         {post.date}
                     </time>
-                    <h1 class="text-[clamp(28px,4vw,40px)] font-normal tracking-[-0.04em] text-[#151614] leading-[1.2] m-0 mb-4">
-                        {post.title}<span class="text-[#888985]">.</span>
+                    <h1 class="text-[clamp(28px,4vw,40px)] font-bold tracking-[-0.04em] text-[#0f172a] leading-[1.2] m-0 mb-4">
+                        {post.title}<span class="text-[#008752]">.</span>
                     </h1>
                     <div class="flex flex-wrap gap-2">
                         {
                             post.tags.map((tag) => (
-                                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#eaeae3] text-[#42443f] border border-[#d1d3ca]/60">
+                                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">
                                     #{tag}
                                 </span>
                             ))
@@ -57,13 +57,13 @@ const hasImages = post.images !== undefined;
                     </div>
                 </header>
 
-                <div class="text-[16px] sm:text-[17px] text-[#42443f] leading-[1.85] whitespace-pre-line space-y-4">
+                <div class="text-[16px] sm:text-[17px] text-[#1e293b] leading-[1.85] whitespace-pre-line space-y-4">
                     {post.content}
                 </div>
 
                 {
                     hasEmbeddedVideo && (
-                        <div class="mt-8 rounded-xl overflow-hidden border border-[#d1d3ca] bg-[#eaeae3]">
+                        <div class="mt-8 rounded-xl overflow-hidden border border-[#e2e8f0] bg-[#f8fafc]">
                             <iframe
                                 src={post.embeddedVideo}
                                 height="399"
@@ -82,7 +82,7 @@ const hasImages = post.images !== undefined;
                                 <img
                                     src={image}
                                     alt={`Image ${index + 1}`}
-                                    class="rounded-xl object-cover w-full border border-[#d1d3ca]"
+                                    class="rounded-xl object-cover w-full border border-[#e2e8f0]"
                                 />
                             ))}
                         </div>

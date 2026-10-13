@@ -60,15 +60,15 @@ const process = [
             content="Web app MVP development and high-converting landing pages built by Zaghy Zalayetha."
         />
     </head>
-    <body class="min-h-screen flex flex-col bg-[#f4f4ee] text-[#42443f] font-sans antialiased selection:bg-[#d5d6cf] selection:text-[#151614]">
+    <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">
         <Header />
         <main class="page-shell flex-1 flex flex-col w-full pt-8 sm:pt-12 space-y-12 sm:space-y-16">
-            <header class="border-b border-[#d1d3ca] pb-8 sm:pb-10">
-                <span class="eyebrow block mb-3">Offering</span>
-                <h1 class="text-[clamp(34px,4.5vw,48px)] font-normal tracking-[-0.05em] text-[#151614] leading-[1.1] m-0">
-                    Services<span class="text-[#888985]">.</span>
+            <header class="border-b border-[#e2e8f0] pb-8 sm:pb-10">
+                <span class="eyebrow block mb-3 text-[#64748b]">Offering</span>
+                <h1 class="text-[clamp(34px,4.5vw,48px)] font-bold tracking-[-0.05em] text-[#0f172a] leading-[1.1] m-0">
+                    Services<span class="text-[#008752]">.</span>
                 </h1>
-                <p class="max-w-[560px] text-[15px] sm:text-[16px] text-[#676a62] leading-[1.8] mt-4">
+                <p class="max-w-[560px] text-[15px] sm:text-[16px] text-[#64748b] leading-[1.8] mt-4">
                     I help founders and teams turn ideas into useful, performant web and mobile products from first direction to production launch.
                 </p>
             </header>
@@ -76,19 +76,19 @@ const process = [
             <div class="grid md:grid-cols-2 gap-8">
                 {
                     services.map((service) => (
-                        <div class="border-t border-[#d1d3ca] pt-6 flex flex-col justify-between">
+                        <div class="border-t border-[#e2e8f0] pt-6 flex flex-col justify-between">
                             <div>
-                                <h2 class="text-[20px] font-medium tracking-[-0.03em] text-[#151614] mb-3">
+                                <h2 class="text-[20px] font-semibold tracking-[-0.03em] text-[#0f172a] mb-3">
                                     {service.title}
                                 </h2>
-                                <p class="text-[14px] text-[#676a62] leading-[1.7] mb-6">
+                                <p class="text-[14px] text-[#64748b] leading-[1.7] mb-6">
                                     {service.description}
                                 </p>
                             </div>
-                            <ul class="space-y-2.5 pt-4 border-t border-[#d1d3ca]">
+                            <ul class="space-y-2.5 pt-4 border-t border-[#e2e8f0]">
                                 {service.items.map((item) => (
-                                    <li class="flex items-center gap-3 text-[13px] text-[#42443f]">
-                                        <span class="w-1 h-1 rounded-full bg-[#151614] shrink-0" />
+                                    <li class="flex items-center gap-3 text-[13px] text-[#1e293b]">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-[#008752] shrink-0" />
                                         <span>{item}</span>
                                     </li>
                                 ))}
@@ -99,23 +99,23 @@ const process = [
             </div>
 
             <!-- Process -->
-            <div class="border-t border-[#d1d3ca] pt-12">
-                <span class="eyebrow block mb-1">Workflow</span>
-                <h2 class="text-[23px] font-normal tracking-[-0.035em] text-[#151614] mb-8">
-                    How we collaborate<span class="text-[#888985]">.</span>
+            <div class="border-t border-[#e2e8f0] pt-12">
+                <span class="eyebrow block mb-1 text-[#64748b]">Workflow</span>
+                <h2 class="text-[23px] font-semibold tracking-[-0.035em] text-[#0f172a] mb-8">
+                    How we collaborate<span class="text-[#008752]">.</span>
                 </h2>
 
                 <div class="grid md:grid-cols-3 gap-8">
                     {
                         process.map((step, idx) => (
-                            <div class="border-t border-[#d1d3ca] pt-4">
-                                <span class="font-mono text-xs text-[#676a62] block mb-2">
+                            <div class="border-t border-[#e2e8f0] pt-4">
+                                <span class="font-mono text-xs text-[#008752] font-semibold block mb-2">
                                     0{idx + 1}
                                 </span>
-                                <h3 class="text-[16px] font-medium text-[#151614] mb-2">
+                                <h3 class="text-[16px] font-semibold text-[#0f172a] mb-2">
                                     {step.title}
                                 </h3>
-                                <p class="text-[13px] text-[#676a62] leading-[1.7]">
+                                <p class="text-[13px] text-[#64748b] leading-[1.7]">
                                     {step.description}
                                 </p>
                             </div>
@@ -125,13 +125,13 @@ const process = [
             </div>
 
             <!-- CTA -->
-            <div class="border-t border-[#d1d3ca] pt-12 pb-6">
-                <p class="text-[16px] text-[#151614] mb-4">
+            <div class="border-t border-[#e2e8f0] pt-12 pb-6">
+                <p class="text-[16px] text-[#0f172a] font-medium mb-4">
                     Have a project in mind?
                 </p>
                 <a
                     href={`mailto:${contact.email}`}
-                    class="text-link text-sm text-[#151614] hover:underline font-medium"
+                    class="text-link text-sm text-[#008752] hover:text-[#007346] font-semibold"
                 >
                     <span>Send a message</span>
                     <span aria-hidden="true">↗</span>

@@ -17,31 +17,31 @@ import { experience, education, skillGroups, publication } from "../data/portfol
             content="Learn more about Zaghy Zalayetha, Full-Stack & Mobile Engineer, Best Graduate of Informatics Engineering 2025."
         />
     </head>
-    <body class="min-h-screen flex flex-col bg-[#f4f4ee] text-[#42443f] font-sans antialiased selection:bg-[#d5d6cf] selection:text-[#151614]">
+    <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">
         <Header />
         <main class="page-shell flex-1 flex flex-col w-full pt-8 sm:pt-12">
             <!-- Intro / Bio -->
-            <header class="border-b border-[#d1d3ca] pb-10 sm:pb-12 mb-10 sm:mb-12">
-                <span class="eyebrow block mb-3">Background</span>
-                <h1 class="text-[clamp(34px,4.5vw,48px)] font-normal tracking-[-0.05em] text-[#151614] leading-[1.1] m-0">
-                    A little about me<span class="text-[#888985]">.</span>
+            <header class="border-b border-[#e2e8f0] pb-10 sm:pb-12 mb-10 sm:mb-12">
+                <span class="eyebrow block mb-3 text-[#64748b]">Background</span>
+                <h1 class="text-[clamp(34px,4.5vw,48px)] font-bold tracking-[-0.05em] text-[#0f172a] leading-[1.1] m-0">
+                    A little about me<span class="text-[#008752]">.</span>
                 </h1>
 
                 <div class="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8 mt-6 items-start">
-                    <div class="space-y-4 text-[15px] sm:text-[16px] text-[#42443f] leading-[1.85]">
+                    <div class="space-y-4 text-[15px] sm:text-[16px] text-[#1e293b] leading-[1.85]">
                         <p>
-                            I'm <strong class="text-[#151614] font-medium">Zaghy Zalayetha</strong>, a Full-Stack &amp; Mobile Engineer based in Tangerang, Indonesia. I build web applications, cross-platform mobile apps, and backend services that solve real operational needs.
+                            I'm <strong class="text-[#0f172a] font-semibold">Zaghy Zalayetha</strong>, a Full-Stack &amp; Mobile Engineer based in Tangerang, Indonesia. I build web applications, cross-platform mobile apps, and backend services that solve real operational needs.
                         </p>
-                        <p class="text-[#676a62]">
-                            Graduated as <strong class="text-[#151614] font-normal">The Best Graduate of Informatics Engineering 2025</strong> from Universitas Budi Luhur with a cumulative GPA of <strong class="text-[#151614] font-mono">3.96 / 4.0</strong>. Currently building scalable full-stack web platforms at <strong class="text-[#151614] font-medium">C3ARBON</strong>.
+                        <p class="text-[#64748b]">
+                            Graduated as <strong class="text-[#0f172a] font-medium">The Best Graduate of Informatics Engineering 2025</strong> from Universitas Budi Luhur with a cumulative GPA of <strong class="text-[#008752] font-mono font-semibold">3.96 / 4.0</strong>. Currently building scalable full-stack web platforms at <strong class="text-[#0f172a] font-semibold">C3ARBON</strong>.
                         </p>
-                        <p class="text-[#676a62]">
+                        <p class="text-[#64748b]">
                             I enjoy the entire product loop: understanding user workflows, architecting clean codebases, optimizing performance, and delivering polished, accessible software.
                         </p>
                     </div>
 
                     <div class="flex justify-start md:justify-end">
-                        <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border border-[#d1d3ca] bg-[#eaeae3]">
+                        <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border border-[#e2e8f0] bg-[#f8fafc] shadow-xs">
                             <img
                                 src="/assets/profile_picture.png"
                                 alt="Zaghy Zalayetha"
@@ -53,34 +53,34 @@ import { experience, education, skillGroups, publication } from "../data/portfol
             </header>
 
             <!-- Experience Timeline -->
-            <section class="border-b border-[#d1d3ca] pb-12 sm:pb-16 mb-12 sm:mb-16">
+            <section class="border-b border-[#e2e8f0] pb-12 sm:pb-16 mb-12 sm:mb-16">
                 <div class="mb-6">
-                    <span class="eyebrow block mb-1">Career</span>
-                    <h2 class="text-[23px] font-normal tracking-[-0.035em] text-[#151614] m-0">
-                        Along the way<span class="text-[#888985]">.</span>
+                    <span class="eyebrow block mb-1 text-[#64748b]">Career</span>
+                    <h2 class="text-[23px] font-semibold tracking-[-0.035em] text-[#0f172a] m-0">
+                        Along the way<span class="text-[#008752]">.</span>
                     </h2>
                 </div>
 
-                <div class="flex flex-col border-t border-[#d1d3ca]">
+                <div class="flex flex-col border-t border-[#e2e8f0]">
                     {
                         experience.map((item) => (
-                            <div class="border-b border-[#d1d3ca] py-6 sm:py-8">
+                            <div class="border-b border-[#e2e8f0] py-6 sm:py-8">
                                 <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
                                     <div>
-                                        <h3 class="text-[16px] sm:text-[17px] font-medium text-[#151614] m-0">
+                                        <h3 class="text-[16px] sm:text-[17px] font-semibold text-[#0f172a] m-0">
                                             {item.company}
                                         </h3>
-                                        <p class="text-[13px] text-[#676a62] mt-0.5 mb-0">
+                                        <p class="text-[13px] text-[#64748b] mt-0.5 mb-0">
                                             {item.role} &middot; <span class="font-mono text-[11px]">{item.location}</span>
                                         </p>
                                     </div>
-                                    <span class="text-[#676a62] font-mono text-[11px] flex-shrink-0">
+                                    <span class="text-[#64748b] font-mono text-[11px] flex-shrink-0">
                                         {item.period}
                                     </span>
                                 </div>
 
                                 {item.description && (
-                                    <p class="text-[13px] text-[#42443f] leading-[1.7] mt-3 mb-2 max-w-2xl">
+                                    <p class="text-[13px] text-[#1e293b] leading-[1.7] mt-3 mb-2 max-w-2xl">
                                         {item.description}
                                     </p>
                                 )}
@@ -88,7 +88,7 @@ import { experience, education, skillGroups, publication } from "../data/portfol
                                 {item.skills && (
                                     <div class="flex flex-wrap items-center gap-1.5 mt-3">
                                         {item.skills.map((skill) => (
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#eaeae3] text-[#42443f]">
+                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">
                                                 {skill}
                                             </span>
                                         ))}
@@ -101,29 +101,29 @@ import { experience, education, skillGroups, publication } from "../data/portfol
             </section>
 
             <!-- Education & Research -->
-            <section class="border-b border-[#d1d3ca] pb-12 sm:pb-16 mb-12 sm:mb-16">
+            <section class="border-b border-[#e2e8f0] pb-12 sm:pb-16 mb-12 sm:mb-16">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div>
-                        <span class="eyebrow block mb-1">Academics</span>
-                        <h2 class="text-[21px] font-normal tracking-[-0.035em] text-[#151614] mb-4">
-                            Education<span class="text-[#888985]">.</span>
+                        <span class="eyebrow block mb-1 text-[#64748b]">Academics</span>
+                        <h2 class="text-[21px] font-semibold tracking-[-0.035em] text-[#0f172a] mb-4">
+                            Education<span class="text-[#008752]">.</span>
                         </h2>
 
                         <div class="space-y-6">
                             {
                                 education.map((edu) => (
-                                    <div class="border-t border-[#d1d3ca] pt-4">
-                                        <h3 class="text-[15px] font-medium text-[#151614] m-0">
+                                    <div class="border-t border-[#e2e8f0] pt-4">
+                                        <h3 class="text-[15px] font-semibold text-[#0f172a] m-0">
                                             {edu.institution}
                                         </h3>
-                                        <p class="text-[13px] text-[#42443f] mt-1 mb-0.5">
+                                        <p class="text-[13px] text-[#1e293b] mt-1 mb-0.5">
                                             {edu.degree}
                                         </p>
-                                        <p class="text-[11px] font-mono text-[#676a62] m-0">
+                                        <p class="text-[11px] font-mono text-[#64748b] m-0">
                                             {edu.period} {edu.gpa && `· ${edu.gpa}`}
                                         </p>
                                         {edu.achievement && (
-                                            <span class="inline-block mt-2 text-[10px] font-mono px-2 py-0.5 rounded bg-[#eaeae3] text-[#151614]">
+                                            <span class="inline-block mt-2 text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">
                                                 ★ {edu.achievement}
                                             </span>
                                         )}
@@ -134,26 +134,26 @@ import { experience, education, skillGroups, publication } from "../data/portfol
                     </div>
 
                     <div>
-                        <span class="eyebrow block mb-1">Publications</span>
-                        <h2 class="text-[21px] font-normal tracking-[-0.035em] text-[#151614] mb-4">
-                            Research<span class="text-[#888985]">.</span>
+                        <span class="eyebrow block mb-1 text-[#64748b]">Publications</span>
+                        <h2 class="text-[21px] font-semibold tracking-[-0.035em] text-[#0f172a] mb-4">
+                            Research<span class="text-[#008752]">.</span>
                         </h2>
 
-                        <div class="border-t border-[#d1d3ca] pt-4">
-                            <h3 class="text-[14px] font-medium text-[#151614] leading-[1.5] m-0">
+                        <div class="border-t border-[#e2e8f0] pt-4">
+                            <h3 class="text-[14px] font-semibold text-[#0f172a] leading-[1.5] m-0">
                                 {publication.title}
                             </h3>
-                            <p class="text-[12px] text-[#676a62] mt-1.5 mb-1 font-mono">
+                            <p class="text-[12px] text-[#64748b] mt-1.5 mb-1 font-mono">
                                 {publication.authors}
                             </p>
-                            <p class="text-[11px] text-[#676a62] leading-[1.6] mb-3">
+                            <p class="text-[11px] text-[#64748b] leading-[1.6] mb-3">
                                 {publication.venue}
                             </p>
                             <a
                                 href={publication.url}
                                 target="_blank"
                                 rel="noreferrer"
-                                class="text-link text-xs text-[#151614] hover:underline"
+                                class="text-link text-xs text-[#008752] hover:underline font-medium"
                             >
                                 <span>Read publication</span>
                                 <span aria-hidden="true">↗</span>
@@ -165,21 +165,21 @@ import { experience, education, skillGroups, publication } from "../data/portfol
 
             <!-- Skill Groups -->
             <section class="pb-12 sm:pb-16">
-                <span class="eyebrow block mb-1">Toolkit</span>
-                <h2 class="text-[23px] font-normal tracking-[-0.035em] text-[#151614] mb-6">
-                    Skills &amp; capabilities<span class="text-[#888985]">.</span>
+                <span class="eyebrow block mb-1 text-[#64748b]">Toolkit</span>
+                <h2 class="text-[23px] font-semibold tracking-[-0.035em] text-[#0f172a] mb-6">
+                    Skills &amp; capabilities<span class="text-[#008752]">.</span>
                 </h2>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {
                         skillGroups.map((group) => (
-                            <div class="border-t border-[#d1d3ca] pt-4">
-                                <h3 class="text-[13px] font-medium text-[#151614] uppercase tracking-wider font-mono mb-3">
+                            <div class="border-t border-[#e2e8f0] pt-4">
+                                <h3 class="text-[12px] font-semibold text-[#0f172a] uppercase tracking-wider font-mono mb-3">
                                     {group.title}
                                 </h3>
                                 <ul class="m-0 p-0 list-none space-y-1.5">
                                     {group.skills.map((skill) => (
-                                        <li class="text-[13px] text-[#42443f] m-0 p-0">
+                                        <li class="text-[13px] text-[#1e293b] m-0 p-0">
                                             {skill}
                                         </li>
                                     ))}

@@ -2,23 +2,23 @@
 import { contact, socialLinks } from "../../data/portfolio";
 ---
 
-<footer class="w-full mt-20 sm:mt-24 border-t border-[#d1d3ca] pt-10 pb-12">
+<footer class="w-full mt-20 sm:mt-24 border-t border-[#e2e8f0] pt-10 pb-12 bg-[#f8fafc]/50">
     <div class="page-shell">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8">
             <a
                 href={`mailto:${contact.email}`}
-                class="group inline-flex items-center gap-3 text-lg sm:text-[20px] font-normal tracking-[-0.04em] text-[#151614] hover:underline decoration-1 underline-offset-4"
+                class="group inline-flex items-center gap-3 text-lg sm:text-[20px] font-medium tracking-[-0.04em] text-[#0f172a] hover:text-[#008752] transition-colors"
             >
                 <span>Say hello</span>
-                <span class="text-[#676a62] group-hover:text-[#151614] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                <span class="text-[#008752] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
             </a>
 
-            <div class="flex flex-wrap items-center gap-6 text-[11px] text-[#676a62]">
+            <div class="flex flex-wrap items-center gap-6 text-[11px] text-[#64748b]">
                 <a
                     href={socialLinks.github}
                     target="_blank"
                     rel="noreferrer"
-                    class="min-h-[36px] inline-flex items-center hover:text-[#151614] transition-colors"
+                    class="min-h-[36px] inline-flex items-center hover:text-[#008752] transition-colors"
                 >
                     GitHub
                 </a>
@@ -26,7 +26,7 @@ import { contact, socialLinks } from "../../data/portfolio";
                     href={socialLinks.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    class="min-h-[36px] inline-flex items-center hover:text-[#151614] transition-colors"
+                    class="min-h-[36px] inline-flex items-center hover:text-[#008752] transition-colors"
                 >
                     LinkedIn
                 </a>
@@ -34,14 +34,14 @@ import { contact, socialLinks } from "../../data/portfolio";
                     href="https://bit.ly/portfolio-zaghy"
                     target="_blank"
                     rel="noreferrer"
-                    class="min-h-[36px] inline-flex items-center hover:text-[#151614] transition-colors"
+                    class="min-h-[36px] inline-flex items-center hover:text-[#008752] transition-colors"
                 >
                     Résumé
                 </a>
             </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[10px] text-[#676a62] pt-4 border-t border-[#d1d3ca]/50 font-mono">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[10px] text-[#64748b] pt-4 border-t border-[#e2e8f0] font-mono">
             <span>© 2026 Zaghy Zalayetha</span>
             <span>From my desk in Tangerang, Indonesia 🇮🇩</span>
         </div>

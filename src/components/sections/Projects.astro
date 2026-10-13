@@ -4,35 +4,35 @@ import { projects } from "../../data/portfolio";
 const featuredProjects = projects.slice(0, 4);
 ---
 
-<section id="selected-work" class="w-full py-12 sm:py-16 border-b border-[#d1d3ca]" aria-labelledby="work-title">
+<section id="selected-work" class="w-full py-12 sm:py-16 border-b border-[#e2e8f0]" aria-labelledby="work-title">
     <div class="flex items-baseline justify-between gap-4 mb-6">
-        <h2 id="work-title" class="text-[23px] font-normal tracking-[-0.035em] text-[#151614] m-0">
-            Selected work<span class="text-[#888985]">.</span>
+        <h2 id="work-title" class="text-[23px] font-semibold tracking-[-0.035em] text-[#0f172a] m-0">
+            Selected work<span class="text-[#008752]">.</span>
         </h2>
         <a
             href="/work"
-            class="text-link text-xs text-[#676a62] hover:text-[#151614] flex-shrink-0"
+            class="text-link text-xs text-[#64748b] hover:text-[#008752] flex-shrink-0"
         >
             <span>All work</span>
-            <span aria-hidden="true">↗</span>
+            <span aria-hidden="true" class="text-[#008752]">↗</span>
         </a>
     </div>
 
-    <ul class="m-0 p-0 list-none border-t border-[#d1d3ca]">
+    <ul class="m-0 p-0 list-none border-t border-[#e2e8f0]">
         {
             featuredProjects.map((project) => (
-                <li class="m-0 p-0 border-b border-[#d1d3ca] last:border-b-0">
+                <li class="m-0 p-0 border-b border-[#e2e8f0] last:border-b-0">
                     <a
                         href={`/projects/${project.slug}`}
                         class="group grid grid-cols-1 sm:grid-cols-[170px_minmax(0,1fr)_16px] md:grid-cols-[200px_minmax(0,1fr)_16px] items-baseline gap-2 sm:gap-7 py-5 no-underline transition-colors"
                     >
-                        <span class="text-[15px] font-medium text-[#151614] group-hover:underline underline-offset-4 decoration-1">
+                        <span class="text-[15px] font-medium text-[#0f172a] group-hover:text-[#008752] group-hover:underline underline-offset-4 decoration-1">
                             {project.title}
                         </span>
-                        <span class="text-[13px] text-[#676a62] line-clamp-2 sm:line-clamp-1">
+                        <span class="text-[13px] text-[#64748b] line-clamp-2 sm:line-clamp-1">
                             {project.tagline}
                         </span>
-                        <span class="link-arrow text-sm hidden sm:inline-block" aria-hidden="true">
+                        <span class="link-arrow text-sm text-[#64748b] group-hover:text-[#008752] hidden sm:inline-block" aria-hidden="true">
                             ↗
                         </span>
                     </a>

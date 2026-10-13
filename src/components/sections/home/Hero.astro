@@ -2,36 +2,45 @@
 import { contact } from "../../../data/portfolio";
 ---
 
-<section class="w-full pt-6 sm:pt-12">
+<section class="w-full pt-8 sm:pt-14">
     <div class="grid grid-cols-1 md:grid-cols-[1.15fr_1fr] items-center gap-8 md:gap-12">
         <div class="relative z-1">
-            <span class="eyebrow block mb-4">Engineer / builder / mobile specialist</span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 text-[11px] font-mono font-medium tracking-wide mb-5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#008752] animate-pulse"></span>
+                <span>Engineer &middot; Builder &middot; Mobile Specialist</span>
+            </div>
 
-            <h1 class="text-[clamp(42px,5.5vw,70px)] font-normal tracking-[-0.065em] text-[#151614] leading-[1.06]">
-                Zaghy Zalayetha<span class="text-[#888985]">.</span>
+            <h1 class="text-[clamp(42px,5.5vw,70px)] font-bold tracking-[-0.065em] text-[#0f172a] leading-[1.06]">
+                Zaghy Zalayetha<span class="text-[#008752]">.</span>
             </h1>
 
-            <p class="max-w-[440px] text-[#676a62] text-[16px] sm:text-[17px] leading-[1.85] mt-6">
+            <p class="max-w-[440px] text-[#64748b] text-[16px] sm:text-[17px] leading-[1.85] mt-6">
                 I build web platforms, mobile software, and scalable backend systems. Making complex things useful, reliable, and performant.
             </p>
 
-            <p class="text-[#676a62] text-xs mt-4 font-mono">
+            <p class="text-[#64748b] text-xs mt-4 font-mono">
                 Based in Tangerang, Indonesia. Building everywhere.
             </p>
 
-            <div class="mt-7">
+            <div class="mt-7 flex items-center gap-4">
                 <a
                     href={`mailto:${contact.email}`}
-                    class="group inline-flex items-center gap-2 text-sm text-[#151614] hover:underline underline-offset-4 decoration-1 font-medium"
+                    class="group inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#008752] text-white text-xs sm:text-sm font-medium hover:bg-[#007346] transition-colors shadow-xs"
                 >
                     <span>Let's talk</span>
-                    <span class="text-[#676a62] group-hover:text-[#151614] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                    <span class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                </a>
+                <a
+                    href="/about"
+                    class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#f8fafc] text-[#0f172a] border border-[#e2e8f0] text-xs sm:text-sm font-medium hover:bg-[#f1f5f9] transition-colors"
+                >
+                    <span>About me</span>
                 </a>
             </div>
         </div>
 
         <div class="flex justify-start md:justify-end">
-            <div class="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-[#d1d3ca] bg-[#eaeae3]">
+            <div class="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-[#e2e8f0] bg-[#f8fafc] shadow-xs">
                 <img
                     src="/assets/profile_picture.png"
                     alt="Zaghy Zalayetha"
@@ -43,28 +52,28 @@ import { contact } from "../../../data/portfolio";
     </div>
 
     <!-- Hero Bottom Status Line -->
-    <div class="border-b border-[#d1d3ca] flex flex-wrap items-end justify-between gap-6 sm:gap-10 pt-12 sm:pt-16 pb-10 sm:pb-12 mt-4 text-xs">
+    <div class="border-b border-[#e2e8f0] flex flex-wrap items-end justify-between gap-6 sm:gap-10 pt-12 sm:pt-16 pb-10 sm:pb-12 mt-4 text-xs">
         <div>
-            <span class="eyebrow block mb-1 text-[9px]">Currently</span>
-            <p class="m-0 text-[#151614]">
-                Full-Stack Engineer <span class="text-[#676a62]">at C3ARBON</span>
+            <span class="eyebrow block mb-1 text-[9px] text-[#64748b]">Currently</span>
+            <p class="m-0 text-[#0f172a] font-medium">
+                Full-Stack Engineer <span class="text-[#64748b] font-normal">at C3ARBON</span>
             </p>
         </div>
 
         <div>
-            <span class="eyebrow block mb-1 text-[9px]">Also</span>
-            <p class="m-0 text-[#151614]">
-                The Best Graduate <span class="text-[#676a62]">Informatics Eng. 2025</span>
+            <span class="eyebrow block mb-1 text-[9px] text-[#64748b]">Also</span>
+            <p class="m-0 text-[#0f172a] font-medium">
+                The Best Graduate <span class="text-[#64748b] font-normal">Informatics Eng. 2025</span>
             </p>
         </div>
 
         <div class="w-full sm:w-auto sm:ml-auto">
             <a
                 href="#selected-work"
-                class="text-link text-[11px] text-[#676a62] hover:text-[#151614] transition-colors"
+                class="text-link text-[11px] text-[#64748b] hover:text-[#008752] transition-colors"
             >
                 <span>A few things I've built</span>
-                <span aria-hidden="true">↓</span>
+                <span aria-hidden="true" class="text-[#008752]">↓</span>
             </a>
         </div>
     </div>

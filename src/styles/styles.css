@@ -1,35 +1,39 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
 :root {
-  --bg: #f4f4ee;
-  --surface: #eaeae3;
+  --bg: #ffffff;
+  --surface: #f8fafc;
   --surface-raised: #ffffff;
-  --fg: #151614;
-  --fg-soft: #42443f;
-  --muted: #676a62;
-  --line: #d1d3ca;
-  --hover: #e2e4db;
-  --accent: #151614;
-  --accent-strong: #30322e;
-  --accent-ink: #f4f4ee;
-  --selection: #d5d6cf;
+  --fg: #0f172a;
+  --fg-soft: #1e293b;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --hover: #f1f5f9;
+  --primary: #008752;
+  --primary-hover: #007346;
+  --accent: #008752;
+  --accent-soft: #e8f8f0;
+  --accent-strong: #007346;
+  --accent-ink: #ffffff;
+  --selection: #d4f4e2;
 }
 
 @theme {
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --font-newsreader: "Newsreader", serif;
-  --font-manrope: "Manrope", sans-serif;
 
-  --color-bg: #f4f4ee;
-  --color-surface: #eaeae3;
+  --color-bg: #ffffff;
+  --color-surface: #f8fafc;
   --color-surface-raised: #ffffff;
-  --color-fg: #151614;
-  --color-fg-soft: #42443f;
-  --color-muted: #676a62;
-  --color-line: #d1d3ca;
-  --color-hover: #e2e4db;
+  --color-fg: #0f172a;
+  --color-fg-soft: #1e293b;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-hover: #f1f5f9;
+  --color-primary: #008752;
+  --color-primary-hover: #007346;
+  --color-accent-soft: #e8f8f0;
 }
 
 @layer base {
@@ -90,7 +94,7 @@
 }
 
 .text-link:hover {
-  color: var(--fg);
+  color: var(--primary);
 }
 
 .text-link span[aria-hidden="true"] {
@@ -112,6 +116,6 @@
 
 .group:hover .link-arrow,
 a:hover .link-arrow {
-  color: var(--fg);
+  color: var(--primary);
   transform: translate(2px, -2px);
 }
