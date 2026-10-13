@@ -99,25 +99,12 @@ export const experience: Experience[] = [
     skills: ["Flutter", "Dart", "REST APIs", "GetX", "Drift", "App Store Connect", "Play Console"],
   },
   {
-    company: "Bangkit Academy",
-    role: "Mobile Developer Cohort",
-    period: "February 2024 - July 2024",
-    location: "Indonesia • Remote",
-    description:
-      "Selected for intensive Google, Tokopedia, Gojek & Traveloka tech academy cohort focused on mobile engineering.",
-    highlights: [
-      "Deepened expertise in mobile architecture, MVVM, clean architecture principles, and REST API integration.",
-      "Collaborated in cross-functional teams to build and ship production-ready capstone mobile applications.",
-    ],
-    skills: ["Mobile Development", "Clean Architecture", "Kotlin / Android", "Git"],
-  },
-  {
     company: "English Space",
     role: "Web Developer",
     period: "June 2022 - March 2023",
     location: "Indonesia • Remote",
     description:
-      "Built and optimized interactive web applications for English language education and student engagement.",
+      "Developed and optimized a responsive landing page for an English language education service to drive prospective student inquiries and course registrations..",
     highlights: [
       "Engineered accessible, responsive web interfaces with fast load performance.",
       "Collaborated on feature enhancements to streamline learning material delivery.",
@@ -134,10 +121,10 @@ export const education: Education[] = [
     degree: "Bachelor of Computer Science, Informatics Engineering",
   },
   {
-    institution: "SMA Negeri 7 Tangerang",
-    location: "Tangerang, Indonesia",
-    period: "October 2018 - May 2021",
-    degree: "Science",
+    institution: "Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka",
+    location: "Indonesia • Remote",
+    period: "February 2024 - July 2024",
+    degree: "Mobile Developer Cohort",
   },
 ];
 
