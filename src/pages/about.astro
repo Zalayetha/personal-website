@@ -71,7 +71,13 @@ import { experience, education, skillGroups, publication } from "../data/portfol
                                             {item.company}
                                         </h3>
                                         <p class="text-[13px] text-[#64748b] mt-0.5 mb-0">
-                                            {item.role} &middot; <span class="font-mono text-[11px]">{item.location}</span>
+                                            {item.roles ? (
+                                                <span class="font-mono text-[11px]">{item.location}</span>
+                                            ) : (
+                                                <>
+                                                    {item.role} &middot; <span class="font-mono text-[11px]">{item.location}</span>
+                                                </>
+                                            )}
                                         </p>
                                     </div>
                                     <span class="text-[#64748b] font-mono text-[11px] flex-shrink-0">
@@ -79,20 +85,55 @@ import { experience, education, skillGroups, publication } from "../data/portfol
                                     </span>
                                 </div>
 
-                                {item.description && (
-                                    <p class="text-[13px] text-[#1e293b] leading-[1.7] mt-3 mb-2 max-w-2xl">
-                                        {item.description}
-                                    </p>
-                                )}
+                                {item.roles ? (
+                                    <div class="space-y-6 pl-4 border-l-2 border-[#e2e8f0] ml-1 mt-5">
+                                        {item.roles.map((role) => (
+                                            <div>
+                                                <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                                                    <h4 class="text-[14px] sm:text-[15px] font-semibold text-[#0f172a] m-0">
+                                                        {role.title}
+                                                    </h4>
+                                                    <span class="text-[#64748b] font-mono text-[10px] sm:text-[11px]">
+                                                        {role.period}
+                                                    </span>
+                                                </div>
 
-                                {item.skills && (
-                                    <div class="flex flex-wrap items-center gap-1.5 mt-3">
-                                        {item.skills.map((skill) => (
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">
-                                                {skill}
-                                            </span>
+                                                {role.description && (
+                                                    <p class="text-[13px] text-[#1e293b] leading-[1.7] my-2 max-w-2xl">
+                                                        {role.description}
+                                                    </p>
+                                                )}
+
+                                                {role.skills && (
+                                                    <div class="flex flex-wrap items-center gap-1.5 mt-2">
+                                                        {role.skills.map((skill) => (
+                                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">
+                                                                {skill}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
                                         ))}
                                     </div>
+                                ) : (
+                                    <>
+                                        {item.description && (
+                                            <p class="text-[13px] text-[#1e293b] leading-[1.7] mt-3 mb-2 max-w-2xl">
+                                                {item.description}
+                                            </p>
+                                        )}
+
+                                        {item.skills && (
+                                            <div class="flex flex-wrap items-center gap-1.5 mt-3">
+                                                {item.skills.map((skill) => (
+                                                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">
+                                                        {skill}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </>
                                 )}
                             </div>
                         ))

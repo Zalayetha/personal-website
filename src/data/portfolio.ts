@@ -1,3 +1,11 @@
+export interface RoleItem {
+  title: string;
+  period: string;
+  highlights?: string[];
+  description?: string;
+  skills?: string[];
+}
+
 export interface Experience {
   company: string;
   role: string;
@@ -6,6 +14,7 @@ export interface Experience {
   description?: string;
   highlights?: string[];
   skills?: string[];
+  roles?: RoleItem[];
 }
 
 export interface Education {
@@ -73,30 +82,41 @@ export interface SkillCategory {
 export const experience: Experience[] = [
   {
     company: "C3ARBON",
-    role: "Full-Stack Engineer",
+    role: "Software Engineer",
     period: "March 2026 - Present",
     location: "Indonesia • Remote",
     description:
       "Developing end-to-end full-stack web solutions and carbon accounting tools for sustainability intelligence.",
-    highlights: [
-      "Building high-performance user interfaces and responsive web workflows.",
-      "Designing resilient API integrations and database architectures.",
-    ],
     skills: ["PHP", "Laravel", "TypeScript", "React", "Node.js", "PostgreSQL", "Tailwind CSS"],
   },
   {
     company: "Universitas Budi Luhur",
     role: "Staff Programmer",
-    period: "September 2023 - April 2026",
+    period: "September 2023 - August 2026",
     location: "Indonesia • Hybrid",
-    description:
-      "Engineered core academic software and cross-platform mobile systems for the university ecosystem.",
-    highlights: [
-      "Rebuilt student mobile application from legacy native codebases into a unified Flutter app, serving 5,000+ active students.",
-      "Developed QR-based attendance tracking, significantly reducing manual check-in errors and processing time.",
-      "Managed production releases for Google Play Store and Apple App Store while optimizing performance and reducing ANR rates.",
+    roles: [
+      {
+        title: "Staff Programmer",
+        period: "April 2025 - August 2026 · 1 yr 5 mos",
+        description:
+          "Led a 3-person engineering team to deliver an internal employee mobile application from architecture to production launch. Maintained student mobile applications serving 5,000+ active users and owned production releases across Google Play and App Store.",
+        skills: [
+          "Flutter",
+          "Dart",
+          "Team Leadership",
+          "App Store Connect",
+          "Play Console",
+          "Testing",
+        ],
+      },
+      {
+        title: "Junior Programmer",
+        period: "September 2023 - April 2025 · 1 yr 8 mos",
+        description:
+          "Built and launched a native iOS student application in 3 months (4+ star App Store rating). Developed student-facing Android/iOS features and supported production release workflows across Google Play and App Store.",
+        skills: ["iOS (Swift / SwiftUI)", "Android", "REST APIs", "Mobile Development"],
+      },
     ],
-    skills: ["Flutter", "Dart", "REST APIs", "GetX", "Drift", "App Store Connect", "Play Console"],
   },
   {
     company: "English Space",
@@ -104,11 +124,7 @@ export const experience: Experience[] = [
     period: "June 2022 - March 2023",
     location: "Indonesia • Remote",
     description:
-      "Developed and optimized a responsive landing page for an English language education service to drive prospective student inquiries and course registrations..",
-    highlights: [
-      "Engineered accessible, responsive web interfaces with fast load performance.",
-      "Collaborated on feature enhancements to streamline learning material delivery.",
-    ],
+      "Developed and optimized a responsive landing page for an English language education service to drive prospective student inquiries and course registrations.",
     skills: ["JavaScript", "Web Development", "HTML/CSS", "UI/UX"],
   },
 ];
