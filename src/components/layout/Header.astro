@@ -1,111 +1,51 @@
 ---
-console.log("Header Run 🏃");
+const pathname = Astro.url.pathname;
 
 const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/projects", label: "Projects" },
-    { href: "/services", label: "Services" },
-    { href: "/blog", label: "Blog" },
+    { href: "/work", label: "Work", aliases: ["/projects"] },
+    { href: "/writing", label: "Writing", aliases: ["/blog"] },
+    { href: "/about", label: "About", aliases: [] },
 ];
+
+function isCurrent(item: typeof navItems[0]) {
+    if (pathname === item.href) return true;
+    if (item.aliases.some((alias) => pathname.startsWith(alias))) return true;
+    if (item.href !== "/" && pathname.startsWith(item.href)) return true;
+    return false;
+}
 ---
 
-<header class="sticky top-0 z-50 w-full bg-gray-100/80 backdrop-blur-md border-b border-gray-200/50 transition-colors duration-200">
-    <nav
-        class="flex flex-row justify-between px-6 lg:px-8 py-4 items-center max-w-5xl mx-auto"
-    >
-        <a href="/" class="flex items-center gap-2 group">
-            <div class="relative flex items-center justify-center w-8 h-8 rounded-lg bg-gray-900 text-white shadow-sm transition-transform duration-300 group-hover:scale-105">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="transition-colors duration-300 group-hover:text-emerald-400"
-                    ><path d="M7 20h10"></path><path d="M10 20c5.5-2.5.8-6.4 3-10"
-                    ></path><path
-                        d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"
-                    ></path><path
-                        d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"
-                    ></path></svg
-                >
-            </div>
-            <span class="font-newsreader text-lg font-semibold tracking-tight text-gray-950">
-                zaghy.zalayetha
-            </span>
-        </a>
+<header class="w-full">
+    <div class="page-shell">
+        <div class="flex items-center justify-between min-h-[96px] sm:min-h-[104px]">
+            <a
+                href="/"
+                class="inline-flex items-center text-[19px] font-medium tracking-[-0.065em] text-[#151614] hover:opacity-80 transition-opacity"
+            >
+                zaghy<span class="text-[#676a62]">.</span>
+            </a>
 
-        <button
-            id="menu-toggle"
-            class="lg:hidden flex flex-col gap-1.5 p-2 z-50 rounded-lg hover:bg-gray-200/50 transition-colors"
-            aria-label="Toggle menu"
-        >
-            <span
-                class="block w-5 h-0.5 bg-gray-700 transition-all duration-300 origin-center"
-            ></span>
-            <span
-                class="block w-5 h-0.5 bg-gray-700 transition-all duration-300"
-            ></span>
-            <span
-                class="block w-5 h-0.5 bg-gray-700 transition-all duration-300 origin-center"
-            ></span>
-        </button>
-
-        <div
-            id="mobile-menu"
-            class="flex items-center gap-6 max-lg:fixed max-lg:inset-x-0 max-lg:top-18 max-lg:flex-col max-lg:gap-4 max-lg:bg-gray-100/95 max-lg:backdrop-blur-md max-lg:p-6 max-lg:border-b max-lg:border-gray-200 max-lg:transition-all max-lg:duration-300 max-lg:invisible max-lg:opacity-0 max-lg:translate-y-[-10px] max-lg:pointer-events-none"
-        >
-            {
-                navItems.map((item) => (
-                    <a
-                        href={item.href}
-                        class="relative font-manrope text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-gray-950 py-1 px-2.5 rounded-md hover:bg-gray-200/40"
-                    >
-                        {item.label}
-                    </a>
-                ))
-            }
+            <nav class="flex items-center gap-6 sm:gap-8 text-xs font-normal">
+                {
+                    navItems.map((item) => {
+                        const active = isCurrent(item);
+                        return (
+                            <a
+                                href={item.href}
+                                aria-current={active ? "page" : undefined}
+                                class:list={[
+                                    "min-h-[44px] inline-flex items-center transition-colors",
+                                    active
+                                        ? "text-[#151614] underline underline-offset-[6px] decoration-1 decoration-[#151614]"
+                                        : "text-[#676a62] hover:text-[#151614]",
+                                ]}
+                            >
+                                {item.label}
+                            </a>
+                        );
+                    })
+                }
+            </nav>
         </div>
-    </nav>
+    </div>
 </header>
-
-<div
-    id="menu-overlay"
-    class="fixed inset-0 bg-black/20 z-40 invisible opacity-0 transition-all duration-300 lg:hidden"
->
-</div>
-
-<script>
-    const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("mobile-menu");
-    const overlay = document.getElementById("menu-overlay");
-    const links = menu?.querySelectorAll("a");
-
-    function toggleMenu() {
-        menu?.classList.toggle("max-lg:visible");
-        menu?.classList.toggle("max-lg:invisible");
-        menu?.classList.toggle("max-lg:opacity-100");
-        menu?.classList.toggle("max-lg:opacity-0");
-        menu?.classList.toggle("max-lg:translate-y-0");
-        menu?.classList.toggle("max-lg:translate-y-[-10px]");
-        menu?.classList.toggle("max-lg:pointer-events-auto");
-        menu?.classList.toggle("max-lg:pointer-events-none");
-        overlay?.classList.toggle("invisible");
-        overlay?.classList.toggle("visible");
-        overlay?.classList.toggle("opacity-0");
-        overlay?.classList.toggle("opacity-100");
-    }
-
-    toggle?.addEventListener("click", toggleMenu);
-    overlay?.addEventListener("click", toggleMenu);
-    links?.forEach((link) =>
-        link.addEventListener("click", () => {
-            if (menu?.classList.contains("max-lg:visible")) toggleMenu();
-        }),
-    );
-</script>

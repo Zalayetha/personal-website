@@ -2,10 +2,6 @@
 import "../styles/styles.css";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
-import Section from "../components/layout/Section.astro";
-import { MagicCard } from "../components/magicui/magic-card";
-import { GridPattern } from "../components/magicui/grid-pattern";
-import { BlurFade } from "../components/magicui/blur-fade";
 import { blogPosts } from "../data/portfolio";
 ---
 
@@ -14,123 +10,64 @@ import { blogPosts } from "../data/portfolio";
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/assets/sprout.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Blog - Zaghy Zalayetha</title>
+        <title>Writing | Zaghy Zalayetha</title>
+        <meta
+            name="description"
+            content="Thoughts on software engineering, mobile development, product architecture, and learnings by Zaghy Zalayetha."
+        />
     </head>
-    <body class="relative overflow-x-hidden">
+    <body class="min-h-screen flex flex-col bg-[#f4f4ee] text-[#42443f] font-sans antialiased selection:bg-[#d5d6cf] selection:text-[#151614]">
         <Header />
-        <main class="relative">
-            <!-- Magic UI Grid Background -->
-            <GridPattern
-                client:visible
-                width={36}
-                height={36}
-                className="[mask-image:radial-gradient(ellipse_60%_50%_at_50%_25%,#000_70%,transparent_100%)] opacity-30"
-            />
+        <main class="page-shell flex-1 flex flex-col w-full pt-8 sm:pt-12">
+            <header class="border-b border-[#d1d3ca] pb-8 sm:pb-10 mb-8 sm:mb-12">
+                <span class="eyebrow block mb-3">Articles &amp; Notes</span>
+                <h1 class="text-[clamp(34px,4.5vw,48px)] font-normal tracking-[-0.05em] text-[#151614] leading-[1.1] m-0">
+                    Writing<span class="text-[#888985]">.</span>
+                </h1>
+                <p class="max-w-[560px] text-[15px] sm:text-[16px] text-[#676a62] leading-[1.8] mt-4">
+                    Reflections on mobile apps, software architecture, developer experience, and lessons learned along the way.
+                </p>
+            </header>
 
-            <Section id="blog">
-                <div class="relative z-10 max-w-5xl mx-auto">
-                    <BlurFade client:visible delay={0.05}>
-                        <div class="text-center mb-16">
-                            <h1
-                                class="font-newsreader text-4xl lg:text-5xl font-bold text-gray-950 mb-4"
+            <div class="flex flex-col border-t border-[#d1d3ca]">
+                {
+                    blogPosts.map((post) => (
+                        <article class="border-b border-[#d1d3ca] py-7 sm:py-9">
+                            <a
+                                href={`/blog/${post.slug}`}
+                                class="group block no-underline"
                             >
-                                Blog
-                            </h1>
-                            <p
-                                class="font-manrope text-base text-gray-500 max-w-xl mx-auto"
-                            >
-                                Thoughts on building software and everything in
-                                between.
-                            </p>
-                        </div>
-                    </BlurFade>
+                                <div class="flex items-baseline justify-between gap-4">
+                                    <h2 class="text-[17px] sm:text-[19px] font-medium tracking-[-0.025em] text-[#151614] m-0 group-hover:underline underline-offset-4 decoration-1">
+                                        {post.title}
+                                    </h2>
+                                    <span class="link-arrow text-sm hidden sm:inline-block" aria-hidden="true">
+                                        ↗
+                                    </span>
+                                </div>
 
-                    <div class="grid lg:grid-cols-2 gap-6">
-                        {
-                            blogPosts.map((post, idx) => (
-                                <BlurFade client:visible delay={0.1 + idx * 0.06}>
-                                    <a
-                                        href={`/blog/${post.slug}`}
-                                        class="block h-full group"
-                                    >
-                                        <MagicCard
-                                            client:visible
-                                            gradientSize={260}
-                                            gradientColor="rgba(55, 65, 81, 0.12)"
-                                            className="p-6 h-full flex flex-col justify-between transition-all duration-300 hover:border-gray-400/80 hover:shadow-xl hover:shadow-gray-200/60"
-                                        >
-                                            <div>
-                                                <div class="flex items-center gap-2 mb-3">
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="2"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="w-4 h-4 text-gray-400"
-                                                    >
-                                                        <rect
-                                                            width="18"
-                                                            height="18"
-                                                            x="3"
-                                                            y="4"
-                                                            rx="2"
-                                                            ry="2"
-                                                        />
-                                                        <line
-                                                            x1="16"
-                                                            x2="16"
-                                                            y1="2"
-                                                            y2="6"
-                                                        />
-                                                        <line
-                                                            x1="8"
-                                                            x2="8"
-                                                            y1="2"
-                                                            y2="6"
-                                                        />
-                                                        <line
-                                                            x1="3"
-                                                            x2="21"
-                                                            y1="10"
-                                                            y2="10"
-                                                        />
-                                                    </svg>
-                                                    <span class="font-manrope text-sm text-gray-400">
-                                                        {post.date}
-                                                    </span>
-                                                </div>
-                                                <h2 class="font-newsreader text-xl font-semibold text-gray-950 mb-2 group-hover:text-gray-700 transition-colors">
-                                                    {post.title}
-                                                </h2>
-                                                <p class="font-manrope text-sm text-gray-500 leading-relaxed mb-4">
-                                                    {post.excerpt}
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <div class="flex flex-wrap gap-2 mb-4">
-                                                    {post.tags.map((tag) => (
-                                                        <span class="font-manrope text-xs px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 border border-gray-200/60">
-                                                            {tag}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                                <span class="font-manrope text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-gray-950">
-                                                    Read more →
-                                                </span>
-                                            </div>
-                                        </MagicCard>
-                                    </a>
-                                </BlurFade>
-                            ))
-                        }
-                    </div>
-                </div>
-            </Section>
+                                <p class="text-[14px] text-[#676a62] leading-[1.7] mt-2 mb-3 max-w-2xl">
+                                    {post.excerpt}
+                                </p>
+
+                                <div class="flex items-center gap-4 text-xs">
+                                    <time class="text-[#676a62] font-mono text-[11px]">
+                                        {post.date}
+                                    </time>
+                                    <span class="text-[#d1d3ca]">&middot;</span>
+                                    <div class="flex items-center gap-2">
+                                        {post.tags.slice(0, 2).map((tag) => (
+                                            <span class="text-[11px] font-mono text-[#676a62]">
+                                                #{tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    ))
+                }
+            </div>
         </main>
         <Footer />
     </body>

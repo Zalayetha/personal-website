@@ -3,6 +3,9 @@ export interface Experience {
   role: string;
   period: string;
   location: string;
+  description?: string;
+  highlights?: string[];
+  skills?: string[];
 }
 
 export interface Education {
@@ -62,30 +65,64 @@ export interface Skill {
   variant: "dark" | "light";
 }
 
+export interface SkillCategory {
+  title: string;
+  skills: string[];
+}
+
 export const experience: Experience[] = [
   {
     company: "C3ARBON",
     role: "Full-Stack Engineer",
     period: "March 2026 - Present",
     location: "Indonesia • Remote",
+    description:
+      "Developing end-to-end full-stack web solutions and carbon accounting tools for sustainability intelligence.",
+    highlights: [
+      "Building high-performance user interfaces and responsive web workflows.",
+      "Designing resilient API integrations and database architectures.",
+    ],
+    skills: ["TypeScript", "React", "Node.js", "PostgreSQL", "Tailwind CSS"],
   },
   {
     company: "Universitas Budi Luhur",
     role: "Staff Programmer",
     period: "September 2023 - April 2026",
     location: "Indonesia • Hybrid",
+    description:
+      "Engineered core academic software and cross-platform mobile systems for the university ecosystem.",
+    highlights: [
+      "Rebuilt student mobile application from legacy native codebases into a unified Flutter app, serving 5,000+ active students.",
+      "Developed QR-based attendance tracking, significantly reducing manual check-in errors and processing time.",
+      "Managed production releases for Google Play Store and Apple App Store while optimizing performance and reducing ANR rates.",
+    ],
+    skills: ["Flutter", "Dart", "REST APIs", "GetX", "Drift", "App Store Connect", "Play Console"],
   },
   {
     company: "Bangkit Academy",
     role: "Mobile Developer Cohort",
     period: "February 2024 - July 2024",
     location: "Indonesia • Remote",
+    description:
+      "Selected for intensive Google, Tokopedia, Gojek & Traveloka tech academy cohort focused on mobile engineering.",
+    highlights: [
+      "Deepened expertise in mobile architecture, MVVM, clean architecture principles, and REST API integration.",
+      "Collaborated in cross-functional teams to build and ship production-ready capstone mobile applications.",
+    ],
+    skills: ["Mobile Development", "Clean Architecture", "Kotlin / Android", "Git"],
   },
   {
     company: "English Space",
     role: "Web Developer",
     period: "June 2022 - March 2023",
     location: "Indonesia • Remote",
+    description:
+      "Built and optimized interactive web applications for English language education and student engagement.",
+    highlights: [
+      "Engineered accessible, responsive web interfaces with fast load performance.",
+      "Collaborated on feature enhancements to streamline learning material delivery.",
+    ],
+    skills: ["JavaScript", "Web Development", "HTML/CSS", "UI/UX"],
   },
 ];
 
@@ -147,6 +184,46 @@ export const softSkills: Skill[] = [
   { name: "Critical Thinking", variant: "light" },
   { name: "Effective Communication", variant: "light" },
   { name: "Leadership", variant: "light" },
+];
+
+export const skillGroups: SkillCategory[] = [
+  {
+    title: "Core Specialties",
+    skills: [
+      "Full-Stack Web Development",
+      "Cross-Platform Mobile Apps",
+      "API Design & Integration",
+      "UI/UX Implementation",
+      "Performance & ANR Optimization",
+    ],
+  },
+  {
+    title: "Languages & Frameworks",
+    skills: [
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Dart",
+      "Flutter",
+      "React / React Native",
+      "Astro",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    title: "Backend, Database & DevOps",
+    skills: ["Node.js", "Supabase", "PostgreSQL", "Flask", "Docker", "Cloudflare", "Git & GitHub"],
+  },
+  {
+    title: "Professional Strengths",
+    skills: [
+      "Critical Thinking",
+      "Problem Solving",
+      "Product Mindset",
+      "Technical Communication",
+      "Team Leadership",
+    ],
+  },
 ];
 
 export const projects: Project[] = [

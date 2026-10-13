@@ -1,9 +1,0 @@
-export { DotPattern } from "./dot-pattern";
-export { GridPattern } from "./grid-pattern";
-export { BlurFade } from "./blur-fade";
-export { MagicCard } from "./magic-card";
-export { BorderBeam } from "./border-beam";
-export { ShimmerButton } from "./shimmer-button";
-export { Marquee } from "./marquee";
-export { SkillsMarquee } from "./skills-marquee";
-export { Ripple } from "./ripple";

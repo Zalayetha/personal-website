@@ -6,7 +6,7 @@ import Footer from "../components/layout/Footer.astro";
 import HomeHero from "../components/sections/home/Hero.astro";
 import Projects from "../components/sections/Projects.astro";
 import Blog from "../components/sections/home/Blog.astro";
-import Contact from "../components/sections/home/Contact.astro";
+import ExperienceSection from "../components/sections/home/ExperienceSection.astro";
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -14,15 +14,19 @@ import Contact from "../components/sections/home/Contact.astro";
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/assets/sprout.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Zaghy Zalayetha - Software Developer</title>
+        <title>Zaghy Zalayetha | Full-Stack &amp; Mobile Engineer</title>
+        <meta
+            name="description"
+            content="Zaghy Zalayetha. Full-stack and mobile engineer based in Indonesia. Best Graduate of Informatics Engineering 2025."
+        />
     </head>
-    <body>
+    <body class="min-h-screen flex flex-col bg-[#f4f4ee] text-[#42443f] font-sans antialiased selection:bg-[#d5d6cf] selection:text-[#151614]">
         <Header />
-        <main>
+        <main class="page-shell flex-1 flex flex-col w-full">
             <HomeHero />
             <Projects />
             <Blog />
-            <Contact />
+            <ExperienceSection />
         </main>
         <Footer />
     </body>
