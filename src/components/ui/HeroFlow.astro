@@ -1,0 +1,310 @@
+---
+interface Props {
+    class?: string;
+    speed?: number;
+    scale?: number;
+    lines?: number;
+    lineWidth?: number;
+    grain?: number;
+    bg?: string;
+    lineColor?: string;
+    accent?: string;
+    quality?: number;
+}
+
+const {
+    class: className = "",
+    speed = 0.18,
+    scale = 1.6,
+    lines = 14,
+    lineWidth = 0.065,
+    grain = 0.055,
+    bg = "#ffffff",
+    lineColor = "#008752",
+    accent = "#e8f8f0",
+    quality = 1,
+} = Astro.props;
+---
+
+<div
+    class:list={["hero-flow-container relative overflow-hidden", className]}
+    data-speed={speed}
+    data-scale={scale}
+    data-lines={lines}
+    data-line-width={lineWidth}
+    data-grain={grain}
+    data-bg={bg}
+    data-line-color={lineColor}
+    data-accent={accent}
+    data-quality={quality}
+>
+    <canvas
+        class="hero-flow-canvas absolute inset-0 w-full h-full pointer-events-none z-0"
+        aria-hidden="true"
+    ></canvas>
+
+    <!-- Slot for hero content -->
+    <div class="relative z-1">
+        <slot />
+    </div>
+
+    <!-- Minimal Play/Pause button -->
+    <button
+        type="button"
+        class="hero-flow-toggle absolute right-3 bottom-3 z-10 px-2.5 py-1 text-[10px] font-mono text-[#64748b] bg-white/80 hover:bg-white border border-[#e2e8f0] rounded-full transition-all backdrop-blur-xs cursor-pointer opacity-50 hover:opacity-100 shadow-2xs"
+        aria-label="Pause background animation"
+    >
+        ❚❚ Pause
+    </button>
+</div>
+
+<script>
+    const VERT = `
+attribute vec2 aPos;
+void main() { gl_Position = vec4(aPos, 0.0, 1.0); }
+`;
+
+    const FRAG = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+
+uniform float uTime;
+uniform vec2  uResolution;
+uniform float uScale;
+uniform float uLines;
+uniform float uLineWidth;
+uniform float uGrain;
+uniform vec3  uBg;
+uniform vec3  uLine;
+uniform vec3  uAccent;
+
+vec3 permute(vec3 x) { return mod(((x * 34.0) + 1.0) * x, 289.0); }
+
+float snoise(vec2 v) {
+  const vec4 C = vec4(0.211324865405187, 0.366025403784439,
+                     -0.577350269189626, 0.024390243902439);
+  vec2 i  = floor(v + dot(v, C.yy));
+  vec2 x0 = v - i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz;
+  x12.xy -= i1;
+  i = mod(i, 289.0);
+  vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+  vec3 m = max(0.5 - vec3(dot(x0, x0), dot(x12.xy, x12.xy), dot(x12.zw, x12.zw)), 0.0);
+  m = m * m; m = m * m;
+  vec3 x  = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h  = abs(x) - 0.5;
+  vec3 ox = floor(x + 0.5);
+  vec3 a0 = x - ox;
+  m *= 1.79284291400159 - 0.85373472095314 * (a0 * a0 + h * h);
+  vec3 g;
+  g.x  = a0.x * x0.x + h.x * x0.y;
+  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+  return 130.0 * dot(m, g);
+}
+
+float fbm(vec2 p) {
+  float s = 0.0, a = 0.5;
+  for (int i = 0; i < 3; i++) {
+    s += a * snoise(p);
+    p = p * 2.02 + 17.0;
+    a *= 0.5;
+  }
+  return s;
+}
+
+float hash(vec2 c) { return fract(sin(dot(c, vec2(12.9898, 78.233))) * 43758.5453); }
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / uResolution;
+  float aspect = uResolution.x / uResolution.y;
+  vec2 p = (uv - 0.5) * vec2(aspect, 1.0) * uScale;
+  float t = uTime;
+
+  vec2 q = vec2(fbm(p + vec2(0.0, t * 0.6)),
+                fbm(p + vec2(5.2, 1.3) - t * 0.5));
+  vec2 r = vec2(fbm(p + 3.0 * q + vec2(1.7, 9.2) + t * 0.35),
+                fbm(p + 3.0 * q + vec2(8.3, 2.8) - t * 0.30));
+  float n = fbm(p + 2.5 * r);
+
+  float v = n * 0.5 + 0.5;
+  float f = v * uLines;
+  float d = abs(fract(f) - 0.5);
+  float line = 1.0 - smoothstep(0.0, uLineWidth, d);
+
+  vec3 col = uBg;
+  col = mix(col, uAccent, pow(v, 2.0) * 0.45);
+  col = mix(col, uLine, line * 0.42);
+
+  // Vignette softly dissolving edges into the clean background
+  float vig = smoothstep(0.2, 0.95, length(uv - 0.5) * 1.35);
+  col = mix(col, uBg, vig);
+
+  // Thicker, tactile film grain (grouped pixel coordinates for visible texture)
+  vec2 grainCoord = floor(gl_FragCoord.xy / 1.75);
+  float grainNoise = (hash(grainCoord + fract(t * 1.25)) - 0.5) * uGrain;
+  col += grainNoise;
+
+  gl_FragColor = vec4(col, 1.0);
+}
+`;
+
+    function hexToRgb(hex: string): [number, number, number] {
+        const h = hex.replace("#", "");
+        const n = parseInt(h.length === 3 ? h.replace(/(.)/g, "$1$1") : h, 16);
+        return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+    }
+
+    function initHeroFlow() {
+        const containers = document.querySelectorAll<HTMLElement>(".hero-flow-container");
+
+        containers.forEach((container) => {
+            const canvas = container.querySelector<HTMLCanvasElement>(".hero-flow-canvas");
+            const toggle = container.querySelector<HTMLButtonElement>(".hero-flow-toggle");
+            if (!canvas) return;
+
+            const gl = canvas.getContext("webgl", {
+                alpha: false,
+                antialias: false,
+                powerPreference: "low-power",
+            });
+            if (!gl) return;
+
+            const speed = parseFloat(container.dataset.speed || "0.18");
+            const scale = parseFloat(container.dataset.scale || "1.6");
+            const lines = parseFloat(container.dataset.lines || "14");
+            const lineWidth = parseFloat(container.dataset.lineWidth || "0.065");
+            const grain = parseFloat(container.dataset.grain || "0.055");
+            const bg = hexToRgb(container.dataset.bg || "#ffffff");
+            const lineColor = hexToRgb(container.dataset.lineColor || "#008752");
+            const accent = hexToRgb(container.dataset.accent || "#e8f8f0");
+            const quality = parseFloat(container.dataset.quality || "1");
+
+            const vs = gl.createShader(gl.VERTEX_SHADER)!;
+            gl.shaderSource(vs, VERT);
+            gl.compileShader(vs);
+
+            const fs = gl.createShader(gl.FRAGMENT_SHADER)!;
+            gl.shaderSource(fs, FRAG);
+            gl.compileShader(fs);
+
+            const program = gl.createProgram()!;
+            gl.attachShader(program, vs);
+            gl.attachShader(program, fs);
+            gl.linkProgram(program);
+
+            if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                return;
+            }
+
+            gl.useProgram(program);
+
+            const buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(
+                gl.ARRAY_BUFFER,
+                new Float32Array([-1, -1, 3, -1, -1, 3]),
+                gl.STATIC_DRAW,
+            );
+            const aPos = gl.getAttribLocation(program, "aPos");
+            gl.enableVertexAttribArray(aPos);
+            gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+            const U: Record<string, WebGLUniformLocation | null> = {};
+            [
+                "uTime",
+                "uResolution",
+                "uScale",
+                "uLines",
+                "uLineWidth",
+                "uGrain",
+                "uBg",
+                "uLine",
+                "uAccent",
+            ].forEach((name) => {
+                U[name] = gl.getUniformLocation(program, name);
+            });
+
+            let time = 12.0;
+            let last = 0;
+            let raf = 0;
+            let playing = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            const resize = () => {
+                const dpr = Math.min(window.devicePixelRatio || 1, 2) * quality;
+                const w = Math.max(1, Math.floor(canvas.clientWidth * dpr));
+                const h = Math.max(1, Math.floor(canvas.clientHeight * dpr));
+                if (canvas.width !== w || canvas.height !== h) {
+                    canvas.width = w;
+                    canvas.height = h;
+                }
+                gl.viewport(0, 0, w, h);
+                if (U.uResolution) gl.uniform2f(U.uResolution, w, h);
+            };
+
+            const draw = () => {
+                if (U.uTime) gl.uniform1f(U.uTime, time);
+                if (U.uScale) gl.uniform1f(U.uScale, scale);
+                if (U.uLines) gl.uniform1f(U.uLines, lines);
+                if (U.uLineWidth) gl.uniform1f(U.uLineWidth, lineWidth);
+                if (U.uGrain) gl.uniform1f(U.uGrain, grain);
+                if (U.uBg) gl.uniform3fv(U.uBg, bg);
+                if (U.uLine) gl.uniform3fv(U.uLine, lineColor);
+                if (U.uAccent) gl.uniform3fv(U.uAccent, accent);
+                gl.drawArrays(gl.TRIANGLES, 0, 3);
+            };
+
+            const frame = (now: number) => {
+                const dt = Math.min((now - last) / 1000, 0.1);
+                last = now;
+                time += dt * speed;
+                draw();
+                if (playing) {
+                    raf = requestAnimationFrame(frame);
+                }
+            };
+
+            const start = () => {
+                if (raf) return;
+                last = performance.now();
+                raf = requestAnimationFrame(frame);
+            };
+
+            const stop = () => {
+                cancelAnimationFrame(raf);
+                raf = 0;
+            };
+
+            resize();
+            draw();
+            if (playing) start();
+
+            window.addEventListener("resize", () => {
+                resize();
+                draw();
+            });
+
+            if (toggle) {
+                toggle.textContent = playing ? "❚❚ Pause" : "▶ Play";
+                toggle.addEventListener("click", () => {
+                    playing = !playing;
+                    toggle.textContent = playing ? "❚❚ Pause" : "▶ Play";
+                    if (playing) {
+                        start();
+                    } else {
+                        stop();
+                    }
+                });
+            }
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initHeroFlow);
+    } else {
+        initHeroFlow();
+    }
+</script>
