@@ -1,4 +1,5 @@
 ---
+import "../../data/portfolio";
 import { projects } from "../../data/portfolio";
 
 const featuredProjects = projects.slice(0, 4);
@@ -23,7 +24,7 @@ const featuredProjects = projects.slice(0, 4);
             featuredProjects.map((project) => (
                 <li class="m-0 p-0 border-b border-[#e2e8f0] last:border-b-0">
                     <a
-                        href={`/projects/${project.slug}`}
+                        href={`/work/${project.slug}`}
                         class="group grid grid-cols-1 sm:grid-cols-[170px_minmax(0,1fr)_16px] md:grid-cols-[200px_minmax(0,1fr)_16px] items-baseline gap-2 sm:gap-7 py-5 no-underline transition-colors"
                     >
                         <span class="text-[15px] font-medium text-[#0f172a] group-hover:text-[#008752] group-hover:underline underline-offset-4 decoration-1">
