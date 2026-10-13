@@ -82,7 +82,7 @@ export const experience: Experience[] = [
       "Building high-performance user interfaces and responsive web workflows.",
       "Designing resilient API integrations and database architectures.",
     ],
-    skills: ["TypeScript", "React", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    skills: ["PHP", "Laravel", "TypeScript", "React", "Node.js", "PostgreSQL", "Tailwind CSS"],
   },
   {
     company: "Universitas Budi Luhur",
@@ -196,6 +196,8 @@ export const skillGroups: SkillCategory[] = [
   {
     title: "Languages & Frameworks",
     skills: [
+      "PHP",
+      "Laravel",
       "TypeScript",
       "JavaScript",
       "Python",
