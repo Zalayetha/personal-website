@@ -132,14 +132,12 @@ export const education: Education[] = [
     location: "Jakarta, Indonesia",
     period: "September 2021 - August 2025",
     degree: "Bachelor of Computer Science, Informatics Engineering",
-    gpa: "Cumulative GPA: 3.96/4.0",
   },
   {
     institution: "SMA Negeri 7 Tangerang",
     location: "Tangerang, Indonesia",
     period: "October 2018 - May 2021",
     degree: "Science",
-    gpa: "Final Examination Score: 81.64/100",
   },
 ];
 
@@ -193,7 +191,6 @@ export const skillGroups: SkillCategory[] = [
       "Cross-Platform Mobile Apps",
       "API Design & Integration",
       "UI/UX Implementation",
-      "Performance & ANR Optimization",
     ],
   },
   {
