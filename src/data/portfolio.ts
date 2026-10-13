@@ -92,7 +92,7 @@ export const experience: Experience[] = [
   {
     company: "Universitas Budi Luhur",
     role: "Staff Programmer",
-    period: "September 2023 - August 2026",
+    period: "September 2023 - March 2026",
     location: "Indonesia • Hybrid",
     roles: [
       {
