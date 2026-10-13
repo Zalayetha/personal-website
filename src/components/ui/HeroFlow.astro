@@ -231,7 +231,14 @@ void main() {
             let time = 12.0;
             let last = 0;
             let raf = 0;
-            let playing = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            // Track state explicitly:
+            // 1. User manual pause (or prefers-reduced-motion)
+            // 2. Viewport intersection (pause when scrolled off-screen)
+            // 3. Document visibility (pause when tab hidden / minimized)
+            let userPaused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            let isIntersecting = true;
+            let isDocumentVisible = document.visibilityState === "visible";
 
             const resize = () => {
                 const dpr = Math.min(window.devicePixelRatio || 1, 2) * quality;
@@ -257,46 +264,83 @@ void main() {
                 gl.drawArrays(gl.TRIANGLES, 0, 3);
             };
 
+            const shouldRun = () => !userPaused && isIntersecting && isDocumentVisible;
+
             const frame = (now: number) => {
                 const dt = Math.min((now - last) / 1000, 0.1);
                 last = now;
                 time += dt * speed;
                 draw();
-                if (playing) {
+                if (shouldRun()) {
                     raf = requestAnimationFrame(frame);
+                } else {
+                    raf = 0;
                 }
             };
 
             const start = () => {
-                if (raf) return;
+                if (raf || !shouldRun()) return;
                 last = performance.now();
                 raf = requestAnimationFrame(frame);
             };
 
             const stop = () => {
-                cancelAnimationFrame(raf);
-                raf = 0;
+                if (raf) {
+                    cancelAnimationFrame(raf);
+                    raf = 0;
+                }
+            };
+
+            const syncPlaybackState = () => {
+                if (shouldRun()) {
+                    start();
+                } else {
+                    stop();
+                }
             };
 
             resize();
             draw();
-            if (playing) start();
+            syncPlaybackState();
 
             window.addEventListener("resize", () => {
                 resize();
                 draw();
             });
 
+            // Pause when off-screen, resume when entering viewport
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        isIntersecting = entry.isIntersecting;
+                        syncPlaybackState();
+                    });
+                },
+                { threshold: 0.05 },
+            );
+            observer.observe(container);
+
+            // Pause when tab is hidden, resume when tab is active
+            const onVisibilityChange = () => {
+                isDocumentVisible = document.visibilityState === "visible";
+                syncPlaybackState();
+            };
+            document.addEventListener("visibilitychange", onVisibilityChange);
+
             if (toggle) {
-                toggle.textContent = playing ? "❚❚ Pause" : "▶ Play";
+                toggle.textContent = userPaused ? "▶ Play" : "❚❚ Pause";
+                toggle.setAttribute(
+                    "aria-label",
+                    userPaused ? "Play background animation" : "Pause background animation",
+                );
                 toggle.addEventListener("click", () => {
-                    playing = !playing;
-                    toggle.textContent = playing ? "❚❚ Pause" : "▶ Play";
-                    if (playing) {
-                        start();
-                    } else {
-                        stop();
-                    }
+                    userPaused = !userPaused;
+                    toggle.textContent = userPaused ? "▶ Play" : "❚❚ Pause";
+                    toggle.setAttribute(
+                        "aria-label",
+                        userPaused ? "Play background animation" : "Pause background animation",
+                    );
+                    syncPlaybackState();
                 });
             }
         });
