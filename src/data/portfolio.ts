@@ -133,7 +133,6 @@ export const education: Education[] = [
     period: "September 2021 - August 2025",
     degree: "Bachelor of Computer Science, Informatics Engineering",
     gpa: "Cumulative GPA: 3.96/4.0",
-    achievement: "The Best Graduate of Informatics Engineering 2025",
   },
   {
     institution: "SMA Negeri 7 Tangerang",
