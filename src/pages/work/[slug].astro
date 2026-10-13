@@ -1,0 +1,274 @@
+---
+import "../../styles/styles.css";
+import Favicon from "../../components/layout/Favicon.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import { projects } from "../../data/portfolio";
+
+export function getStaticPaths() {
+    return projects.map((project, index) => ({
+        params: { slug: project.slug },
+        props: {
+            project,
+            prevProject: index > 0 ? projects[index - 1] : null,
+            nextProject: index < projects.length - 1 ? projects[index + 1] : null,
+        },
+    }));
+}
+
+const { project, prevProject, nextProject } = Astro.props;
+
+const {
+    title,
+    tagline,
+    summary,
+    impact,
+    iveLearned,
+    image,
+    iconName,
+    screenshots,
+    techStack,
+    features,
+    links,
+} = project;
+
+function parseParagraphs(text: string): string[] {
+    return text
+        .split(/\n\s*\n/)
+        .map((p) => p.replace(/\s+/g, " ").trim())
+        .filter(Boolean);
+}
+
+const summaryParagraphs = parseParagraphs(summary);
+const impactParagraphs = parseParagraphs(impact);
+const learningsParagraphs = parseParagraphs(iveLearned);
+---
+
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <Favicon />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title} | Zaghy Zalayetha</title>
+        <meta name="description" content={tagline} />
+    </head>
+    <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">
+        <Header />
+        <main class="page-shell flex-1 flex flex-col w-full pt-8 sm:pt-12">
+            <!-- Back navigation -->
+            <div class="mb-8">
+                <a
+                    href="/work"
+                    class="inline-flex items-center gap-1.5 text-xs text-[#64748b] hover:text-[#008752] font-medium transition-colors"
+                >
+                    <span aria-hidden="true">&larr;</span>
+                    <span>Back to Work</span>
+                </a>
+            </div>
+
+            <!-- Header Section -->
+            <header class="border-b border-[#e2e8f0] pb-8 sm:pb-10 mb-8 sm:mb-10">
+                <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                    <div class="flex items-start gap-4 sm:gap-5">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl border border-[#e2e8f0] bg-[#f8fafc] flex items-center justify-center p-2.5 shrink-0 shadow-xs">
+                            {image ? (
+                                <img
+                                    src={image}
+                                    alt={`${title} icon`}
+                                    class="w-full h-full object-contain"
+                                />
+                            ) : iconName === "FingerprintPattern" ? (
+                                <svg class="w-7 h-7 text-[#008752]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 004 11m0 0c0 1.25.12 2.472.35 3.656m3.65 4.652A12.02 12.02 0 0012 20" />
+                                </svg>
+                            ) : (
+                                <svg class="w-7 h-7 text-[#008752]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                                </svg>
+                            )}
+                        </div>
+
+                        <div>
+                            <span class="eyebrow block mb-1 text-[#64748b]">Case Study</span>
+                            <h1 class="text-[clamp(26px,3.8vw,38px)] font-bold tracking-[-0.04em] text-[#0f172a] leading-[1.15] m-0">
+                                {title}<span class="text-[#008752]">.</span>
+                            </h1>
+                            <p class="text-[15px] sm:text-[16px] text-[#64748b] leading-[1.65] mt-1.5 max-w-xl">
+                                {tagline}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Action Links -->
+                    <div class="flex flex-wrap items-center gap-2.5 pt-1">
+                        {links.appStore && (
+                            <a
+                                href={links.appStore}
+                                target="_blank"
+                                rel="noreferrer"
+                                class="text-xs px-3.5 py-1.5 rounded-lg border border-[#008752] bg-[#008752] text-white hover:bg-[#007346] font-medium transition-colors inline-flex items-center gap-1.5 shadow-xs"
+                            >
+                                <span>App Store</span>
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                        )}
+                        {links.playStore && (
+                            <a
+                                href={links.playStore}
+                                target="_blank"
+                                rel="noreferrer"
+                                class="text-xs px-3.5 py-1.5 rounded-lg border border-[#e2e8f0] bg-[#f8fafc] text-[#0f172a] hover:bg-[#f1f5f9] hover:border-[#cbd5e1] font-medium transition-colors inline-flex items-center gap-1.5"
+                            >
+                                <span>Play Store</span>
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                        )}
+                        {links.live && (
+                            <a
+                                href={links.live}
+                                target="_blank"
+                                rel="noreferrer"
+                                class="text-xs px-3.5 py-1.5 rounded-lg border border-[#008752] bg-[#008752] text-white hover:bg-[#007346] font-medium transition-colors inline-flex items-center gap-1.5 shadow-xs"
+                            >
+                                <span>Live Demo</span>
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                        )}
+                        {links.github && (
+                            <a
+                                href={links.github}
+                                target="_blank"
+                                rel="noreferrer"
+                                class="text-xs px-3.5 py-1.5 rounded-lg border border-[#e2e8f0] bg-[#f8fafc] text-[#0f172a] hover:bg-[#f1f5f9] hover:border-[#cbd5e1] font-medium transition-colors inline-flex items-center gap-1.5"
+                            >
+                                <span>Source Code</span>
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                        )}
+                    </div>
+                </div>
+
+                <!-- Tech Tags -->
+                <div class="flex flex-wrap items-center gap-2 pt-6">
+                    {techStack.map((tech) => (
+                        <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+            </header>
+
+            <!-- Hero Visual Showcase -->
+            {screenshots && (
+                <section class="mb-12">
+                    <div class="rounded-2xl overflow-hidden border border-[#e2e8f0] bg-[#f8fafc] shadow-xs">
+                        <img
+                            src={screenshots}
+                            alt={`${title} showcase poster`}
+                            class="w-full h-auto object-cover max-h-[560px] object-top"
+                            loading="eager"
+                        />
+                    </div>
+                </section>
+            )}
+
+            <!-- Case Study Content -->
+            <div class="space-y-12">
+                <!-- Overview -->
+                <section class="border-b border-[#e2e8f0] pb-10">
+                    <h2 class="text-[20px] font-semibold tracking-[-0.03em] text-[#0f172a] mb-4">
+                        Overview<span class="text-[#008752]">.</span>
+                    </h2>
+                    <div class="space-y-4 max-w-3xl">
+                        {summaryParagraphs.map((paragraph) => (
+                            <p class="text-[15px] sm:text-[16px] text-[#1e293b] leading-[1.8] m-0">
+                                {paragraph}
+                            </p>
+                        ))}
+                    </div>
+                </section>
+
+                <!-- Key Features -->
+                <section class="border-b border-[#e2e8f0] pb-10">
+                    <h2 class="text-[20px] font-semibold tracking-[-0.03em] text-[#0f172a] mb-4">
+                        Key Features<span class="text-[#008752]">.</span>
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl">
+                        {features.map((feature) => (
+                            <div class="flex items-start gap-2.5 p-3 rounded-lg border border-[#e2e8f0] bg-[#f8fafc]">
+                                <span class="text-[#008752] text-sm mt-0.5 font-bold" aria-hidden="true">✓</span>
+                                <span class="text-[14px] text-[#1e293b] leading-[1.5]">
+                                    {feature}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <!-- Impact & Results -->
+                <section class="border-b border-[#e2e8f0] pb-10">
+                    <h2 class="text-[20px] font-semibold tracking-[-0.03em] text-[#0f172a] mb-4">
+                        Impact &amp; Results<span class="text-[#008752]">.</span>
+                    </h2>
+                    <div class="space-y-4 max-w-3xl">
+                        {impactParagraphs.map((paragraph) => (
+                            <p class="text-[15px] sm:text-[16px] text-[#1e293b] leading-[1.8] m-0">
+                                {paragraph}
+                            </p>
+                        ))}
+                    </div>
+                </section>
+
+                <!-- Engineering Takeaways -->
+                <section class="border-b border-[#e2e8f0] pb-10">
+                    <h2 class="text-[20px] font-semibold tracking-[-0.03em] text-[#0f172a] mb-4">
+                        Engineering Takeaways<span class="text-[#008752]">.</span>
+                    </h2>
+                    <div class="space-y-4 max-w-3xl">
+                        {learningsParagraphs.map((paragraph) => (
+                            <p class="text-[15px] sm:text-[16px] text-[#1e293b] leading-[1.8] m-0">
+                                {paragraph}
+                            </p>
+                        ))}
+                    </div>
+                </section>
+            </div>
+
+            <!-- Prev / Next Project Footer Navigation -->
+            <nav class="pt-8 pb-12 sm:pb-16 flex items-center justify-between gap-4" aria-label="Project navigation">
+                {prevProject ? (
+                    <a
+                        href={`/work/${prevProject.slug}`}
+                        class="group inline-flex flex-col text-left no-underline p-3 -ml-3 rounded-lg hover:bg-[#f8fafc] transition-colors"
+                    >
+                        <span class="text-[11px] font-mono text-[#64748b] mb-1 flex items-center gap-1">
+                            <span aria-hidden="true">&larr;</span> Previous Project
+                        </span>
+                        <span class="text-[14px] sm:text-[15px] font-semibold text-[#0f172a] group-hover:text-[#008752] transition-colors">
+                            {prevProject.title}
+                        </span>
+                    </a>
+                ) : (
+                    <div />
+                )}
+
+                {nextProject ? (
+                    <a
+                        href={`/work/${nextProject.slug}`}
+                        class="group inline-flex flex-col text-right no-underline p-3 -mr-3 rounded-lg hover:bg-[#f8fafc] transition-colors ml-auto"
+                    >
+                        <span class="text-[11px] font-mono text-[#64748b] mb-1 flex items-center justify-end gap-1">
+                            Next Project <span aria-hidden="true">&rarr;</span>
+                        </span>
+                        <span class="text-[14px] sm:text-[15px] font-semibold text-[#0f172a] group-hover:text-[#008752] transition-colors">
+                            {nextProject.title}
+                        </span>
+                    </a>
+                ) : (
+                    <div />
+                )}
+            </nav>
+        </main>
+        <Footer />
+    </body>
+</html>

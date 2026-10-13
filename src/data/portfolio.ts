@@ -1,8 +1,20 @@
+export interface RoleItem {
+  title: string;
+  period: string;
+  highlights?: string[];
+  description?: string;
+  skills?: string[];
+}
+
 export interface Experience {
   company: string;
   role: string;
   period: string;
   location: string;
+  description?: string;
+  highlights?: string[];
+  skills?: string[];
+  roles?: RoleItem[];
 }
 
 export interface Education {
@@ -62,30 +74,58 @@ export interface Skill {
   variant: "dark" | "light";
 }
 
+export interface SkillCategory {
+  title: string;
+  skills: string[];
+}
+
 export const experience: Experience[] = [
   {
     company: "C3ARBON",
-    role: "Full-Stack Engineer",
+    role: "Software Engineer",
     period: "March 2026 - Present",
     location: "Indonesia • Remote",
+    description:
+      "Developing end-to-end full-stack web solutions and carbon accounting tools for sustainability intelligence.",
+    skills: ["PHP", "Laravel", "TypeScript", "React", "Node.js", "PostgreSQL", "Tailwind CSS"],
   },
   {
     company: "Universitas Budi Luhur",
     role: "Staff Programmer",
-    period: "September 2023 - April 2026",
+    period: "September 2023 - March 2026",
     location: "Indonesia • Hybrid",
-  },
-  {
-    company: "Bangkit Academy",
-    role: "Mobile Developer Cohort",
-    period: "February 2024 - July 2024",
-    location: "Indonesia • Remote",
+    roles: [
+      {
+        title: "Staff Programmer",
+        period: "April 2025 - August 2026 · 1 yr 5 mos",
+        description:
+          "Led a 3-person engineering team to deliver an internal employee mobile application from architecture to production launch. Maintained student mobile applications serving 5,000+ active users and owned production releases across Google Play and App Store.",
+        skills: [
+          "Flutter",
+          "Dart",
+          "Team Leadership",
+          "App Store Connect",
+          "Play Console",
+          "Testing",
+        ],
+      },
+      {
+        title: "Junior Programmer",
+        period: "September 2023 - April 2025 · 1 yr 8 mos",
+        description:
+          "Built and launched a native iOS student application in 3 months (4+ star App Store rating). Developed student-facing Android/iOS features and supported production release workflows across Google Play and App Store.",
+        skills: ["iOS (Swift / SwiftUI)", "Android", "REST APIs", "Mobile Development"],
+      },
+    ],
   },
   {
     company: "English Space",
     role: "Web Developer",
     period: "June 2022 - March 2023",
     location: "Indonesia • Remote",
+    description:
+      "Developed and optimized a responsive landing page for an English language education service to drive prospective student inquiries and course registrations.",
+    skills: ["JavaScript", "Web Development", "HTML/CSS", "UI/UX"],
   },
 ];
 
@@ -95,15 +135,12 @@ export const education: Education[] = [
     location: "Jakarta, Indonesia",
     period: "September 2021 - August 2025",
     degree: "Bachelor of Computer Science, Informatics Engineering",
-    gpa: "Cumulative GPA: 3.96/4.0",
-    achievement: "The Best Graduate of Informatics Engineering 2025",
   },
   {
-    institution: "SMA Negeri 7 Tangerang",
-    location: "Tangerang, Indonesia",
-    period: "October 2018 - May 2021",
-    degree: "Science",
-    gpa: "Final Examination Score: 81.64/100",
+    institution: "Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka",
+    location: "Indonesia • Remote",
+    period: "February 2024 - July 2024",
+    degree: "Mobile Developer Cohort",
   },
 ];
 
@@ -147,6 +184,47 @@ export const softSkills: Skill[] = [
   { name: "Critical Thinking", variant: "light" },
   { name: "Effective Communication", variant: "light" },
   { name: "Leadership", variant: "light" },
+];
+
+export const skillGroups: SkillCategory[] = [
+  {
+    title: "Core Specialties",
+    skills: [
+      "Full-Stack Web Development",
+      "Cross-Platform Mobile Apps",
+      "API Design & Integration",
+      "UI/UX Implementation",
+    ],
+  },
+  {
+    title: "Languages & Frameworks",
+    skills: [
+      "PHP",
+      "Laravel",
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "Dart",
+      "Flutter",
+      "React / React Native",
+      "Astro",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    title: "Backend, Database & DevOps",
+    skills: ["Node.js", "Supabase", "PostgreSQL", "Flask", "Docker", "Cloudflare", "Git & GitHub"],
+  },
+  {
+    title: "Professional Strengths",
+    skills: [
+      "Critical Thinking",
+      "Problem Solving",
+      "Product Mindset",
+      "Technical Communication",
+      "Team Leadership",
+    ],
+  },
 ];
 
 export const projects: Project[] = [

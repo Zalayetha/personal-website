@@ -1,121 +1,51 @@
 ---
-console.log("Header Run 🏃");
+const pathname = Astro.url.pathname;
 
 const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/projects", label: "Projects" },
-    { href: "/services", label: "Services" },
-    { href: "/blog", label: "Blog" },
+    { href: "/work", label: "Work", aliases: ["/projects"] },
+    { href: "/writing", label: "Writing", aliases: ["/blog"] },
+    { href: "/about", label: "About", aliases: [] },
 ];
+
+function isCurrent(item: typeof navItems[0]) {
+    if (pathname === item.href) return true;
+    if (item.aliases.some((alias) => pathname.startsWith(alias))) return true;
+    if (item.href !== "/" && pathname.startsWith(item.href)) return true;
+    return false;
+}
 ---
 
-<header class="sticky top-0 z-50 w-full bg-gray-100/80 backdrop-blur-sm">
-    <nav
-        class="flex flex-row justify-between px-8 py-5 items-center max-w-5xl mx-auto"
-    >
-        <a href="#home" class="flex items-center gap-2 group">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="w-6 h-6 transition-colors duration-300 group-hover:text-green-600"
-                ><path d="M7 20h10"></path><path d="M10 20c5.5-2.5.8-6.4 3-10"
-                ></path><path
-                    d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"
-                ></path><path
-                    d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"
-                ></path></svg
+<header class="w-full border-b border-[#e2e8f0]/80 bg-white/80 backdrop-blur-xs sticky top-0 z-40">
+    <div class="page-shell">
+        <div class="flex items-center justify-between min-h-[84px] sm:min-h-[96px]">
+            <a
+                href="/"
+                class="inline-flex items-center text-[19px] font-semibold tracking-[-0.065em] text-[#0f172a] hover:opacity-85 transition-opacity"
             >
-            <span class="font-newsreader text-lg font-semibold tracking-tight">
-                zaghy.zalayetha
-            </span>
-        </a>
-        <button
-            id="menu-toggle"
-            class="lg:hidden flex flex-col gap-1.5 p-2 z-50"
-            aria-label="Toggle menu"
-        >
-            <span
-                class="block w-5 h-0.5 bg-gray-600 transition-all duration-300 origin-center"
-            ></span>
-            <span
-                class="block w-5 h-0.5 bg-gray-600 transition-all duration-300"
-            ></span>
-            <span
-                class="block w-5 h-0.5 bg-gray-600 transition-all duration-300 origin-center"
-            ></span>
-        </button>
-        <div
-            id="mobile-menu"
-            class="flex items-center gap-8 max-lg:fixed max-lg:inset-x-0 max-lg:top-18.25 max-lg:flex-col max-lg:gap-4 max-lg:bg-gray-100/95 max-lg:backdrop-blur-md max-lg:p-6 max-lg:border-b max-lg:border-gray-200 max-lg:transition-all max-lg:duration-300 max-lg:invisible max-lg:opacity-0 max-lg:translate-y-[-10px] max-lg:pointer-events-none"
-        >
-            {
-                navItems.map((item) =>
-                    item.label === "Download CV" ? (
-                        <div class="px-4 py-1 rounded-full bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg hover:shadow-gray-200/50 hover:text-gray-400">
+                zaghy<span class="text-[#008752]">.</span>
+            </a>
+
+            <nav class="flex items-center gap-6 sm:gap-8 text-xs font-normal">
+                {
+                    navItems.map((item) => {
+                        const active = isCurrent(item);
+                        return (
                             <a
                                 href={item.href}
-                                class="text-sm font-manrope font-semibold"
-                                target="_blank"
+                                aria-current={active ? "page" : undefined}
+                                class:list={[
+                                    "min-h-[44px] inline-flex items-center transition-colors font-medium",
+                                    active
+                                        ? "text-[#008752] underline underline-offset-[6px] decoration-1 decoration-[#008752]"
+                                        : "text-[#64748b] hover:text-[#008752]",
+                                ]}
                             >
                                 {item.label}
-                                <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gray-950 transition-all duration-300 hover:w-full" />
                             </a>
-                        </div>
-                    ) : (
-                        <a
-                            href={item.href}
-                            class="relative font-manrope text-sm font-medium text-gray-600 transition-colors duration-300 hover:text-gray-950 py-1"
-                        >
-                            {item.label}
-                            <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gray-950 transition-all duration-300 hover:w-full" />
-                        </a>
-                    ),
-                )
-            }
+                        );
+                    })
+                }
+            </nav>
         </div>
-    </nav>
+    </div>
 </header>
-
-<div
-    id="menu-overlay"
-    class="fixed inset-0 bg-black/20 z-40 invisible opacity-0 transition-all duration-300 lg:hidden"
->
-</div>
-
-<script>
-    const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("mobile-menu");
-    const overlay = document.getElementById("menu-overlay");
-    const links = menu?.querySelectorAll("a");
-
-    function toggleMenu() {
-        menu?.classList.toggle("max-lg:visible");
-        menu?.classList.toggle("max-lg:invisible");
-        menu?.classList.toggle("max-lg:opacity-100");
-        menu?.classList.toggle("max-lg:opacity-0");
-        menu?.classList.toggle("max-lg:translate-y-0");
-        menu?.classList.toggle("max-lg:translate-y-[-10px]");
-        menu?.classList.toggle("max-lg:pointer-events-auto");
-        menu?.classList.toggle("max-lg:pointer-events-none");
-        overlay?.classList.toggle("invisible");
-        overlay?.classList.toggle("visible");
-        overlay?.classList.toggle("opacity-0");
-        overlay?.classList.toggle("opacity-100");
-    }
-
-    toggle?.addEventListener("click", toggleMenu);
-    overlay?.addEventListener("click", toggleMenu);
-    links?.forEach((link) =>
-        link.addEventListener("click", () => {
-            if (menu?.classList.contains("max-lg:visible")) toggleMenu();
-        }),
-    );
-</script>

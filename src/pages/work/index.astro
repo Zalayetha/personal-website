@@ -1,0 +1,93 @@
+---
+import "../../styles/styles.css";
+import Favicon from "../../components/layout/Favicon.astro";
+import Header from "../../components/layout/Header.astro";
+import Footer from "../../components/layout/Footer.astro";
+import { projects } from "../../data/portfolio";
+---
+
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <Favicon />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Work | Zaghy Zalayetha</title>
+        <meta
+            name="description"
+            content="Production mobile apps, full-stack web platforms, and engineering experiments built by Zaghy Zalayetha."
+        />
+    </head>
+    <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">
+        <Header />
+        <main class="page-shell flex-1 flex flex-col w-full pt-8 sm:pt-12">
+            <header class="border-b border-[#e2e8f0] pb-8 sm:pb-10 mb-8 sm:mb-12">
+                <span class="eyebrow block mb-3 text-[#64748b]">Portfolio</span>
+                <h1 class="text-[clamp(34px,4.5vw,48px)] font-bold tracking-[-0.05em] text-[#0f172a] leading-[1.1] m-0">
+                    Work<span class="text-[#008752]">.</span>
+                </h1>
+                <p class="max-w-140 text-[15px] sm:text-[16px] text-[#64748b] leading-[1.8] mt-4">
+                    Production mobile apps, full-stack platforms, and engineering experiments. A collection of systems I've helped build and ship.
+                </p>
+            </header>
+
+            <div class="flex flex-col border-t border-[#e2e8f0]">
+                {
+                    projects.map((project) => (
+                        <article class="border-b border-[#e2e8f0] py-6 sm:py-8">
+                            <a
+                                href={`/work/${project.slug}`}
+                                class="group block no-underline"
+                            >
+                                <div class="flex items-start gap-4 sm:gap-6">
+                                    <!-- App Icon or Symbol -->
+                                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl border border-[#e2e8f0] bg-[#f8fafc] flex items-center justify-center p-2 shrink-0 group-hover:border-[#008752]/40 group-hover:shadow-xs transition-all">
+                                        {project.image ? (
+                                            <img
+                                                src={project.image}
+                                                alt={`${project.title} icon`}
+                                                class="w-full h-full object-contain"
+                                            />
+                                        ) : project.iconName === "FingerprintPattern" ? (
+                                            <svg class="w-6 h-6 text-[#008752]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 004 11m0 0c0 1.25.12 2.472.35 3.656m3.65 4.652A12.02 12.02 0 0012 20" />
+                                            </svg>
+                                        ) : (
+                                            <svg class="w-6 h-6 text-[#008752]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                                            </svg>
+                                        )}
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-baseline justify-between gap-2">
+                                            <h2 class="text-[17px] sm:text-[19px] font-semibold tracking-[-0.03em] text-[#0f172a] m-0 group-hover:text-[#008752] transition-colors">
+                                                {project.title}
+                                            </h2>
+                                            <span class="link-arrow text-sm text-[#64748b] group-hover:text-[#008752] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" aria-hidden="true">
+                                                ↗
+                                            </span>
+                                        </div>
+
+                                        <p class="text-[14px] text-[#64748b] leading-[1.65] mt-1.5 mb-3 max-w-2xl">
+                                            {project.tagline}
+                                        </p>
+
+                                        <div class="flex flex-wrap items-center gap-1.5">
+                                            {project.techStack.map((tech) => (
+                                                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    ))
+                }
+            </div>
+        </main>
+        <Footer />
+    </body>
+</html>
