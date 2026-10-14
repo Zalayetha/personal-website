@@ -19,13 +19,20 @@ import HeroFlow from "../../ui/HeroFlow.astro";
                     Based in Tangerang, Indonesia. Building everywhere.
                 </p>
 
-                <div class="mt-7 flex items-center gap-4">
+                <div class="mt-7 flex flex-wrap items-center gap-3 sm:gap-4">
                     <a
                         href={`mailto:${contact.email}`}
                         class="group inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#008752] text-white text-xs sm:text-sm font-medium hover:bg-[#007346] transition-colors shadow-xs"
                     >
                         <span>Let's talk</span>
                         <span class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                    </a>
+                    <a
+                        href="/game"
+                        class="group inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white/90 text-[#0f172a] border border-[#e2e8f0] text-xs sm:text-sm font-medium hover:bg-white hover:border-[#cbd5e1] transition-colors"
+                    >
+                        <span>Take a tour</span>
+                        <span class="text-[#008752] text-xs transition-transform group-hover:translate-x-0.5">→</span>
                     </a>
                     <a
                         href="/about"
