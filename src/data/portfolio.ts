@@ -87,7 +87,7 @@ export const experience: Experience[] = [
     location: "Indonesia • Remote",
     description:
       "Developing end-to-end full-stack web solutions and carbon accounting tools for sustainability intelligence.",
-    skills: ["PHP", "Laravel", "TypeScript", "React", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    skills: ["PHP", "Laravel", "TypeScript", "React", "Node.js", "MySQL", "Tailwind CSS"],
   },
   {
     company: "Universitas Budi Luhur",
@@ -213,7 +213,16 @@ export const skillGroups: SkillCategory[] = [
   },
   {
     title: "Backend, Database & DevOps",
-    skills: ["Node.js", "Supabase", "PostgreSQL", "Flask", "Docker", "Cloudflare", "Git & GitHub"],
+    skills: [
+      "Node.js",
+      "MySQL",
+      "PostgreSQL",
+      "Supabase",
+      "Flask",
+      "Docker",
+      "Cloudflare",
+      "Git & GitHub",
+    ],
   },
   {
     title: "Professional Strengths",
