@@ -49,7 +49,14 @@ export interface BlogPost {
   images?: string[];
 }
 
+export interface ProjectDocumentation {
+  title: string;
+  image: string;
+  caption?: string;
+}
+
 export interface Project {
+  documentation?: ProjectDocumentation[];
   title: string;
   slug: string;
   tagline: string;
@@ -338,6 +345,20 @@ export const projects: Project[] = [
   {
     title: "Dyslexia Early Detection",
     slug: "dyslexia-early-detection",
+    documentation: [
+      {
+        title: "Subtest Interactive Test Module",
+        image: "/assets/dyslexia-subtest.png",
+        caption:
+          "Teacher-assisted picture naming screening test with real-time error recording and voice instruction replay.",
+      },
+      {
+        title: "Teacher Screening Session Dashboard",
+        image: "/assets/dyslexia-dashboard.png",
+        caption:
+          "Active screening session manager with batch progress monitoring and student completion metrics.",
+      },
+    ],
     tagline: "Voice-guided cognitive screening mobile app for elementary school educators",
     summary: `
       A mobile application designed to help elementary school
