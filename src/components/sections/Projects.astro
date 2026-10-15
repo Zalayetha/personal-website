@@ -1,8 +1,15 @@
 ---
-import "../../data/portfolio";
 import { projects } from "../../data/portfolio";
 
-const featuredProjects = projects.slice(0, 4);
+const selectedSlugs = [
+    "student-budi-luhur",
+    "employee-budi-luhur",
+    "dyslexia-early-detection",
+];
+
+const featuredProjects = selectedSlugs
+    .map((slug) => projects.find((p) => p.slug === slug))
+    .filter((p): p is (typeof projects)[number] => Boolean(p));
 ---
 
 <section id="selected-work" class="w-full py-12 sm:py-16 border-b border-[#e2e8f0]" aria-labelledby="work-title">

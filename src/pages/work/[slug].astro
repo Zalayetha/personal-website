@@ -27,6 +27,7 @@ const {
     image,
     iconName,
     screenshots,
+    documentation,
     techStack,
     features,
     links,
@@ -80,6 +81,10 @@ const learningsParagraphs = parseParagraphs(iveLearned);
                             ) : iconName === "FingerprintPattern" ? (
                                 <svg class="w-7 h-7 text-[#008752]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 004 11m0 0c0 1.25.12 2.472.35 3.656m3.65 4.652A12.02 12.02 0 0012 20" />
+                                </svg>
+                            ) : iconName === "VoiceWave" ? (
+                                <svg class="w-7 h-7 text-[#008752]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15a3 3 0 01-3-3V6a3 3 0 016 0v6a3 3 0 01-3 3z" />
                                 </svg>
                             ) : (
                                 <svg class="w-7 h-7 text-[#008752]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.75">
@@ -145,6 +150,11 @@ const learningsParagraphs = parseParagraphs(iveLearned);
                                 <span aria-hidden="true">↗</span>
                             </a>
                         )}
+                        {!links.appStore && !links.playStore && !links.live && !links.github && (
+                            <span class="text-xs px-3 py-1.5 rounded-lg border border-[#e2e8f0] bg-[#f8fafc] text-[#64748b] font-medium font-mono">
+                                Client Project
+                            </span>
+                        )}
                     </div>
                 </div>
 
@@ -158,8 +168,35 @@ const learningsParagraphs = parseParagraphs(iveLearned);
                 </div>
             </header>
 
-            <!-- Hero Visual Showcase -->
-            {screenshots && (
+            <!-- Hero Visual Showcase / Documentation -->
+            {documentation && documentation.length > 0 ? (
+                <section class="mb-12">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                        {documentation.map((item) => (
+                            <figure class="m-0 flex flex-col">
+                                <div class="rounded-2xl overflow-hidden border border-[#e2e8f0] bg-[#f8fafc] shadow-xs hover:border-[#008752]/30 transition-all">
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        class="w-full h-auto object-cover"
+                                        loading="eager"
+                                    />
+                                </div>
+                                <figcaption class="pt-3 px-1">
+                                    <span class="block text-[14px] font-semibold text-[#0f172a]">
+                                        {item.title}
+                                    </span>
+                                    {item.caption && (
+                                        <span class="block text-[13px] text-[#64748b] leading-[1.6] mt-0.5">
+                                            {item.caption}
+                                        </span>
+                                    )}
+                                </figcaption>
+                            </figure>
+                        ))}
+                    </div>
+                </section>
+            ) : screenshots ? (
                 <section class="mb-12">
                     <div class="rounded-2xl overflow-hidden border border-[#e2e8f0] bg-[#f8fafc] shadow-xs">
                         <img
@@ -170,7 +207,7 @@ const learningsParagraphs = parseParagraphs(iveLearned);
                         />
                     </div>
                 </section>
-            )}
+            ) : null}
 
             <!-- Case Study Content -->
             <div class="space-y-12">
