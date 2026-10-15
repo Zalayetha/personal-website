@@ -238,64 +238,6 @@ export const skillGroups: SkillCategory[] = [
 
 export const projects: Project[] = [
   {
-    title: "Dyslexia Early Detection",
-    slug: "dyslexia-early-detection",
-    tagline: "Voice-guided cognitive screening mobile app for elementary school educators",
-    summary: `
-      A mobile application designed to help elementary school
-      teachers screen students for early signs of dyslexia through
-      13 structured voice-guided interactive tests covering key
-      cognitive domains such as rapid naming, phonological awareness,
-      and working memory.
-
-      This was a freelance project, where I worked as a Software
-      Developer responsible for full product development, UI/UX
-      design, and deployment pipeline management.
-    `,
-    impact: `
-      I designed and implemented the full UI/UX system tailored
-      specifically for children and educators. The application was
-      built with 13 interactive test modules, each guided by voice
-      interaction to support early learning assessment in children.
-
-      I also coordinated the end-to-end development process by
-      managing feature milestones, organizing iterative delivery of
-      test modules, and ensuring smooth communication throughout the
-      development lifecycle. In addition, I handled production
-      deployment using the EAS Build pipeline, configuring Android
-      release builds and ensuring compliance with Google Play Store
-      requirements.
-
-      The application provides a structured and accessible way for
-      teachers to perform early dyslexia screening, improving early
-      detection workflow in educational environments.
-    `,
-    iveLearned: `
-      Through this project, I gained deep experience in product design
-      systems, mobile UX for children-focused applications, voice
-      interaction integration, and end-to-end mobile deployment
-      workflows with Expo and EAS Build.
-    `,
-    iconName: "VoiceWave",
-    techStack: [
-      "React Native",
-      "Expo",
-      "TypeScript",
-      "EAS Build",
-      "Android",
-      "Google Play Console",
-    ],
-    features: [
-      "13 voice-guided interactive test modules",
-      "Rapid naming & phonological awareness screening",
-      "Working memory cognitive assessment",
-      "Children-centric, accessible UI/UX system",
-      "Teacher-assisted screening workflow",
-      "Automated EAS Android build & release pipeline",
-    ],
-    links: {},
-  },
-  {
     title: "Student Budi Luhur",
     slug: "student-budi-luhur",
     tagline: "Academic companion app for university students",
@@ -392,6 +334,64 @@ export const projects: Project[] = [
       appStore: "https://apps.apple.com/app/employee-budi-luhur/id6499570674",
     },
     screenshots: "/assets/employee-bl-poster.png",
+  },
+  {
+    title: "Dyslexia Early Detection",
+    slug: "dyslexia-early-detection",
+    tagline: "Voice-guided cognitive screening mobile app for elementary school educators",
+    summary: `
+      A mobile application designed to help elementary school
+      teachers screen students for early signs of dyslexia through
+      13 structured voice-guided interactive tests covering key
+      cognitive domains such as rapid naming, phonological awareness,
+      and working memory.
+
+      This was a freelance project, where I worked as a Software
+      Developer responsible for full product development, UI/UX
+      design, and deployment pipeline management.
+    `,
+    impact: `
+      I designed and implemented the full UI/UX system tailored
+      specifically for children and educators. The application was
+      built with 13 interactive test modules, each guided by voice
+      interaction to support early learning assessment in children.
+
+      I also coordinated the end-to-end development process by
+      managing feature milestones, organizing iterative delivery of
+      test modules, and ensuring smooth communication throughout the
+      development lifecycle. In addition, I handled production
+      deployment using the EAS Build pipeline, configuring Android
+      release builds and ensuring compliance with Google Play Store
+      requirements.
+
+      The application provides a structured and accessible way for
+      teachers to perform early dyslexia screening, improving early
+      detection workflow in educational environments.
+    `,
+    iveLearned: `
+      Through this project, I gained deep experience in product design
+      systems, mobile UX for children-focused applications, voice
+      interaction integration, and end-to-end mobile deployment
+      workflows with Expo and EAS Build.
+    `,
+    iconName: "VoiceWave",
+    techStack: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "EAS Build",
+      "Android",
+      "Google Play Console",
+    ],
+    features: [
+      "13 voice-guided interactive test modules",
+      "Rapid naming & phonological awareness screening",
+      "Working memory cognitive assessment",
+      "Children-centric, accessible UI/UX system",
+      "Teacher-assisted screening workflow",
+      "Automated EAS Android build & release pipeline",
+    ],
+    links: {},
   },
   {
     title: "E-KTP Verification System",
