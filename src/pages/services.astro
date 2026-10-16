@@ -1,6 +1,7 @@
 ---
 import "../styles/styles.css";
 import Favicon from "../components/layout/Favicon.astro";
+import SEO from "../components/layout/SEO.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import { contact } from "../data/portfolio";
@@ -58,6 +59,10 @@ const process = [
         <meta
             name="description"
             content="Web app MVP development and high-converting landing pages built by Zaghy Zalayetha."
+        />
+        <SEO
+            title="Services | Zaghy Zalayetha"
+            description="Web app MVP development and high-converting landing pages built by Zaghy Zalayetha."
         />
     </head>
     <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">

@@ -1,6 +1,7 @@
 ---
 import "../../styles/styles.css";
 import Favicon from "../../components/layout/Favicon.astro";
+import SEO from "../../components/layout/SEO.astro";
 import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
 import { blogPosts } from "../../data/portfolio";
@@ -15,6 +16,7 @@ export function getStaticPaths() {
 const { post } = Astro.props;
 const hasEmbeddedVideo = post.embeddedVideo !== undefined;
 const hasImages = post.images !== undefined;
+const ogImage = post.images && post.images.length > 0 ? post.images[0] : "/og-image.png";
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -24,6 +26,12 @@ const hasImages = post.images !== undefined;
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{post.title} | Zaghy Zalayetha</title>
         <meta name="description" content={post.excerpt} />
+        <SEO
+            title={`${post.title} | Zaghy Zalayetha`}
+            description={post.excerpt}
+            image={ogImage}
+            type="article"
+        />
     </head>
     <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">
         <Header />
