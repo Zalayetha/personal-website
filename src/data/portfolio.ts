@@ -515,6 +515,22 @@ export const projects: Project[] = [
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "decision-affected-engineering-workflow",
+    title: "A Decision That Affected Our Engineering Workflow",
+    date: "October 2026",
+    excerpt:
+      "From learning Swift on the fly to proposing a Flutter rewrite: how transitioning to a single codebase transformed our mobile engineering workflow at Budi Luhur University.",
+    tags: ["MobileDevelopment", "EngineeringWorkflow", "Flutter", "iOS", "Swift"],
+    content: `I want to tell a story about a decision I made that affected our engineering workflow. It started back when I was working at Budi Luhur University. When I first joined the developer team, I was assigned to create a new iOS application using Swift and SwiftUI—an app designed to help students with academic life, like checking grade history, marking attendance via QR codes, viewing schedules, and more.
+
+Fun fact: before applying for the job, I had no idea I'd be building an iOS app because the interview focused entirely on Android development. It was a tough transition for me since I had to teach myself iOS development, get used to iOS, and learn how to navigate macOS :v. Long story short, I was able to deliver the product to the App Store in about 3 to 6 months.
+
+That was a great milestone, but about 1–2 months after I started, the senior mobile developer resigned, leaving me as the only mobile developer at the university. Because of our limited mobile headcount, I proposed rebuilding the application using Flutter.
+
+I had to learn yet another framework, but Alhamdulillah, the results were worth it. A friend joined the team to help with the rewrite, and our time spent fixing cross-platform bugs (iOS and Android) dropped significantly since we only had to maintain a single codebase.`,
+    images: ["/assets/blogs/decision-affected-engineering-workflow/image-1.jpg"],
+  },
+  {
     slug: "building-myniyyah-mvp-reactnative",
     title: "Building MyNiyyah #1",
     date: "January 2026",

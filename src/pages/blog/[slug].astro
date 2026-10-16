@@ -90,7 +90,11 @@ const ogImage = post.images && post.images.length > 0 ? post.images[0] : "/og-im
                                 <img
                                     src={image}
                                     alt={`Image ${index + 1}`}
-                                    class="rounded-xl object-cover w-full border border-[#e2e8f0]"
+                                    class={`rounded-xl object-cover border border-[#e2e8f0] ${
+                                        post.images && post.images.length === 1
+                                            ? "max-h-[460px] w-auto max-w-full mx-auto"
+                                            : "w-full"
+                                    }`}
                                 />
                             ))}
                         </div>
