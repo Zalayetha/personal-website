@@ -1,6 +1,7 @@
 ---
 import "../../styles/styles.css";
 import Favicon from "../../components/layout/Favicon.astro";
+import SEO from "../../components/layout/SEO.astro";
 import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
 import { projects } from "../../data/portfolio";
@@ -15,6 +16,10 @@ import { projects } from "../../data/portfolio";
         <meta
             name="description"
             content="Production mobile apps, full-stack web platforms, and engineering experiments built by Zaghy Zalayetha."
+        />
+        <SEO
+            title="Work | Zaghy Zalayetha"
+            description="Production mobile apps, full-stack web platforms, and engineering experiments built by Zaghy Zalayetha."
         />
     </head>
     <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">

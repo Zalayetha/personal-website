@@ -1,6 +1,7 @@
 ---
 import "../../styles/styles.css";
 import Favicon from "../../components/layout/Favicon.astro";
+import SEO from "../../components/layout/SEO.astro";
 import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
 import { projects } from "../../data/portfolio";
@@ -52,6 +53,11 @@ const learningsParagraphs = parseParagraphs(iveLearned);
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title} | Zaghy Zalayetha</title>
         <meta name="description" content={tagline} />
+        <SEO
+            title={`${title} | Zaghy Zalayetha`}
+            description={tagline}
+            image={image || "/og-image.png"}
+        />
     </head>
     <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">
         <Header />
