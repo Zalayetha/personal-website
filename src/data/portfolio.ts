@@ -369,7 +369,7 @@ export const projects: Project[] = [
 
       This was a freelance project, where I worked as a Software
       Developer responsible for full product development, UI/UX
-      design, and deployment pipeline management.
+      design, and core mobile architecture.
     `,
     impact: `
       I designed and implemented the full UI/UX system tailored
@@ -380,10 +380,7 @@ export const projects: Project[] = [
       I also coordinated the end-to-end development process by
       managing feature milestones, organizing iterative delivery of
       test modules, and ensuring smooth communication throughout the
-      development lifecycle. In addition, I handled production
-      deployment using the EAS Build pipeline, configuring Android
-      release builds and ensuring compliance with Google Play Store
-      requirements.
+      development lifecycle.
 
       The application provides a structured and accessible way for
       teachers to perform early dyslexia screening, improving early
@@ -392,25 +389,18 @@ export const projects: Project[] = [
     iveLearned: `
       Through this project, I gained deep experience in product design
       systems, mobile UX for children-focused applications, voice
-      interaction integration, and end-to-end mobile deployment
-      workflows with Expo and EAS Build.
+      interaction integration, and building accessible mobile
+      interfaces with React Native and Expo.
     `,
     iconName: "VoiceWave",
-    techStack: [
-      "React Native",
-      "Expo",
-      "TypeScript",
-      "EAS Build",
-      "Android",
-      "Google Play Console",
-    ],
+    techStack: ["React Native", "Expo", "TypeScript", "Android"],
     features: [
       "13 voice-guided interactive test modules",
       "Rapid naming & phonological awareness screening",
       "Working memory cognitive assessment",
       "Children-centric, accessible UI/UX system",
       "Teacher-assisted screening workflow",
-      "Automated EAS Android build & release pipeline",
+      "Real-time session progress and completion tracking",
     ],
     links: {},
   },
