@@ -48,6 +48,11 @@ const process = [
             "Prepare the product for release, review details, and deploy confidently.",
     },
 ];
+
+const breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+];
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -63,6 +68,7 @@ const process = [
         <SEO
             title="Services | Zaghy Zalayetha"
             description="Web app MVP development and high-converting landing pages built by Zaghy Zalayetha."
+            breadcrumbs={breadcrumbs}
         />
     </head>
     <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">

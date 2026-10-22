@@ -5,6 +5,7 @@ import SEO from "../../components/layout/SEO.astro";
 import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
 import { blogPosts } from "../../data/portfolio";
+import { SITE_URL, parseISODate } from "../../utils/seo";
 
 export function getStaticPaths() {
     return blogPosts.map((post) => ({
@@ -17,6 +18,38 @@ const { post } = Astro.props;
 const hasEmbeddedVideo = post.embeddedVideo !== undefined;
 const hasImages = post.images !== undefined;
 const ogImage = post.images && post.images.length > 0 ? post.images[0] : "/og-image.png";
+
+const siteUrl = (Astro.site ? Astro.site.origin : SITE_URL).replace(/\/$/, "");
+const postUrl = `${siteUrl}/blog/${post.slug}`;
+const publishedISO = parseISODate(post.date);
+const articleImage = new URL(ogImage, siteUrl).toString();
+
+const breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "Writing", path: "/writing" },
+    { name: post.title, path: `/blog/${post.slug}` },
+];
+
+const articleSchema = {
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: publishedISO,
+    dateModified: publishedISO,
+    mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": postUrl,
+    },
+    url: postUrl,
+    image: articleImage,
+    keywords: post.tags.join(", "),
+    author: {
+        "@id": `${siteUrl}/#person`,
+    },
+    publisher: {
+        "@id": `${siteUrl}/#person`,
+    },
+};
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -31,6 +64,10 @@ const ogImage = post.images && post.images.length > 0 ? post.images[0] : "/og-im
             description={post.excerpt}
             image={ogImage}
             type="article"
+            publishedTime={publishedISO}
+            tags={post.tags}
+            breadcrumbs={breadcrumbs}
+            schema={articleSchema}
         />
     </head>
     <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">
@@ -89,7 +126,7 @@ const ogImage = post.images && post.images.length > 0 ? post.images[0] : "/og-im
                             {post.images?.map((image, index) => (
                                 <img
                                     src={image}
-                                    alt={`Image ${index + 1}`}
+                                    alt={`${post.title} screenshot ${index + 1}`}
                                     class={`rounded-xl object-cover border border-[#e2e8f0] ${
                                         post.images && post.images.length === 1
                                             ? "max-h-[460px] w-auto max-w-full mx-auto"
