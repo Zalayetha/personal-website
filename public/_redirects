@@ -1,0 +1,5 @@
+# Cloudflare HTTP 301 Permanent Redirects
+/blog /writing 301
+/writings /writing 301
+/projects /work 301
+/projects/* /work/:splat 301
