@@ -5,6 +5,7 @@ import SEO from "../../components/layout/SEO.astro";
 import Header from "../../components/layout/Header.astro";
 import Footer from "../../components/layout/Footer.astro";
 import { projects } from "../../data/portfolio";
+import { SITE_URL } from "../../utils/seo";
 
 export function getStaticPaths() {
     return projects.map((project, index) => ({
@@ -47,6 +48,29 @@ const learningsParagraphs = parseParagraphs(iveLearned);
 const ogImage =
     screenshots ||
     (documentation && documentation.length > 0 ? documentation[0].image : "/og-image.png");
+
+const siteUrl = (Astro.site ? Astro.site.origin : SITE_URL).replace(/\/$/, "");
+const projectUrl = `${siteUrl}/work/${project.slug}`;
+
+const breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "Work", path: "/work" },
+    { name: title, path: `/work/${project.slug}` },
+];
+
+const projectSchema = {
+    "@type": "SoftwareApplication",
+    name: title,
+    headline: tagline,
+    description: summary,
+    applicationCategory: "SoftwareApplication",
+    operatingSystem: "Web, iOS, Android",
+    url: projectUrl,
+    author: {
+        "@id": `${siteUrl}/#person`,
+    },
+    image: new URL(ogImage, siteUrl).toString(),
+};
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -60,6 +84,8 @@ const ogImage =
             title={`${title} | Zaghy Zalayetha`}
             description={tagline}
             image={ogImage}
+            breadcrumbs={breadcrumbs}
+            schema={projectSchema}
         />
     </head>
     <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">

@@ -5,6 +5,11 @@ import SEO from "../components/layout/SEO.astro";
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import { experience, education, skillGroups, publication } from "../data/portfolio";
+
+const breadcrumbs = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+];
 ---
 
 <html lang="en" class="scroll-smooth">
@@ -15,11 +20,12 @@ import { experience, education, skillGroups, publication } from "../data/portfol
         <title>About | Zaghy Zalayetha</title>
         <meta
             name="description"
-            content="Learn more about Zaghy Zalayetha, Software Engineer based in Indonesia."
+            content="Learn more about Zaghy Zalayetha, Software Engineer based in Indonesia. Background, experience, education, and technical skills."
         />
         <SEO
             title="About | Zaghy Zalayetha"
-            description="Learn more about Zaghy Zalayetha, Software Engineer based in Indonesia."
+            description="Learn more about Zaghy Zalayetha, Software Engineer based in Indonesia. Background, experience, education, and technical skills."
+            breadcrumbs={breadcrumbs}
         />
     </head>
     <body class="min-h-screen flex flex-col bg-white text-[#1e293b] font-sans antialiased selection:bg-[#d4f4e2] selection:text-[#008752]">
@@ -49,8 +55,12 @@ import { experience, education, skillGroups, publication } from "../data/portfol
                         <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border border-[#e2e8f0] bg-[#f8fafc] shadow-xs">
                             <img
                                 src="/assets/profile_picture.png"
-                                alt="Zaghy Zalayetha"
+                                alt="Zaghy Zalayetha - Software Engineer"
+                                width="224"
+                                height="224"
                                 class="w-full h-full object-cover grayscale contrast-[1.05]"
+                                loading="eager"
+                                decoding="async"
                             />
                         </div>
                     </div>

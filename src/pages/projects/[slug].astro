@@ -1,5 +1,6 @@
 ---
 import { projects } from "../../data/portfolio";
+import { SITE_URL } from "../../utils/seo";
 
 export function getStaticPaths() {
     return projects.map((project) => ({
@@ -9,6 +10,8 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const target = `/work/${slug}`;
+const siteUrl = Astro.site ? Astro.site.origin : SITE_URL;
+const canonicalURL = new URL(target, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -16,7 +19,8 @@ const target = `/work/${slug}`;
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="refresh" content={`0;url=${target}`} />
-        <link rel="canonical" href={target} />
+        <link rel="canonical" href={canonicalURL} />
+        <meta name="robots" content="noindex, follow" />
         <title>Redirecting to {target}...</title>
     </head>
     <body>

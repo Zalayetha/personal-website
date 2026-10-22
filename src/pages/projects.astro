@@ -1,5 +1,9 @@
 ---
+import { SITE_URL } from "../utils/seo";
+
 const target = "/work";
+const siteUrl = Astro.site ? Astro.site.origin : SITE_URL;
+const canonicalURL = new URL(target, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -7,7 +11,8 @@ const target = "/work";
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="refresh" content={`0;url=${target}`} />
-        <link rel="canonical" href={target} />
+        <link rel="canonical" href={canonicalURL} />
+        <meta name="robots" content="noindex, follow" />
         <title>Redirecting to /work...</title>
     </head>
     <body>
