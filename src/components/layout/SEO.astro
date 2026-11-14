@@ -107,6 +107,8 @@ const webSiteSchema = {
 };
 
 const graph: Record<string, any>[] = [personSchema, webSiteSchema];
+const cfWebAnalyticsToken: string | undefined =
+    import.meta.env.PUBLIC_CF_WEB_ANALYTICS_TOKEN || undefined;
 
 if (breadcrumbs && breadcrumbs.length > 0) {
     graph.push({
@@ -201,3 +203,14 @@ const jsonLd = {
 
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<!-- Cloudflare Web Analytics (rendered only when PUBLIC_CF_WEB_ANALYTICS_TOKEN is set at build time) -->
+{
+    cfWebAnalyticsToken && (
+        <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: cfWebAnalyticsToken })}
+        />
+    )
+}
