@@ -1,5 +1,12 @@
 name = "personal-website"
+main = "worker/index.ts"
 compatibility_date = "2026-04-13"
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+# Non-secret vars: set in the Cloudflare dashboard (or here once decided):
+#   CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL
+# Secrets (wrangler secret put): RESEND_API_KEY, TURNSTILE_SECRET_KEY (optional)
