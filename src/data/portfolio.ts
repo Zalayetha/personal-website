@@ -104,7 +104,7 @@ export const experience: Experience[] = [
     roles: [
       {
         title: "Staff Programmer",
-        period: "April 2025 - August 2026 · 1 yr 5 mos",
+        period: "April 2025 - March 2026 · 11 mos",
         description:
           "Led a 3-person engineering team to deliver an internal employee mobile application from architecture to production launch. Maintained student mobile applications serving 5,000+ active users and owned production releases across Google Play and App Store.",
         skills: [
@@ -249,7 +249,7 @@ export const projects: Project[] = [
     slug: "student-budi-luhur",
     tagline: "Academic companion app for university students",
     summary: `
-      A cross-platform mobile application used by more than 5.000+
+      A cross-platform mobile application used by more than 5,000+
       students at Budi Luhur University to access academic
       information, improving accessibility and student academic
       organization.
@@ -274,11 +274,9 @@ export const projects: Project[] = [
       Responding) occurrences, improving app stability.
     `,
     iveLearned: `
-      Through this project, I gained strong experience in production-
-      grade mobile development, cross-platform architecture,
-
+      Through this project, I gained strong experience in production-grade mobile development, cross-platform architecture,
       performance optimization, and end-to-end app deployment
-      lifecycle
+      lifecycle.
     `,
     image: "/assets/student-icon.png",
     techStack: ["Flutter", "Dart", "GetX", "Drift", "Java", "Swift", "SwiftUI"],
@@ -323,10 +321,7 @@ export const projects: Project[] = [
     `,
     iveLearned: `
       Through this project, I strengthened my leadership skills in a
-
-      technical environment, improved my ability to manage cross-
-      functional collaboration, and gained experience in delivering
-
+      technical environment, improved my ability to manage cross-functional collaboration, and gained experience in delivering
       production grade mobile applications.
     `,
     image: "/assets/employee-icon.png",
@@ -429,8 +424,7 @@ export const projects: Project[] = [
       The system was fully integrated with Supabase and
       PostgreSQL for secure authentication and structured data
       storage. I also built the Flutter mobile application that
-      communicates with the backend, forming a complete end-to-
-      end verification workflow.
+      communicates with the backend, forming a complete end-to-end verification workflow.
     `,
     iveLearned: `
       Through this project, I gained deep experience in machine
@@ -455,14 +449,12 @@ export const projects: Project[] = [
     slug: "santana",
     tagline: "Disaster text classification with ML",
     summary: `
-      A mobile and machine learning system that classifies disaster-
-      related text and extracts key information such as disaster type,
-
+      A mobile and machine learning system that classifies disaster-related text and extracts key information such as disaster type,
       location, impact, and time using NLP techniques.
 
       This was a group college project, developed as part of
       research work at Badan Nasional Penanggulangan Bencana
-      (BNPB)
+      (BNPB).
 
       The system was designed to automate disaster information
       extraction using Natural Language Processing (NLP), improving
