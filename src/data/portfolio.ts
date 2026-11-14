@@ -720,6 +720,8 @@ export const contact = {
   email: "zaghy@zalsoft.com",
   tagline: "Have a product idea? Let's build it.",
   cta: "Build Your Product",
+  // No standalone CV file yet; the About page holds the full experience.
+  cvHref: "/about",
 };
 
 export const about = {

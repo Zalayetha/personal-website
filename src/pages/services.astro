@@ -3,8 +3,8 @@ import "../styles/styles.css";
 import Favicon from "../components/layout/Favicon.astro";
 import SEO from "../components/layout/SEO.astro";
 import Header from "../components/layout/Header.astro";
+import CtaBand from "../components/ui/CtaBand.astro";
 import Footer from "../components/layout/Footer.astro";
-import { contact } from "../data/portfolio";
 
 const services = [
     {
@@ -135,19 +135,7 @@ const breadcrumbs = [
                 </div>
             </div>
 
-            <!-- CTA -->
-            <div class="border-t border-[#e2e8f0] pt-12 pb-6">
-                <p class="text-[16px] text-[#0f172a] font-medium mb-4">
-                    Have a project in mind?
-                </p>
-                <a
-                    href={`mailto:${contact.email}`}
-                    class="text-link text-sm text-[#008752] hover:text-[#007346] font-semibold"
-                >
-                    <span>Send a message</span>
-                    <span aria-hidden="true">↗</span>
-                </a>
-            </div>
+            <CtaBand />
         </main>
         <Footer />
     </body>

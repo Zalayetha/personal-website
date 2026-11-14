@@ -1,0 +1,29 @@
+---
+import { contact } from "../../data/portfolio";
+---
+
+<section class="mt-16 sm:mt-24 rounded-3xl border border-[#e2e8f0] bg-[#f8fafc]/70 p-6 sm:p-10 md:p-12">
+    <span class="eyebrow block mb-2 text-[#64748b]">Next step</span>
+    <h2 class="text-[23px] sm:text-[28px] font-semibold tracking-[-0.04em] text-[#0f172a] leading-[1.2] m-0">
+        Let's work together<span class="text-[#008752]">.</span>
+    </h2>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <a
+            href={`mailto:${contact.email}`}
+            class="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[#008752] text-white text-sm font-medium hover:bg-[#007346] transition-colors shadow-xs"
+        >
+            <span>Have a project? Let's talk</span>
+            <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+        </a>
+        <a
+            href={contact.cvHref}
+            class="group inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-white text-[#0f172a] border border-[#e2e8f0] text-sm font-medium hover:border-[#cbd5e1] transition-colors"
+        >
+            <span>Hiring? See my CV</span>
+            <span aria-hidden="true" class="text-[#008752] transition-transform group-hover:translate-x-0.5">→</span>
+        </a>
+    </div>
+    <p class="mt-5 mb-0 text-xs text-[#64748b] font-mono">
+        or write to <a href={`mailto:${contact.email}`} class="text-[#0f172a] hover:text-[#008752] transition-colors">{contact.email}</a>
+    </p>
+</section>

@@ -3,6 +3,7 @@ import "../../styles/styles.css";
 import Favicon from "../../components/layout/Favicon.astro";
 import SEO from "../../components/layout/SEO.astro";
 import Header from "../../components/layout/Header.astro";
+import CtaBand from "../../components/ui/CtaBand.astro";
 import Footer from "../../components/layout/Footer.astro";
 import { projects } from "../../data/portfolio";
 import { SITE_URL } from "../../utils/seo";
@@ -340,6 +341,7 @@ const projectSchema = {
                     <div />
                 )}
             </nav>
+            <CtaBand />
         </main>
         <Footer />
     </body>
