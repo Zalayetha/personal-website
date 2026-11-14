@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "local-server": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/absolute/path/to/your/server.js"],
+      "env": {}
+    }
+  }
+}
