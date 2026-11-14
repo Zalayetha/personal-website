@@ -6,6 +6,8 @@ import Header from "../components/layout/Header.astro";
 import Footer from "../components/layout/Footer.astro";
 import { contact } from "../data/portfolio";
 
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY as string | undefined;
+
 const services = [
     {
         title: "Web App MVP",
@@ -135,19 +137,77 @@ const breadcrumbs = [
                 </div>
             </div>
 
-            <!-- CTA -->
-            <div class="border-t border-[#e2e8f0] pt-12 pb-6">
-                <p class="text-[16px] text-[#0f172a] font-medium mb-4">
+            <!-- Contact -->
+            <div id="contact" class="border-t border-[#e2e8f0] pt-12 pb-6 max-w-[560px]">
+                <span class="eyebrow block mb-1 text-[#64748b]">Contact</span>
+                <h2 class="text-[23px] font-semibold tracking-[-0.035em] text-[#0f172a] mb-2">
                     Have a project in mind?
+                </h2>
+                <p class="text-[14px] text-[#64748b] leading-[1.7] mb-6">
+                    Send a short message and I'll reply by email.
                 </p>
-                <a
-                    href={`mailto:${contact.email}`}
-                    class="text-link text-sm text-[#008752] hover:text-[#007346] font-semibold"
-                >
-                    <span>Send a message</span>
-                    <span aria-hidden="true">↗</span>
-                </a>
+                <form id="contact-form" method="post" action="/api/contact" class="space-y-4" novalidate>
+                    <div class="hidden" aria-hidden="true">
+                        <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+                    </div>
+                    <div>
+                        <label for="cf-name" class="block text-[13px] font-medium text-[#0f172a] mb-1">Name</label>
+                        <input id="cf-name" name="name" type="text" required minlength="2" maxlength="100" autocomplete="name" class="w-full border border-[#e2e8f0] rounded-md px-3 py-2 text-[14px] focus:outline-none focus:border-[#008752]" />
+                    </div>
+                    <div>
+                        <label for="cf-email" class="block text-[13px] font-medium text-[#0f172a] mb-1">Email</label>
+                        <input id="cf-email" name="email" type="email" required maxlength="200" autocomplete="email" class="w-full border border-[#e2e8f0] rounded-md px-3 py-2 text-[14px] focus:outline-none focus:border-[#008752]" />
+                    </div>
+                    <div>
+                        <label for="cf-message" class="block text-[13px] font-medium text-[#0f172a] mb-1">Message</label>
+                        <textarea id="cf-message" name="message" required minlength="10" maxlength="5000" rows="5" class="w-full border border-[#e2e8f0] rounded-md px-3 py-2 text-[14px] focus:outline-none focus:border-[#008752]"></textarea>
+                    </div>
+                    {turnstileSiteKey && <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>}
+                    <button type="submit" class="bg-[#008752] hover:bg-[#007346] text-white text-sm font-semibold rounded-md px-5 py-2.5 disabled:opacity-60">
+                        Send message
+                    </button>
+                    <p id="contact-status" role="status" aria-live="polite" class="text-[13px] min-h-[1.25rem]"></p>
+                </form>
+                <p class="text-[13px] text-[#64748b] mt-4">
+                    Prefer email?
+                    <a href={`mailto:${contact.email}`} class="text-link text-[#008752] hover:text-[#007346] font-semibold">
+                        <span>{contact.email}</span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </p>
             </div>
+            {turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+            <script>
+                const form = document.getElementById("contact-form") as HTMLFormElement | null;
+                const status = document.getElementById("contact-status");
+                form?.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    if (!status) return;
+                    if (!form.checkValidity()) {
+                        status.className = "text-[13px] text-red-600";
+                        status.textContent = "Please fill in all fields with valid values.";
+                        form.reportValidity();
+                        return;
+                    }
+                    const btn = form.querySelector("button[type=submit]") as HTMLButtonElement;
+                    btn.disabled = true;
+                    status.className = "text-[13px] text-[#64748b]";
+                    status.textContent = "Sending…";
+                    try {
+                        const res = await fetch(form.action, { method: "POST", body: new FormData(form) });
+                        const data = await res.json().catch(() => ({}));
+                        if (!res.ok) throw new Error(data.error || "Something went wrong.");
+                        form.reset();
+                        status.className = "text-[13px] text-[#008752]";
+                        status.textContent = "Thanks! Your message was sent.";
+                    } catch (err) {
+                        status.className = "text-[13px] text-red-600";
+                        status.textContent = (err instanceof Error ? err.message : "Something went wrong.") + " You can also email me directly.";
+                    } finally {
+                        btn.disabled = false;
+                    }
+                });
+            </script>
         </main>
         <Footer />
     </body>
