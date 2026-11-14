@@ -1,9 +1,12 @@
 ---
+import { contact } from "../../data/portfolio";
+
 const pathname = Astro.url.pathname;
 
 const navItems = [
     { href: "/work", label: "Work", aliases: ["/projects"] },
     { href: "/writing", label: "Writing", aliases: ["/blog"] },
+    { href: "/services", label: "Services", aliases: [] },
     { href: "/about", label: "About", aliases: [] },
 ];
 
@@ -25,7 +28,7 @@ function isCurrent(item: typeof navItems[0]) {
                 zaghy<span class="text-[#008752]">.</span>
             </a>
 
-            <nav class="flex items-center gap-6 sm:gap-8 text-xs font-normal">
+            <nav class="flex items-center gap-3.5 sm:gap-8 text-xs font-normal">
                 {
                     navItems.map((item) => {
                         const active = isCurrent(item);
@@ -45,6 +48,13 @@ function isCurrent(item: typeof navItems[0]) {
                         );
                     })
                 }
+                <a
+                    href={`mailto:${contact.email}`}
+                    class="inline-flex items-center px-3 sm:px-4 py-2 rounded-full bg-[#008752] text-white text-[11px] sm:text-xs font-medium hover:bg-[#007346] transition-colors shadow-xs whitespace-nowrap"
+                >
+                    <span class="sm:hidden">Hire me</span>
+                    <span class="hidden sm:inline">Work with me</span>
+                </a>
             </nav>
         </div>
     </div>
