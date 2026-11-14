@@ -88,6 +88,18 @@ const breadcrumbs = [
                                             {project.tagline}
                                         </p>
 
+                                        {(project.role || project.metrics?.[0]) && (
+                                            <p class="text-[12px] text-[#64748b] m-0 mb-3">
+                                                {[
+                                                    project.role,
+                                                    project.metrics?.[0] &&
+                                                        `${project.metrics[0].value ? `${project.metrics[0].value} ` : ""}${project.metrics[0].label}`,
+                                                ]
+                                                    .filter(Boolean)
+                                                    .join(" · ")}
+                                            </p>
+                                        )}
+
                                         <div class="flex flex-wrap items-center gap-1.5">
                                             {project.techStack.map((tech) => (
                                                 <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">

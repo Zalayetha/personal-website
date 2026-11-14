@@ -33,7 +33,17 @@ const {
     techStack,
     features,
     links,
+    role,
+    duration,
+    metrics,
 } = project;
+
+const linkItems = [
+    links.appStore && { label: "App Store", href: links.appStore },
+    links.playStore && { label: "Play Store", href: links.playStore },
+    links.live && { label: "Live Demo", href: links.live },
+    links.github && { label: "Source Code", href: links.github },
+].filter((l): l is { label: string; href: string } => Boolean(l));
 
 function parseParagraphs(text: string): string[] {
     return text
@@ -138,69 +148,49 @@ const projectSchema = {
                             </p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Action Links -->
-                    <div class="flex flex-wrap items-center gap-2.5 pt-1">
-                        {links.appStore && (
-                            <a
-                                href={links.appStore}
-                                target="_blank"
-                                rel="noreferrer"
-                                class="text-xs px-3.5 py-1.5 rounded-lg border border-[#008752] bg-[#008752] text-white hover:bg-[#007346] font-medium transition-colors inline-flex items-center gap-1.5 shadow-xs"
-                            >
-                                <span>App Store</span>
-                                <span aria-hidden="true">↗</span>
-                            </a>
-                        )}
-                        {links.playStore && (
-                            <a
-                                href={links.playStore}
-                                target="_blank"
-                                rel="noreferrer"
-                                class="text-xs px-3.5 py-1.5 rounded-lg border border-[#e2e8f0] bg-[#f8fafc] text-[#0f172a] hover:bg-[#f1f5f9] hover:border-[#cbd5e1] font-medium transition-colors inline-flex items-center gap-1.5"
-                            >
-                                <span>Play Store</span>
-                                <span aria-hidden="true">↗</span>
-                            </a>
-                        )}
-                        {links.live && (
-                            <a
-                                href={links.live}
-                                target="_blank"
-                                rel="noreferrer"
-                                class="text-xs px-3.5 py-1.5 rounded-lg border border-[#008752] bg-[#008752] text-white hover:bg-[#007346] font-medium transition-colors inline-flex items-center gap-1.5 shadow-xs"
-                            >
-                                <span>Live Demo</span>
-                                <span aria-hidden="true">↗</span>
-                            </a>
-                        )}
-                        {links.github && (
-                            <a
-                                href={links.github}
-                                target="_blank"
-                                rel="noreferrer"
-                                class="text-xs px-3.5 py-1.5 rounded-lg border border-[#e2e8f0] bg-[#f8fafc] text-[#0f172a] hover:bg-[#f1f5f9] hover:border-[#cbd5e1] font-medium transition-colors inline-flex items-center gap-1.5"
-                            >
-                                <span>Source Code</span>
-                                <span aria-hidden="true">↗</span>
-                            </a>
-                        )}
-                        {!links.appStore && !links.playStore && !links.live && !links.github && (
-                            <span class="text-xs px-3 py-1.5 rounded-lg border border-[#e2e8f0] bg-[#f8fafc] text-[#64748b] font-medium font-mono">
-                                Client Project
-                            </span>
-                        )}
+                <!-- Fact sheet strip -->
+                <dl class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 border-y border-[#e2e8f0] py-4 mt-8 mb-0">
+                    {role && (
+                        <div>
+                            <dt class="text-[11px] uppercase tracking-wide text-[#64748b]">Role</dt>
+                            <dd class="m-0 mt-1 text-sm text-[#0f172a]">{role}</dd>
+                        </div>
+                    )}
+                    {techStack.length > 0 && (
+                        <div>
+                            <dt class="text-[11px] uppercase tracking-wide text-[#64748b]">Stack</dt>
+                            <dd class="m-0 mt-1 text-sm text-[#0f172a]">{techStack.join(" · ")}</dd>
+                        </div>
+                    )}
+                    {duration && (
+                        <div>
+                            <dt class="text-[11px] uppercase tracking-wide text-[#64748b]">Duration</dt>
+                            <dd class="m-0 mt-1 text-sm text-[#0f172a]">{duration}</dd>
+                        </div>
+                    )}
+                    <div>
+                        <dt class="text-[11px] uppercase tracking-wide text-[#64748b]">Links</dt>
+                        <dd class="m-0 mt-1 text-sm flex flex-wrap gap-x-3 gap-y-1">
+                            {linkItems.length > 0 ? linkItems.map((l) => (
+                                <a href={l.href} target="_blank" rel="noreferrer" class="text-[#008752] hover:underline underline-offset-4 font-medium">
+                                    {l.label} <span aria-hidden="true">↗</span>
+                                </a>
+                            )) : <span class="text-[#64748b]">Client project</span>}
+                        </dd>
                     </div>
-                </div>
-
-                <!-- Tech Tags -->
-                <div class="flex flex-wrap items-center gap-2 pt-6">
-                    {techStack.map((tech) => (
-                        <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-[#e8f8f0] text-[#008752] border border-[#008752]/20 font-medium">
-                            {tech}
-                        </span>
-                    ))}
-                </div>
+                </dl>
+                {metrics && metrics.length > 0 && (
+                    <p class="text-sm text-[#1e293b] m-0 pt-4">
+                        {metrics.map((m, i) => (
+                            <>
+                                {i > 0 && <span class="text-[#94a3b8] mx-2" aria-hidden="true">·</span>}
+                                <span>{m.value && <strong class="font-semibold text-[#0f172a]">{m.value} </strong>}{m.label}</span>
+                            </>
+                        ))}
+                    </p>
+                )}
             </header>
 
             <!-- Hero Visual Showcase / Documentation -->

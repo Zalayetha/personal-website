@@ -55,6 +55,11 @@ export interface ProjectDocumentation {
   caption?: string;
 }
 
+export interface ProjectMetric {
+  value?: string;
+  label: string;
+}
+
 export interface Project {
   documentation?: ProjectDocumentation[];
   title: string;
@@ -74,6 +79,9 @@ export interface Project {
   };
   impact: string;
   iveLearned: string;
+  role?: string;
+  duration?: string;
+  metrics?: ProjectMetric[];
 }
 
 export interface Skill {
@@ -291,6 +299,12 @@ export const projects: Project[] = [
       appStore: "https://apps.apple.com/fi/app/student-budi-luhur/id6478258562",
     },
     screenshots: "/assets/student-bl-poster.png",
+    role: "Mobile Developer",
+    metrics: [
+      { value: "5,000+", label: "students using the app" },
+      { label: "QR-based attendance system" },
+      { label: "Fewer Android ANR occurrences" },
+    ],
   },
   {
     title: "Employee Budi Luhur",
@@ -336,6 +350,8 @@ export const projects: Project[] = [
       appStore: "https://apps.apple.com/app/employee-budi-luhur/id6499570674",
     },
     screenshots: "/assets/employee-bl-poster.png",
+    role: "Mobile Developer & Team Lead",
+    metrics: [{ label: "Led the development team" }, { label: "Published on Google Play and App Store" }],
   },
   {
     title: "Dyslexia Early Detection",
@@ -398,6 +414,8 @@ export const projects: Project[] = [
       "Real-time session progress and completion tracking",
     ],
     links: {},
+    role: "Software Developer (Freelance)",
+    metrics: [{ value: "13", label: "voice-guided test modules" }],
   },
   {
     title: "E-KTP Verification System",
@@ -443,6 +461,11 @@ export const projects: Project[] = [
       github: "https://github.com/Zalayetha/verif-ktp",
     },
     screenshots: "/assets/ektp-verification-system-poster.png",
+    role: "Developer (Thesis project)",
+    metrics: [
+      { value: "80%", label: "accuracy" },
+      { value: "87.5%", label: "precision" },
+    ],
   },
   {
     title: "Santana",
@@ -492,6 +515,7 @@ export const projects: Project[] = [
       github: "https://github.com/Zalayetha/SANTANA",
     },
     screenshots: "/assets/santana-poster.png",
+    role: "Developer (Group project)",
   },
 ];
 
