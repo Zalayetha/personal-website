@@ -742,3 +742,10 @@ export const hero = {
   country: "Indonesia 🇮🇩",
   portfolio: "https://bit.ly/portfolio-zaghy",
 };
+
+// PLACEHOLDER wording: confirm exact availability text with the owner.
+export const availability = {
+  available: true,
+  label: "Available for work",
+  detail: "Open to freelance and new projects · WIB (UTC+7)",
+};

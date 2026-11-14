@@ -1,5 +1,5 @@
 ---
-import { contact } from "../../../data/portfolio";
+import { availability, contact } from "../../../data/portfolio";
 import HeroFlow from "../../ui/HeroFlow.astro";
 ---
 
@@ -13,6 +13,21 @@ import HeroFlow from "../../ui/HeroFlow.astro";
             <p class="max-w-[480px] text-[#64748b] text-[16px] sm:text-[17px] leading-[1.85] mt-6">
                 I help businesses and founders build software that solves real problems.
             </p>
+
+            {
+                availability.available && (
+                    <p class="inline-flex items-center gap-2 mt-5 text-xs text-[#0f172a] font-medium">
+                        <span class="relative flex h-2 w-2" aria-hidden="true">
+                            <span class="absolute inline-flex h-full w-full rounded-full bg-[#008752] opacity-60 motion-safe:animate-ping" />
+                            <span class="relative inline-flex h-2 w-2 rounded-full bg-[#008752]" />
+                        </span>
+                        <span>
+                            {availability.label}
+                            <span class="text-[#64748b] font-normal"> · {availability.detail}</span>
+                        </span>
+                    </p>
+                )
+            }
 
             <p class="text-[#64748b] text-xs mt-4 font-mono">
                 Based in Tangerang, Indonesia. Building everywhere.
